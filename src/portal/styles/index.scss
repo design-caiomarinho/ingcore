@@ -1,0 +1,56 @@
+@use '@fontsource/inter/400.css' as interRegular;
+@use '@fontsource/inter/500.css' as interMedium;
+@use '@fontsource/inter/600.css' as interSemibold;
+@use '@fontsource/inter/700.css' as interBold;
+@use './tokens';
+@use './code';
+
+body { margin: 0; }
+
+// Estilos de documentação técnica; não são novos tokens aprovados do portal.
+.token-catalog {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 32px;
+  background: var(--sys-color-canvas-default);
+  color: var(--sys-color-content-primary);
+  font-family: var(--sys-type-body-md-regular-family), sans-serif;
+  font-size: var(--sys-type-body-md-regular-size);
+  font-weight: var(--sys-type-body-md-regular-weight);
+  line-height: var(--sys-type-body-md-regular-height);
+
+  * { box-sizing: border-box; }
+  h1 { margin: 0 0 12px; font-size: var(--sys-type-heading-lg-size); font-weight: var(--sys-type-heading-lg-weight); line-height: var(--sys-type-heading-lg-height); }
+  h2 { font-size: var(--sys-type-heading-md-size); font-weight: var(--sys-type-heading-md-weight); }
+  h3 { font-size: var(--sys-type-heading-sm-size); font-weight: var(--sys-type-heading-sm-weight); }
+  p { max-width: 800px; }
+  a { color: var(--sys-color-content-brand); }
+  .token-table-wrapper { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; background: var(--sys-color-surface-default); }
+  th, td { padding: 14px; text-align: left; border: 1px solid var(--sys-color-border-primary); }
+  code { white-space: nowrap; }
+  small { display: block; margin-top: 6px; }
+  .token-controls { display: flex; flex-wrap: wrap; gap: 16px; margin: 24px 0; }
+  .token-controls label { display: grid; align-content: start; gap: 8px; flex: 1; min-width: 220px; }
+  select { font: inherit; color: inherit; background: var(--sys-color-surface-default); padding: 12px; border: 1px solid var(--sys-color-border-primary); border-radius: 4px; }
+  select:focus-visible { outline: 2px solid var(--sys-color-content-brand); outline-offset: 2px; }
+  .type-recipes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 16px; }
+  .type-recipes article { padding: 24px; border: 1px solid var(--sys-color-border-primary); border-radius: 8px; background: var(--sys-color-surface-default); min-width: 0; }
+  .type-recipes h3 { margin-top: 0; }
+  .type-recipe-sample { overflow-wrap: anywhere; }
+  dl { margin: 24px 0 0; font-size: 12px; }
+  dl > div { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+  dt { width: 100px; color: var(--sys-color-content-tertiary); }
+  dd { margin: 0; }
+  dd span { color: var(--sys-color-content-tertiary); }
+  .token-type-sample { display: inline-block; min-width: 180px; }
+  .token-group { margin-top: 24px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .token-swatch { display: block; width: 48px; height: 32px; border: 1px solid var(--sys-color-border-primary); border-radius: 4px; }
+  .token-filter { display: grid; gap: 8px; max-width: 600px; margin: 24px 0; font-weight: 500; }
+  input { padding: 12px; border: 1px solid var(--sys-color-border-primary); border-radius: 4px; font: inherit; background: var(--sys-color-surface-default); color: var(--sys-color-content-primary); }
+  input:focus-visible { outline: 2px solid var(--sys-color-content-brand); outline-offset: 2px; }
+  section { margin-block: 32px; }
+  .token-notice { padding: 16px; border-left: 4px solid var(--sys-color-content-brand); background: var(--sys-color-surface-default); }
+  @media (max-width: 600px) { padding: 16px; }
+}

@@ -1,0 +1,7 @@
+.sidebar-button-lab {
+  padding: 24px; margin-block: 24px; border: 1px solid var(--sys-color-border-primary); border-radius: 8px;
+  background: var(--sys-color-surface-default);
+  .sidebar-button-specimens { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 24px; }
+  .sidebar-button-selection { display: grid; gap: 4px; max-width: 240px; }
+  h3 { font-size: var(--sys-type-heading-sm-size); }
+}

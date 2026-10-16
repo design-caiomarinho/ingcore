@@ -1,0 +1,16 @@
+@use './typography' as type;
+
+.text-link {
+  @include type.text('label-md');
+  position: relative; display: inline-flex; align-items: center; gap: 8px;
+  padding: 0; border: 0; border-radius: 4px; background: transparent;
+  color: var(--sys-color-content-brand); white-space: nowrap; text-decoration: none;
+  cursor: pointer; outline: none;
+  img { display: block; flex: none; }
+  // O Figma usa um traço sob o conjunto texto + ícone, sem transição.
+  &::after { content: ''; position: absolute; height: 1px; inset-inline: 0; bottom: -1px; background: currentColor; visibility: hidden; }
+  &:hover:not(:disabled):not([aria-disabled='true'])::after { visibility: visible; }
+  &:focus-visible { outline: 1px solid var(--sys-color-border-brand); outline-offset: 4px; }
+  &:disabled, &[aria-disabled='true'] { color: var(--sys-color-content-on-disabled); cursor: not-allowed; }
+}
+@media (forced-colors: active) { .text-link:focus-visible { outline-color: Highlight; } }

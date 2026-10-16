@@ -1,0 +1,173 @@
+@use './typography' as type;
+
+// Ritmo externo da página; substituir pelo token correspondente quando definido.
+$layout-gap: 16px;
+
+// Medidas de layout reproduzem o frame desktop. Ainda não existem tokens de layout
+// na fonte; não promovê-las a novos tokens sem definição no Figma.
+.portal-layout {
+  @include type.text('body-md-regular');
+  --sidebar-width: clamp(224px, 17.77778vw, 256px);
+  display: grid;
+  grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+  min-width: 0;
+  min-height: 100dvh;
+  color: var(--sys-color-content-primary);
+  background: var(--sys-color-canvas-default);
+  &, * { box-sizing: border-box; }
+  h1, h2, h3, p, ul, ol { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  a { text-decoration: none; }
+  :where(button:not(.sidebar-button):not(.text-link):not(.button)) { font: inherit; border: 0; padding: 0; cursor: default; }
+}
+
+.sidebar {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  z-index: 2;
+  width: var(--sidebar-width);
+  height: 100dvh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior-y: contain;
+  background: var(--sys-color-surface-default);
+  border-right: 1px solid var(--sys-color-border-primary);
+  padding: 24px;
+  .brand-logo { display: block; width: 117px; height: 24px; }
+  nav { margin-top: 40px; display: grid; gap: 24px; }
+}
+.navbar { display: none; --navbar-height: 72px; }
+.mobile-menu {
+  position: fixed; inset: 0; margin: 0; width: 100%; max-width: none;
+  height: 100vh; height: 100dvh; max-height: none;
+  padding: 0; border: 0;
+  background: transparent; color: var(--sys-color-content-primary);
+  overflow: hidden; overscroll-behavior: none;
+  &[open] { display: flex; flex-direction: column; }
+  &[open] .menu-container { animation: portal-menu-open 300ms ease-in-out both; }
+  &[open][data-closing] .menu-container { animation: portal-menu-close 300ms ease-in-out both; }
+  &[open] .nav-group :is(h2, li) { animation: portal-menu-item-in 300ms ease-in-out both; }
+  &[open][data-closing] .nav-group :is(h2, li) { animation: portal-menu-item-out 300ms ease-in-out both; }
+  &::backdrop { background: transparent; }
+}
+@keyframes portal-menu-open {
+  from { height: 0; }
+  to { height: calc(100dvh - var(--navbar-height)); }
+}
+@keyframes portal-menu-close {
+  from { height: calc(100dvh - var(--navbar-height)); }
+  to { height: 0; }
+}
+@keyframes portal-menu-item-in {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes portal-menu-item-out {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu[open] .menu-container,
+  .mobile-menu[open][data-closing] .menu-container,
+  .mobile-menu[open] .nav-group :is(h2, li),
+  .mobile-menu[open][data-closing] .nav-group :is(h2, li) { animation-duration: 1ms; }
+}
+.menu-header {
+  display: flex; flex: none; align-items: center; justify-content: space-between; width: 100%;
+  height: var(--navbar-height); padding: 16px 24px;
+  background: var(--sys-color-surface-default); border-bottom: 1px solid var(--sys-color-border-primary);
+}
+.menu-container {
+  min-height: 0; flex: none; height: calc(100dvh - var(--navbar-height));
+  overflow: hidden;
+  background: var(--sys-color-surface-default);
+}
+.menu-scroll {
+  height: calc(100dvh - var(--navbar-height)); overflow-y: auto; overscroll-behavior-y: contain;
+  nav { display: grid; gap: 24px; padding: 16px 24px; padding-bottom: max(16px, env(safe-area-inset-bottom)); border-bottom: 1px solid var(--sys-color-border-primary); }
+}
+.nav-group {
+  h2 { @include type.text('heading-overline'); color: var(--sys-color-content-tertiary); text-transform: uppercase; margin-bottom: 8px; }
+  ul { display: grid; gap: 4px; }
+  .sidebar-button { width: 100%; }
+}
+.sidebar .nav-group h2 { opacity: 0.8; }
+.page-content { grid-column: 2; min-width: 0; display: flex; flex-direction: column; gap: $layout-gap; padding: $layout-gap; }
+.overview-section, .section-panel { background: var(--sys-color-surface-default); border: 1px solid var(--sys-color-border-primary); border-radius: 8px; }
+.overview-section {
+  padding: 24px; display: grid; gap: 24px;
+  h1 { @include type.text('heading-lg'); }
+  .overview-description { @include type.text('body-lg-regular'); color: var(--sys-color-content-secondary); max-width: 650px; margin-top: 8px; }
+}
+.overview-label {
+  @include type.text('label-sm'); display: flex; align-items: center; gap: 12px; color: var(--sys-color-content-brand);
+  span { width: 8px; height: 8px; border-radius: 2px; background: var(--sys-color-content-brand); }
+}
+.section-header { height: 80px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--sys-color-border-primary); h2 { @include type.text('heading-md'); } }
+.history-link { display: none; }
+.cards-container { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: $layout-gap; padding: 24px; }
+.explore-card {
+  // Cada linha de cards compartilha as faixas de título, descrição e ação.
+  // A maior descrição define a faixa dos demais, sem altura fixa ou JavaScript.
+  padding: 24px; border: 1px solid var(--sys-color-border-primary); border-radius: 12px;
+  display: grid; grid-template-rows: subgrid; grid-row: span 3; row-gap: 8px; align-items: start;
+  > div { display: contents; }
+  > .text-link { margin-top: 24px; justify-self: start; }
+  // Os 8 px de margem somam-se ao gap de 8 px: título → descrição = 16 px.
+  h3 { @include type.text('heading-sm'); text-wrap: balance; margin-bottom: 8px; }
+  p { @include type.text('body-md-regular'); text-wrap: balance; color: var(--sys-color-content-secondary); }
+}
+.updates-container { padding: 24px; }
+.timeline { padding: 24px !important; border: 1px solid var(--sys-color-border-primary); border-radius: 12px;
+  > li { display: flex; gap: 16px; }
+  > li:not(:last-child) .update-item { padding-bottom: 32px; }
+}
+.timeline-marker { width: 16px; flex: none; display: flex; align-items: center; flex-direction: column; img { display: block; flex: none; } span { flex: 1; width: 1px; background: var(--sys-color-border-primary); } }
+.update-item {
+  min-width: 0; display: flex; flex-direction: column; align-items: start; gap: 16px;
+  time { @include type.text('body-sm-medium'); color: var(--sys-color-content-tertiary); }
+  h3 { @include type.text('heading-sm'); }
+  p { @include type.text('body-md-regular'); margin-top: 8px; color: var(--sys-color-content-secondary); }
+}
+.update-header { display: flex; align-items: center; gap: 10px; }
+.status-badge { @include type.text('label-sm'); padding: 4px 8px; border-radius: 8px; }
+.status-badge--updated { color: var(--sys-color-extented-amber-700); background: var(--sys-color-extented-amber-100); }
+.status-badge--new { color: var(--sys-color-extented-blue-700); background: var(--sys-color-extented-blue-100); }
+.status-badge--removed { color: var(--sys-color-extented-red-700); background: var(--sys-color-extented-red-100); }
+
+// Tablet: o frame de 1024 px ocupa toda a largura, com cabeçalho e cards 2 × 2.
+// O breakpoint ainda é uma decisão de layout local, pois não há token no Figma.
+@media (max-width: 1199px) {
+  .history-button { display: none; }
+  .history-link { display: inline-flex; }
+  .portal-layout { display: block; }
+  .sidebar { display: none; }
+  .navbar {
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 3; padding: 16px 24px;
+    height: var(--navbar-height);
+    background: var(--sys-color-surface-default); border-bottom: 1px solid var(--sys-color-border-primary);
+    .brand-logo { display: block; width: 117px; height: 24px; }
+    .brand-logo img { display: block; }
+  }
+  .page-content { width: 100%; }
+  .cards-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 767px) {
+  .cards-container { grid-template-columns: minmax(0, 1fr); }
+  .explore-card > div { width: 100%; min-width: 0; }
+  .update-item { flex: 1; }
+  .update-item > div { width: 100%; }
+  .section-header { gap: 16px; }
+  .update-header { flex-wrap: wrap; }
+}
+
+// Espaços fluidos em celulares mais estreitos; os 24 px do frame de 430 px
+// são preservados na referência e diminuem apenas quando necessário.
+@media (max-width: 389px) {
+  .section-header, .overview-section, .cards-container, .updates-container { padding: 16px; }
+  .timeline { padding: 16px !important; }
+  .section-header { align-content: center; flex-wrap: wrap; gap: 8px; }
+}

@@ -1,0 +1,14 @@
+@use 'sass:string';
+
+// Composição das propriedades semânticas; valores continuam na fonte de tokens.
+@mixin text($recipe) {
+  @if string.index($recipe, 'code-') == 1 {
+    font-family: var(--sys-type-#{$recipe}-family), monospace;
+  } @else {
+    font-family: var(--sys-type-#{$recipe}-family), sans-serif;
+  }
+  font-size: var(--sys-type-#{$recipe}-size);
+  font-weight: var(--sys-type-#{$recipe}-weight);
+  line-height: var(--sys-type-#{$recipe}-height);
+  letter-spacing: var(--sys-type-#{$recipe}-letter-spacing);
+}

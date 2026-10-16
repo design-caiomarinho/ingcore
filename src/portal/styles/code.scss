@@ -1,0 +1,17 @@
+@use './typography' as type;
+
+// A família aprovada é Roboto Mono. O fallback mantém o texto monoespaçado
+// enquanto a fonte não estiver instalada ou empacotada localmente.
+.portal-theme {
+  .code-text, .code-block { @include type.text('code-md-medium'); }
+  .code-block { margin: 0; white-space: pre; overflow-x: auto; }
+  .code-block code { font: inherit; letter-spacing: inherit; }
+  .code-tag {
+    @include type.text('code-md-medium');
+    display: inline; padding: 0 4px;
+    border: 1px solid var(--sys-color-border-tertiary); border-radius: 8px;
+    background: var(--sys-color-surface-empashis); color: var(--sys-color-content-secondary);
+    white-space: normal; overflow-wrap: anywhere;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+}

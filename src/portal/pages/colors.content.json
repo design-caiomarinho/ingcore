@@ -1,0 +1,445 @@
+{
+  "source": "https://www.figma.com/design/r58dqyV6DaTkieXp1IbKUU/IngCore---Storybook?node-id=76-1560",
+  "texts": {
+    "76:1565": "INTRODUÇÃO",
+    "I76:1566;27:72": "Primeiros passos",
+    "76:1568": "FUNDAMENTOS",
+    "I76:1570;31:117": "Cores",
+    "I76:1571;27:72": "Tipografia",
+    "I76:1572;27:72": "Espaçamentos",
+    "76:1574": "COMPONENTES",
+    "I76:1576;27:72": "Button",
+    "I76:1577;27:72": "Input",
+    "I76:1578;27:72": "Select",
+    "76:1580": "PADRÕES",
+    "I76:1581;27:72": "Formulários",
+    "76:1583": "RECURSOS",
+    "I76:1584;27:72": "Biblioteca Figma",
+    "76:1590": "FUNDAMENTOS",
+    "76:1592": "Cores",
+    "76:1593": "Entenda a organização das cores do Design System e como escolher a referência adequada para cada contexto.",
+    "78:2263": "Seções",
+    "I78:2265;78:2215": "Organização dos tokens",
+    "I78:2266;31:460": "Paleta de referência",
+    "I78:2267;31:460": "Tokens semânticos",
+    "I78:2268;31:460": "Aplicação e temas",
+    "I78:2269;31:460": "Referências",
+    "76:1621": "Como as cores se organizam",
+    "78:2321": "Um token de cor é um nome associado a um valor ou a uma referência de cor. Ele permite compartilhar a mesma definição entre diferentes partes de uma interface. No IngCore, as cores são organizadas em duas camadas: os tokens primitivos, na coleção ref, e os tokens semânticos, na coleção sys-color.",
+    "78:2324": "Primitivos",
+    "78:2325": "Armazenam os valores das cores disponíveis no Design System. Seus nomes identificam a família e o nível da escala, sem determinar onde a cor será aplicada.\nEm --palette-blue-500, blue identifica a família e 500 identifica o nível. Para acessar seu valor no CSS, utiliza-se var(--palette-blue-500). O valor desse primitivo é #395ABF.",
+    "83:2352": "Função: centralizar a paleta que serve de referência para os demais tokens.",
+    "78:2335": "Semânticos",
+    "78:2336": "Descrevem a função da cor: fundo de uma página, conteúdo de um texto, borda ou estado de uma ação. Em vez de repetir um valor hexadecimal, apontam para um token primitivo por meio de uma referência, também chamada de alias.\nEm var(--action-primary-default), o nome comunica uma ação primária em seu estado padrão. No DS atual, esse token aponta para var(--palette-blue-500).",
+    "83:2348": "Função: conectar as cores da paleta às intenções de uso da interface.",
+    "83:2354": "Como essas camadas se conectam",
+    "83:2356": "A interface usa um papel semântico; esse papel referencia um primitivo, que fornece o valor da cor. O exemplo abaixo mostra essa relação no modo light:",
+    "92:254": "HEXADECIMAL",
+    "92:256": "#171D26",
+    "92:259": "REF (PRIMITIVO)",
+    "92:261": "var(--palette-gray-1000)",
+    "92:264": "SYS-COLOR (SEMÂNTICO)",
+    "92:266": "var(--content-primary)",
+    "85:2452": "/* Referência primitiva */\n--palette-gray-1000: #171D26;\n\n/* Token semântico no modo light */\n--content-primary: var(--palette-gray-1000);\n\n/* Uso em um texto */\ncolor: var(--content-primary);",
+    "92:309": "Por que separar valor e intenção?",
+    "92:310": "Essa separação permite adaptar a aparência sem mudar o significado do token. Em light, var(--content-primary) referencia var(--palette-gray-1000) (#171D26). Em dark, o mesmo token referencia var(--palette-gray-5) (#FFFFFF). O papel de conteúdo principal permanece; a cor utilizada acompanha o tema.\nPara aplicar cores por finalidade, a orientação proposta é consultar os tokens de sys-color. A coleção ref permite conhecer os valores e entender a origem dessas referências.",
+    "97:243": "Paleta de referência",
+    "92:1403": "A coleção ref reúne os valores que formam a paleta do IngCore. As escalas abaixo mostram as famílias blue, gray, amber, red e green, com seus nomes CSS e valores hexadecimais. Os valores são os mesmos que alimentam os aliases semânticos.",
+    "97:247": "Blue",
+    "97:251": "--palette-blue-100",
+    "97:252": "#EEF2FB",
+    "99:244": "--palette-blue-200",
+    "97:256": "#CED8F3",
+    "99:246": "--palette-blue-300",
+    "97:260": "#8BA0E0",
+    "99:248": "--palette-blue-400",
+    "97:264": "#5F7CD2",
+    "99:250": "--palette-blue-500",
+    "97:268": "#395ABF",
+    "92:328": "--palette-blue-600",
+    "92:329": "#304C9A",
+    "92:333": "--palette-blue-700",
+    "92:334": "#263D76",
+    "92:338": "--palette-blue-800",
+    "92:339": "#1C2C53",
+    "92:343": "--palette-blue-900",
+    "92:344": "#111B30",
+    "92:348": "--palette-blue-1000",
+    "92:349": "#05080E",
+    "97:291": "Gray",
+    "99:262": "--palette-gray-5",
+    "97:296": "#FFFFFF",
+    "99:264": "--palette-gray-50",
+    "97:300": "#F9FBFE",
+    "99:266": "--palette-gray-100",
+    "97:304": "#F0F3F8",
+    "99:268": "--palette-gray-200",
+    "97:308": "#D1D5DD",
+    "99:270": "--palette-gray-300",
+    "97:312": "#D0D5DE",
+    "92:354": "--palette-gray-400",
+    "92:355": "#9EA6B4",
+    "92:359": "--palette-gray-500",
+    "92:360": "#666F7D",
+    "92:364": "--palette-gray-600",
+    "92:365": "#4E5664",
+    "92:369": "--palette-gray-700",
+    "92:370": "#3B434F",
+    "92:374": "--palette-gray-800",
+    "92:375": "#2D3541",
+    "92:379": "--palette-gray-900",
+    "92:380": "#222833",
+    "92:384": "--palette-gray-1000",
+    "92:385": "#171D26",
+    "92:389": "--palette-gray-1100",
+    "92:390": "#0E1219",
+    "97:348": "Amber",
+    "99:288": "--palette-amber-100",
+    "97:353": "#FFF5E5",
+    "99:290": "--palette-amber-200",
+    "97:357": "#FFDFAC",
+    "99:292": "--palette-amber-300",
+    "97:361": "#FFC872",
+    "99:294": "--palette-amber-400",
+    "97:365": "#FFB139",
+    "99:296": "--palette-amber-500",
+    "97:369": "#FE9A00",
+    "92:421": "--palette-amber-600",
+    "92:422": "#DD8301",
+    "92:426": "--palette-amber-700",
+    "92:427": "#BC6D02",
+    "92:431": "--palette-amber-800",
+    "92:432": "#9B5802",
+    "92:436": "--palette-amber-900",
+    "92:437": "#7B4402",
+    "92:441": "--palette-amber-1000",
+    "92:442": "#5B3102",
+    "97:392": "Red",
+    "99:308": "--palette-red-100",
+    "97:397": "#FFE5EC",
+    "99:310": "--palette-red-200",
+    "97:401": "#FFB2C7",
+    "99:312": "--palette-red-300",
+    "97:405": "#FF608B",
+    "99:314": "--palette-red-400",
+    "97:409": "#FF2761",
+    "99:316": "--palette-red-500",
+    "97:413": "#EC003F",
+    "92:447": "--palette-red-600",
+    "92:448": "#CB013A",
+    "92:452": "--palette-red-700",
+    "92:453": "#AA0233",
+    "92:457": "--palette-red-800",
+    "92:458": "#89022C",
+    "92:462": "--palette-red-900",
+    "92:463": "#690224",
+    "92:467": "--palette-red-1000",
+    "92:468": "#49021A",
+    "97:436": "Green",
+    "99:328": "--palette-green-100",
+    "97:441": "#C7FFDE",
+    "99:330": "--palette-green-200",
+    "97:445": "#8EFFBC",
+    "99:332": "--palette-green-300",
+    "97:449": "#54FF9A",
+    "99:334": "--palette-green-400",
+    "97:453": "#1BFF78",
+    "99:336": "--palette-green-500",
+    "97:457": "#00E05B",
+    "92:473": "--palette-green-600",
+    "92:474": "#01BF4B",
+    "92:478": "--palette-green-700",
+    "92:479": "#019F3C",
+    "92:483": "--palette-green-800",
+    "92:484": "#017E2E",
+    "92:488": "--palette-green-900",
+    "92:489": "#015E21",
+    "92:493": "--palette-green-1000",
+    "92:494": "#013E15",
+    "97:480": "Transparências e variações",
+    "97:481": "Além das cinco escalas base, a coleção ref contém 29 cores alpha e 60 cores em variations. As transparências aparecem em tokens de interação e sobreposição; essas famílias complementares não estão detalhadas neste recorte.",
+    "97:689": "Aplicação e temas",
+    "97:691": "Mesmo papel, referência conforme o tema",
+    "97:692": "O token var(--content-primary) representa o conteúdo principal nos dois temas. Em light, ele aponta para var(--palette-gray-1000), com valor #171D26. Em dark, aponta para var(--palette-gray-5), com valor #FFFFFF. A intenção permanece e a referência acompanha o tema.",
+    "97:695": "Light",
+    "97:696": "Exemplo de superfície com conteúdo principal e secundário.",
+    "97:697": "background: var(--surface-default);\ncolor: var(--content-primary);",
+    "I92:1337;2147:18187": "Ação Primária",
+    "97:701": "Dark",
+    "97:702": "Exemplo de superfície com conteúdo principal e secundário.",
+    "97:703": "background: var(--surface-default);\ncolor: var(--content-primary);",
+    "I92:1373;2147:18187": "Ação Primária",
+    "97:706": "Composição ilustrativa com valores do Design System. A comparação explica a aplicação dos tokens; não representa uma nova especificação de componente ou validação de contraste.",
+    "97:708": "/* Referências do token por tema */\n/* light */\n--content-primary: var(--palette-gray-1000);\n\n/* dark */\n--content-primary: var(--palette-gray-5);\n\n/* Uso do mesmo papel na interface */\ncolor: var(--content-primary);",
+    "97:709": "Estados das ações",
+    "97:710": "A ação primária usa var(--palette-blue-500) no estado default, var(--palette-blue-600) em hover e var(--palette-blue-700) em pressed, nos dois modos. O token var(--action-disabled) aponta para var(--palette-gray-200) em light e var(--palette-gray-700) em dark.",
+    "97:712": "--action-primary-default: var(--palette-blue-500);\n--action-primary-hover: var(--palette-blue-600);\n--action-primary-pressed: var(--palette-blue-700);"
+  },
+  "swatches": [
+    {
+      "name": "palette/blue/100",
+      "label": "--palette-blue-100",
+      "hex": "#EEF2FB"
+    },
+    {
+      "name": "palette/blue/200",
+      "label": "--palette-blue-200",
+      "hex": "#CED8F3"
+    },
+    {
+      "name": "palette/blue/300",
+      "label": "--palette-blue-300",
+      "hex": "#8BA0E0"
+    },
+    {
+      "name": "palette/blue/400",
+      "label": "--palette-blue-400",
+      "hex": "#5F7CD2"
+    },
+    {
+      "name": "palette/blue/500",
+      "label": "--palette-blue-500",
+      "hex": "#395ABF"
+    },
+    {
+      "name": "palette/blue/600",
+      "label": "--palette-blue-600",
+      "hex": "#304C9A"
+    },
+    {
+      "name": "palette/blue/700",
+      "label": "--palette-blue-700",
+      "hex": "#263D76"
+    },
+    {
+      "name": "palette/blue/800",
+      "label": "--palette-blue-800",
+      "hex": "#1C2C53"
+    },
+    {
+      "name": "palette/blue/900",
+      "label": "--palette-blue-900",
+      "hex": "#111B30"
+    },
+    {
+      "name": "palette/blue/1000",
+      "label": "--palette-blue-1000",
+      "hex": "#05080E"
+    },
+    {
+      "name": "palette/gray/5",
+      "label": "--palette-gray-5",
+      "hex": "#FFFFFF"
+    },
+    {
+      "name": "palette/gray/50",
+      "label": "--palette-gray-50",
+      "hex": "#F9FBFE"
+    },
+    {
+      "name": "palette/gray/100",
+      "label": "--palette-gray-100",
+      "hex": "#F0F3F8"
+    },
+    {
+      "name": "palette/gray/200",
+      "label": "--palette-gray-200",
+      "hex": "#D1D5DD"
+    },
+    {
+      "name": "palette/gray/300",
+      "label": "--palette-gray-300",
+      "hex": "#D0D5DE"
+    },
+    {
+      "name": "palette/gray/400",
+      "label": "--palette-gray-400",
+      "hex": "#9EA6B4"
+    },
+    {
+      "name": "palette/gray/500",
+      "label": "--palette-gray-500",
+      "hex": "#666F7D"
+    },
+    {
+      "name": "palette/gray/600",
+      "label": "--palette-gray-600",
+      "hex": "#4E5664"
+    },
+    {
+      "name": "palette/gray/700",
+      "label": "--palette-gray-700",
+      "hex": "#3B434F"
+    },
+    {
+      "name": "palette/gray/800",
+      "label": "--palette-gray-800",
+      "hex": "#2D3541"
+    },
+    {
+      "name": "palette/gray/900",
+      "label": "--palette-gray-900",
+      "hex": "#222833"
+    },
+    {
+      "name": "palette/gray/1000",
+      "label": "--palette-gray-1000",
+      "hex": "#171D26"
+    },
+    {
+      "name": "palette/gray/1100",
+      "label": "--palette-gray-1100",
+      "hex": "#0E1219"
+    },
+    {
+      "name": "palette/amber/100",
+      "label": "--palette-amber-100",
+      "hex": "#FFF5E5"
+    },
+    {
+      "name": "palette/amber/200",
+      "label": "--palette-amber-200",
+      "hex": "#FFDFAC"
+    },
+    {
+      "name": "palette/amber/300",
+      "label": "--palette-amber-300",
+      "hex": "#FFC872"
+    },
+    {
+      "name": "palette/amber/400",
+      "label": "--palette-amber-400",
+      "hex": "#FFB139"
+    },
+    {
+      "name": "palette/amber/500",
+      "label": "--palette-amber-500",
+      "hex": "#FE9A00"
+    },
+    {
+      "name": "palette/amber/600",
+      "label": "--palette-amber-600",
+      "hex": "#DD8301"
+    },
+    {
+      "name": "palette/amber/700",
+      "label": "--palette-amber-700",
+      "hex": "#BC6D02"
+    },
+    {
+      "name": "palette/amber/800",
+      "label": "--palette-amber-800",
+      "hex": "#9B5802"
+    },
+    {
+      "name": "palette/amber/900",
+      "label": "--palette-amber-900",
+      "hex": "#7B4402"
+    },
+    {
+      "name": "palette/amber/1000",
+      "label": "--palette-amber-1000",
+      "hex": "#5B3102"
+    },
+    {
+      "name": "palette/red/100",
+      "label": "--palette-red-100",
+      "hex": "#FFE5EC"
+    },
+    {
+      "name": "palette/red/200",
+      "label": "--palette-red-200",
+      "hex": "#FFB2C7"
+    },
+    {
+      "name": "palette/red/300",
+      "label": "--palette-red-300",
+      "hex": "#FF608B"
+    },
+    {
+      "name": "palette/red/400",
+      "label": "--palette-red-400",
+      "hex": "#FF2761"
+    },
+    {
+      "name": "palette/red/500",
+      "label": "--palette-red-500",
+      "hex": "#EC003F"
+    },
+    {
+      "name": "palette/red/600",
+      "label": "--palette-red-600",
+      "hex": "#CB013A"
+    },
+    {
+      "name": "palette/red/700",
+      "label": "--palette-red-700",
+      "hex": "#AA0233"
+    },
+    {
+      "name": "palette/red/800",
+      "label": "--palette-red-800",
+      "hex": "#89022C"
+    },
+    {
+      "name": "palette/red/900",
+      "label": "--palette-red-900",
+      "hex": "#690224"
+    },
+    {
+      "name": "palette/red/1000",
+      "label": "--palette-red-1000",
+      "hex": "#49021A"
+    },
+    {
+      "name": "palette/green/100",
+      "label": "--palette-green-100",
+      "hex": "#C7FFDE"
+    },
+    {
+      "name": "palette/green/200",
+      "label": "--palette-green-200",
+      "hex": "#8EFFBC"
+    },
+    {
+      "name": "palette/green/300",
+      "label": "--palette-green-300",
+      "hex": "#54FF9A"
+    },
+    {
+      "name": "palette/green/400",
+      "label": "--palette-green-400",
+      "hex": "#1BFF78"
+    },
+    {
+      "name": "palette/green/500",
+      "label": "--palette-green-500",
+      "hex": "#00E05B"
+    },
+    {
+      "name": "palette/green/600",
+      "label": "--palette-green-600",
+      "hex": "#01BF4B"
+    },
+    {
+      "name": "palette/green/700",
+      "label": "--palette-green-700",
+      "hex": "#019F3C"
+    },
+    {
+      "name": "palette/green/800",
+      "label": "--palette-green-800",
+      "hex": "#017E2E"
+    },
+    {
+      "name": "palette/green/900",
+      "label": "--palette-green-900",
+      "hex": "#015E21"
+    },
+    {
+      "name": "palette/green/1000",
+      "label": "--palette-green-1000",
+      "hex": "#013E15"
+    }
+  ]
+}

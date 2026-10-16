@@ -1,0 +1,99 @@
+{
+  "status": "incomplete-design",
+  "counts": {
+    "primary": 151,
+    "secondary": 90,
+    "typography": 65,
+    "primaryColors": 119,
+    "primaryTypography": 32,
+    "recipes": 13,
+    "dependencies": 0
+  },
+  "unresolvedAliases": [],
+  "incompleteRecipes": [],
+  "duplicateCodeSyntax": [
+    {
+      "syntax": "var(--palette-blue-500)",
+      "names": [
+        "ref/palette/blue/500",
+        "ref/palette/blue/alpha/0",
+        "ref/palette/blue/alpha/100",
+        "ref/palette/blue/alpha/300",
+        "ref/palette/blue/alpha/500",
+        "ref/palette/blue/alpha/700",
+        "ref/palette/blue/alpha/900"
+      ]
+    },
+    {
+      "syntax": "var(--surface-brand-default)",
+      "names": [
+        "sys-color/surface/brand",
+        "sys-color/surface/critical",
+        "sys-color/surface/success",
+        "sys-color/surface/warning",
+        "sys-color/surface/brand/subtle/default"
+      ]
+    },
+    {
+      "syntax": "var(--content-primary)",
+      "names": [
+        "sys-color/content/primary",
+        "sys-color/border/primary"
+      ]
+    },
+    {
+      "syntax": "var(--content-secondary)",
+      "names": [
+        "sys-color/content/secondary",
+        "sys-color/border/secondary"
+      ]
+    },
+    {
+      "syntax": "var(--content-tertiary)",
+      "names": [
+        "sys-color/content/tertiary",
+        "sys-color/border/tertiary"
+      ]
+    },
+    {
+      "syntax": "var(--content-brand)",
+      "names": [
+        "sys-color/content/brand",
+        "sys-color/border/brand"
+      ]
+    },
+    {
+      "syntax": "var(--content-inverse)",
+      "names": [
+        "sys-color/content/inverse",
+        "sys-color/border/inverse"
+      ]
+    },
+    {
+      "syntax": "var(--content-on-disabled)",
+      "names": [
+        "sys-color/content/on-disabled",
+        "sys-color/border/on-disabled"
+      ]
+    },
+    {
+      "syntax": "var(--action-secondary-hover)",
+      "names": [
+        "sys-color/action/ghost/hover",
+        "sys-color/action/ghost/enabled",
+        "sys-color/action/disabled"
+      ]
+    }
+  ],
+  "namingNotes": [
+    "Nomes e grupos atuais do Figma preservados, inclusive surface/empashis e extented/*.",
+    "CSS local derivado de coleção + nome, sem reutilizar codeSyntax duplicado."
+  ],
+  "conversions": [
+    "font/size: número do Figma aplicado em px.",
+    "font/weight: número sem unidade.",
+    "font/line: percentual convertido em razão sem unidade; AUTO convertido em normal.",
+    "font/space: percentual convertido em em (4% = 0.04em).",
+    "Valores originais preservados em figma.tokens.json e sourceValue."
+  ]
+}

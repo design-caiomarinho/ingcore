@@ -67,7 +67,7 @@
 @media (max-width: 767px) {
   .colors-page {
     .token-cards, .theme-examples { grid-template-columns: minmax(0, 1fr); }
-    .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .swatches { grid-template-columns: minmax(0, 1fr); }
     .token-flow { align-items: flex-start; flex-direction: column; }
     .flow-step { align-items: flex-start; flex-direction: column; }
     .flow-arrow { transform: rotate(90deg); }

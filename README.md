@@ -39,7 +39,6 @@ Endereços previstos após a primeira publicação bem-sucedida:
 
 - Home: https://design-caiomarinho.github.io/ingcore/
 - Cores: https://design-caiomarinho.github.io/ingcore/cores/
-- Configuração: https://design-caiomarinho.github.io/ingcore/configuracao/
 
 ## Tokens e componentes
 

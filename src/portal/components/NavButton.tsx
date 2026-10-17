@@ -18,9 +18,9 @@ export const NavButton = forwardRef<HTMLButtonElement, NavButtonProps>(
   },
 );
 
-export function NavLink({ selected = false, className = '', children, ...props }: AnchorHTMLAttributes<HTMLAnchorElement> & { selected?: boolean }) {
+export function NavLink({ selected = false, className = '', children, 'aria-current': current = 'page', ...props }: AnchorHTMLAttributes<HTMLAnchorElement> & { selected?: boolean }) {
   return <a {...props} className={`nav-button ${className}`.trim()}
-    data-selected={selected ? 'true' : undefined} aria-current={selected ? 'page' : undefined}>
+    data-selected={selected ? 'true' : undefined} aria-current={selected ? current : undefined}>
     {children}
   </a>;
 }

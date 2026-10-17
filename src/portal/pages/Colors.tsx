@@ -5,7 +5,7 @@ import { PortalTabletHeader, type NavbarState } from '../components/PortalTablet
 import { MobileSections, type PageSection } from '../components/MobileSections';
 import { SemanticColorsTable } from './SemanticColorsTable';
 import { semanticColorCount } from '../../design-system/tokens/semantic-colors';
-import { Button } from '../components/Button';
+import { NavButton, NavLink } from '../components/NavButton';
 import { CodeTag, InlineCode } from '../components/CodeTag';
 import content from './colors.content.json';
 import { referenceColors, referenceColorVariables } from '../../design-system/tokens/colors';
@@ -44,6 +44,8 @@ export function Colors() {
   const main = useRef<HTMLElement>(null);
   const [navbar, setNavbar] = useState<NavbarState>({hidden: false, menuOpen: false});
   const [sectionsHidden, setSectionsHidden] = useState(false);
+  const [sectionNavigating, setSectionNavigating] = useState(false);
+  const sectionDestination = useRef<number | null>(null);
   const [currentSection, setCurrentSection] = useState(() => window.location.hash.slice(1) || 'organizacao');
   useLayoutEffect(() => {
     const menu = submenu.current;
@@ -60,9 +62,9 @@ export function Colors() {
     };
     const scheduleHide = () => {
       window.clearTimeout(timer);
-      if (window.innerWidth < 1200 || originIsVisible()) return;
+      if (window.innerWidth < 1200 || originIsVisible() || sectionDestination.current !== null) return;
       timer = window.setTimeout(() => {
-        if (!originIsVisible() && !menu.querySelector(':focus-visible')) setSectionsHidden(true);
+        if (!originIsVisible() && sectionDestination.current === null && !menu.querySelector(':focus-visible')) setSectionsHidden(true);
       }, 3000);
     };
     const show = () => { setSectionsHidden(false); scheduleHide(); };
@@ -70,7 +72,7 @@ export function Colors() {
       frame = 0;
       const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
       const y = Math.max(0, Math.min(window.scrollY, maxY));
-      if (window.innerWidth < 1200 || originIsVisible() || menu.querySelector(':focus-visible')) {
+      if (window.innerWidth < 1200 || originIsVisible() || sectionDestination.current !== null || menu.querySelector(':focus-visible')) {
         previousY = y;
         show();
         return;
@@ -100,7 +102,33 @@ export function Colors() {
       menu.removeEventListener('focusin', show);
       menu.removeEventListener('focusout', scheduleHide);
     };
-  }, []);
+  }, [sectionNavigating]);
+  useLayoutEffect(() => {
+    if (!sectionNavigating) return;
+    let frame = 0;
+    const started = performance.now();
+    const finish = () => { sectionDestination.current = null; setSectionNavigating(false); };
+    const checkArrival = () => {
+      const target = sectionDestination.current;
+      if (target === null || Math.abs(window.scrollY - target) < 2 || performance.now() - started > 4000) { finish(); return; }
+      frame = window.requestAnimationFrame(checkArrival);
+    };
+    const onKey = (event: KeyboardEvent) => {
+      if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '].includes(event.key)) finish();
+    };
+    frame = window.requestAnimationFrame(checkArrival);
+    window.addEventListener('wheel', finish, {passive: true});
+    window.addEventListener('touchstart', finish, {passive: true});
+    window.addEventListener('keydown', onKey);
+    window.addEventListener('resize', finish);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.removeEventListener('wheel', finish);
+      window.removeEventListener('touchstart', finish);
+      window.removeEventListener('keydown', onKey);
+      window.removeEventListener('resize', finish);
+    };
+  }, [sectionNavigating]);
   useLayoutEffect(() => {
     const menu = submenu.current;
     const page = main.current;
@@ -110,7 +138,7 @@ export function Colors() {
       frame = 0;
       if (document.body.style.position === 'fixed') return;
       const menuRect = menu.getBoundingClientRect();
-      const threshold = window.innerWidth < 1200 ? (navbar.hidden ? 82 : 154) : (sectionsHidden ? 18 : 16 + menuRect.height + 18);
+      const threshold = window.innerWidth < 1200 ? (navbar.hidden ? 82 : 154) : 16 + menuRect.height + 18;
       let current: string = sectionIds[0];
       for (const id of sectionIds) {
         const section = document.getElementById(id);
@@ -153,8 +181,14 @@ export function Colors() {
     if (window.location.hash !== `#${id}`) window.history.pushState(null, '', `#${id}`);
     const top = window.scrollY + section.getBoundingClientRect().top;
     const offset = window.innerWidth < 1200 ? (top > window.scrollY ? 80 : 152) : (submenu.current?.getBoundingClientRect().height ?? 82) + 32;
+    const destination = Math.max(0, Math.min(top - offset, document.documentElement.scrollHeight - window.innerHeight));
+    if (window.innerWidth >= 1200) {
+      sectionDestination.current = destination;
+      setSectionNavigating(true);
+      setSectionsHidden(false);
+    }
     window.scrollTo({
-      top: Math.max(0, top - offset),
+      top: destination,
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     });
   };
@@ -172,10 +206,9 @@ export function Colors() {
         onPointerMove={() => { if (submenu.current) delete submenu.current.dataset.scrollSelection; }}>
         <h2>{text('78:2263')}</h2>
         <div className="section-buttons">{sections.map(({ label, target }) => target
-          ? <a key={label} href={`#${target}`} aria-current={currentSection === target ? 'location' : undefined}
-              className={`button button--ghost button--small ${currentSection === target ? 'section-current' : ''}`}
-              onClick={event => navigateToSection(event, target)}>{label}</a>
-          : <Button key={label} size="small" disabled title="Em breve">{label}</Button>)}</div>
+          ? <NavLink key={label} href={`#${target}`} selected={currentSection === target} aria-current="location"
+              onClick={event => navigateToSection(event, target)}>{label}</NavLink>
+          : <NavButton key={label} disabled title="Em breve">{label}</NavButton>)}</div>
       </nav>
       <ColorSection title={text('76:1621')} id="organizacao">
         <div className="content-group">

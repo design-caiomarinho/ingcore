@@ -11,6 +11,20 @@ const routes = new Set(['/', '/home', '/cores', '/configuracao']);
 function App() {
   const [path, setPath] = useState(routePath);
   useLayoutEffect(() => {
+    const root = document.documentElement;
+    root.dataset.inputMode = 'pointer';
+    const onPointer = () => { root.dataset.inputMode = 'pointer'; };
+    const onKey = (event: KeyboardEvent) => {
+      if (['Tab', 'Enter', ' ', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) root.dataset.inputMode = 'keyboard';
+    };
+    document.addEventListener('pointerdown', onPointer, true);
+    document.addEventListener('keydown', onKey, true);
+    return () => {
+      document.removeEventListener('pointerdown', onPointer, true);
+      document.removeEventListener('keydown', onKey, true);
+    };
+  }, []);
+  useLayoutEffect(() => {
     const onPopState = () => setPath(routePath());
     const onNavigate = (event: MouseEvent) => {
       if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
@@ -20,6 +34,12 @@ function App() {
       const next = appPath(url.pathname);
       if (url.origin !== window.location.origin || !routes.has(next)) return;
       if (next === routePath()) {
+        if (link.classList.contains('brand-logo')) {
+          event.preventDefault();
+          if (window.location.hash) window.history.pushState(null, '', url.pathname + url.search);
+          window.scrollTo({top: 0, left: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});
+          return;
+        }
         if (url.hash === window.location.hash && url.search === window.location.search) event.preventDefault();
         return;
       }

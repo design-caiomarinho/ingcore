@@ -7,6 +7,12 @@
 
 body { margin: 0; }
 
+// Toque não exibe o foco programático; Tab continua exibindo o indicador,
+// inclusive com teclado externo em tablets e celulares.
+@media (max-width: 1199px) {
+  html[data-input-mode='pointer'] .portal-theme :focus-visible { outline: none; }
+}
+
 // Estilos de documentação técnica; não são novos tokens aprovados do portal.
 .token-catalog {
   box-sizing: border-box;

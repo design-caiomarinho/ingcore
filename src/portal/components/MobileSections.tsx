@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState, type MouseEvent } from 'react';
 import { assetUrl } from '../paths';
 import { Button } from './Button';
-import { NavButton } from './NavButton';
+import { NavButton, NavLink } from './NavButton';
 import '../styles/mobile-sections.scss';
 
 export type PageSection = { label: string; target: string | null };
@@ -48,13 +48,13 @@ export function MobileSections({ sections, current, menuOpen, onNavigate }: {
       <div className="sections-dropdown" id="mobile-section-options" inert={!open} aria-hidden={!open}>
         <div className="sections-clip"><div className="sections-options">
           {sections.map(({label, target}) => target
-            ? <a key={label} className="nav-button" href={`#${target}`} data-selected={current === target ? 'true' : undefined}
-                aria-current={current === target ? 'location' : undefined} onClick={event => {
+            ? <NavLink key={label} href={`#${target}`} selected={current === target}
+                aria-current="location" onClick={event => {
                   onNavigate(event, target);
                   if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
                     setOpen(false); trigger.current?.focus({ preventScroll: true });
                   }
-                }}>{label}</a>
+                }}>{label}</NavLink>
             : <NavButton key={label} disabled title="Em breve">{label}</NavButton>)}
         </div></div>
       </div>

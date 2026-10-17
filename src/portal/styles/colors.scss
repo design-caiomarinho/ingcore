@@ -21,9 +21,9 @@
     h2 { @include type.text('heading-sm'); line-height: var(--ref-font-line-tight); padding-right: 24px; border-right: 1px solid var(--sys-color-border-primary); }
   }
   .section-buttons { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; }
-  .section-current { background: var(--sys-color-action-ghost-enabled); }
-  .sections-bar[data-scroll-selection] .button:not([aria-current='location']):hover:not(:disabled) {
+  .sections-bar[data-scroll-selection] .nav-button:not([aria-current='location']):hover:not(:disabled) {
     background: var(--sys-color-action-ghost-default);
+    color: var(--sys-color-content-secondary);
   }
   .token-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
   .token-column { display: flex; flex-direction: column; gap: 8px; min-width: 0; }

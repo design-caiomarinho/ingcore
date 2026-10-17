@@ -1,4 +1,5 @@
-import { assetUrl, pageUrl } from '../paths';
+import { pageUrl } from '../paths';
+import { BrandLogo } from './BrandLogo';
 import { NavButton, NavLink } from './NavButton';
 
 const groups = [
@@ -22,7 +23,7 @@ export function PortalNavigation({ currentItem = 'Primeiros passos' }: { current
 
 export function PortalSidebar({ currentItem }: { currentItem?: string }) {
   return <aside className="sidebar">
-    <div className="brand-logo"><img src={assetUrl('imgVector.svg')} alt="IngCore" /></div>
+    <BrandLogo />
     <PortalNavigation currentItem={currentItem} />
   </aside>;
 }

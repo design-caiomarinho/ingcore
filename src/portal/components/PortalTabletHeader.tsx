@@ -2,6 +2,7 @@ import { assetUrl } from '../paths';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { Button } from './Button';
 import { PortalNavigation } from './PortalSidebar';
+import { BrandLogo } from './BrandLogo';
 
 export type NavbarState = { hidden: boolean; menuOpen: boolean };
 
@@ -22,11 +23,13 @@ export function PortalTabletHeader({ currentItem, onStateChange }: { currentItem
     let frame = 0;
     let hideTimer: number | undefined;
     const navbar = header.current;
+    const scrollSafety = 144;
+    const hasKeyboardFocus = () => document.documentElement.dataset.inputMode !== 'pointer' && !!navbar?.querySelector(':focus-visible');
     const scheduleHide = () => {
       window.clearTimeout(hideTimer);
-      if (open) return;
+      if (open || window.scrollY <= scrollSafety) return;
       hideTimer = window.setTimeout(() => {
-        if (window.innerWidth < 1200 && !navbar?.querySelector(':focus-visible')) setHidden(true);
+        if (window.innerWidth < 1200 && window.scrollY > scrollSafety && !hasKeyboardFocus()) setHidden(true);
       }, 1000);
     };
     const showNavbar = () => { setHidden(false); scheduleHide(); };
@@ -36,7 +39,7 @@ export function PortalTabletHeader({ currentItem, onStateChange }: { currentItem
       // Limita o overscroll dos dispositivos móveis e ignora pequenos movimentos.
       const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
       const y = Math.max(0, Math.min(window.scrollY, maxY));
-      if (y <= 72 || header.current?.querySelector(':focus-visible')) {
+      if (y <= scrollSafety || hasKeyboardFocus()) {
         showNavbar();
         previousY = y;
         return;
@@ -99,7 +102,7 @@ export function PortalTabletHeader({ currentItem, onStateChange }: { currentItem
   }, [open]);
 
   return <header ref={header} className="navbar" data-hidden={hidden && !open || undefined} onFocusCapture={() => setHidden(false)}>
-    <div className="brand-logo"><img src={assetUrl('imgVector.svg')} alt="IngCore" /></div>
+    <BrandLogo />
     <Button iconOnly icon={<img src={assetUrl('imgMenu.svg')} alt="" />} aria-label="Abrir menu de navegação"
       aria-expanded={open} aria-controls="portal-mobile-menu" aria-haspopup="dialog" onClick={() => { setClosing(false); setOpen(true); }} />
     <dialog ref={dialog} id="portal-mobile-menu" className="mobile-menu" aria-label="Menu de navegação"
@@ -123,7 +126,7 @@ export function PortalTabletHeader({ currentItem, onStateChange }: { currentItem
       }}
       onCancel={event => { event.preventDefault(); closeMenu(); }}>
       <div className="menu-header">
-        <div className="brand-logo"><img src={assetUrl('imgVector.svg')} alt="IngCore" /></div>
+        <BrandLogo onClick={() => { setOpen(false); setClosing(false); }} />
         <Button iconOnly icon={<img src={assetUrl('imgClose.svg')} alt="" />} aria-label="Fechar menu de navegação" onClick={closeMenu} autoFocus />
       </div>
       <div className="menu-container"><div className="menu-scroll"><PortalNavigation currentItem={currentItem} /></div></div>

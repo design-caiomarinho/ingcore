@@ -1,0 +1,40 @@
+@use './typography' as type;
+
+.mobile-sections-space { display: none; }
+@media (max-width: 1199px) {
+  .mobile-sections-space { display: block; height: 64px; }
+  .mobile-sections {
+    position: fixed; top: 72px; inset-inline: 0; z-index: 2;
+    transform: translateY(0); transition: transform 300ms ease-in-out;
+    .sections-header {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      height: 64px; padding: 8px 24px; background: var(--sys-color-surface-default);
+      border-bottom: 1px solid var(--sys-color-border-primary);
+      h2 { @include type.text('heading-sm'); line-height: var(--ref-font-line-tight); min-width: 0; }
+      img { transition: transform 300ms ease-in-out; }
+    }
+    .sections-dropdown { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 300ms ease-in-out; }
+    .sections-clip { min-height: 0; overflow: hidden; }
+    .sections-options {
+      display: flex; flex-direction: column; gap: 8px; padding: 24px;
+      background: var(--sys-color-surface-default); border-bottom: 1px solid var(--sys-color-border-primary);
+      max-height: calc(100dvh - var(--sections-top, 72px) - 64px); overflow-y: auto; overscroll-behavior: contain;
+      .nav-button { width: 100%; flex: none; opacity: 0; transform: translateY(-12px); transition: opacity 300ms ease-in-out, transform 300ms ease-in-out, background-color 300ms ease-in-out, color 300ms ease-in-out; }
+    }
+    &[data-open] {
+      .sections-dropdown { grid-template-rows: 1fr; }
+      .sections-header img { transform: rotate(180deg); }
+      .sections-options .nav-button { opacity: 1; transform: translateY(0); }
+    }
+  }
+  .colors-page { --sections-top: 72px; }
+  .colors-page[data-navbar-hidden] {
+    --sections-top: 0px;
+    .mobile-sections { transform: translateY(-72px); }
+  }
+  .colors-page[data-menu-open] .mobile-sections { transform: translateY(calc(100dvh - 72px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mobile-sections, .mobile-sections .sections-dropdown,
+  .mobile-sections .sections-header img, .mobile-sections .sections-options .nav-button { transition: none; }
+}

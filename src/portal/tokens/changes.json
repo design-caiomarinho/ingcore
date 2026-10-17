@@ -299,6 +299,26 @@
     {
       "id": "VariableID:39:299",
       "name": "body/sm/medium/letter-spacing"
+    },
+    {
+      "id": "VariableID:132:390",
+      "name": "body/sm/regular/family"
+    },
+    {
+      "id": "VariableID:132:391",
+      "name": "body/sm/regular/size"
+    },
+    {
+      "id": "VariableID:132:392",
+      "name": "body/sm/regular/weight"
+    },
+    {
+      "id": "VariableID:132:393",
+      "name": "body/sm/regular/height"
+    },
+    {
+      "id": "VariableID:132:394",
+      "name": "body/sm/regular/letter-spacing"
     }
   ],
   "renamed": [

@@ -1,0 +1,816 @@
+{
+  "source": {
+    "fileKey": "rDna8D13lVQpYDLx4Yjbzf",
+    "url": "https://www.figma.com/design/rDna8D13lVQpYDLx4Yjbzf/IngCore---Design-System",
+    "syncedAt": "2026-10-16",
+    "scope": "Cinco escalas primitivas exibidas na página Cores. Referência de design; não comprova adoção nos sistemas da empresa."
+  },
+  "collection": {
+    "id": "VariableCollectionId:248:256",
+    "name": "ref",
+    "modes": [
+      {
+        "name": "light",
+        "modeId": "248:12"
+      }
+    ],
+    "defaultModeId": "248:12"
+  },
+  "tokens": [
+    {
+      "id": "VariableID:248:257",
+      "name": "palette/gray/100",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-100)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.9411764740943909,
+          "g": 0.9529411792755127,
+          "b": 0.9725490212440491,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:258",
+      "name": "palette/gray/200",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-200)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.8196078538894653,
+          "g": 0.8352941274642944,
+          "b": 0.8666666746139526,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:259",
+      "name": "palette/gray/300",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-300)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.8156862854957581,
+          "g": 0.8352941274642944,
+          "b": 0.8705882430076599,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:260",
+      "name": "palette/gray/400",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-400)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.6196078658103943,
+          "g": 0.6509804129600525,
+          "b": 0.7058823704719543,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:261",
+      "name": "palette/gray/500",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-500)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.4000000059604645,
+          "g": 0.43529412150382996,
+          "b": 0.4901960790157318,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:262",
+      "name": "palette/gray/600",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-600)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.30588236451148987,
+          "g": 0.33725491166114807,
+          "b": 0.3921568691730499,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:263",
+      "name": "palette/gray/700",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-700)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.23137255012989044,
+          "g": 0.26274511218070984,
+          "b": 0.30980393290519714,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:264",
+      "name": "palette/gray/800",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-800)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.1764705926179886,
+          "g": 0.2078431397676468,
+          "b": 0.2549019753932953,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:265",
+      "name": "palette/gray/900",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-900)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.13333334028720856,
+          "g": 0.1568627506494522,
+          "b": 0.20000000298023224,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:266",
+      "name": "palette/gray/1000",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-1000)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.09019608050584793,
+          "g": 0.11372549086809158,
+          "b": 0.14901961386203766,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:268",
+      "name": "palette/amber/100",
+      "codeSyntax": {
+        "WEB": "var(--palette-amber-100)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 1,
+          "g": 0.9607843160629272,
+          "b": 0.8980392217636108,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:269",
+      "name": "palette/amber/200",
+      "codeSyntax": {
+        "WEB": "var(--palette-amber-200)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 1,
+          "g": 0.8745098114013672,
+          "b": 0.6745098233222961,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:270",
+      "name": "palette/amber/300",
+      "codeSyntax": {
+        "WEB": "var(--palette-amber-300)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 1,
+          "g": 0.7843137383460999,
+          "b": 0.4470588266849518,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:271",
+      "name": "palette/amber/400",
+      "codeSyntax": {
+        "WEB": "var(--palette-amber-400)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 1,
+          "g": 0.6941176652908325,
+          "b": 0.2235294133424759,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:272",
+      "name": "palette/amber/500",
+      "codeSyntax": {
+        "WEB": "var(--palette-amber-500)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.9960784316062927,
+          "g": 0.6039215922355652,
+          "b": 0,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:273",
+      "name": "palette/amber/600",
+      "codeSyntax": {
+        "WEB": "var(--palette-amber-600)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.8666666746139526,
+          "g": 0.5137255191802979,
+          "b": 0.003921568859368563,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:274",
+      "name": "palette/amber/700",
+      "codeSyntax": {
+        "WEB": "var(--palette-amber-700)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.7372549176216125,
+          "g": 0.4274509847164154,
+          "b": 0.007843137718737125,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:275",
+      "name": "palette/amber/800",
+      "codeSyntax": {
+        "WEB": "var(--palette-amber-800)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.6078431606292725,
+          "g": 0.3450980484485626,
+          "b": 0.007843137718737125,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:276",
+      "name": "palette/amber/900",
+      "codeSyntax": {
+        "WEB": "var(--palette-amber-900)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.48235294222831726,
+          "g": 0.2666666805744171,
+          "b": 0.007843137718737125,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:277",
+      "name": "palette/amber/1000",
+      "codeSyntax": {
+        "WEB": "var(--palette-amber-1000)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.35686275362968445,
+          "g": 0.1921568661928177,
+          "b": 0.007843137718737125,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:279",
+      "name": "palette/blue/100",
+      "codeSyntax": {
+        "WEB": "var(--palette-blue-100)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.9350000023841858,
+          "g": 0.9474999904632568,
+          "b": 0.9850000143051147,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:280",
+      "name": "palette/blue/200",
+      "codeSyntax": {
+        "WEB": "var(--palette-blue-200)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.8080000281333923,
+          "g": 0.8453333377838135,
+          "b": 0.9520000219345093,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:281",
+      "name": "palette/blue/300",
+      "codeSyntax": {
+        "WEB": "var(--palette-blue-300)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.545098066329956,
+          "g": 0.6274510025978088,
+          "b": 0.8784313797950745,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:282",
+      "name": "palette/blue/400",
+      "codeSyntax": {
+        "WEB": "var(--palette-blue-400)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.37254902720451355,
+          "g": 0.48627451062202454,
+          "b": 0.8235294222831726,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:283",
+      "name": "palette/blue/500",
+      "codeSyntax": {
+        "WEB": "var(--palette-blue-500)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.2235294133424759,
+          "g": 0.3529411852359772,
+          "b": 0.7490196228027344,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:284",
+      "name": "palette/blue/600",
+      "codeSyntax": {
+        "WEB": "var(--palette-blue-600)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.1882352977991104,
+          "g": 0.2980392277240753,
+          "b": 0.6039215922355652,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:285",
+      "name": "palette/blue/700",
+      "codeSyntax": {
+        "WEB": "var(--palette-blue-700)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.14901961386203766,
+          "g": 0.239215686917305,
+          "b": 0.4627451002597809,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:286",
+      "name": "palette/blue/800",
+      "codeSyntax": {
+        "WEB": "var(--palette-blue-800)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.10980392247438431,
+          "g": 0.1725490242242813,
+          "b": 0.32549020648002625,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:287",
+      "name": "palette/blue/900",
+      "codeSyntax": {
+        "WEB": "var(--palette-blue-900)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.06666667014360428,
+          "g": 0.10588235408067703,
+          "b": 0.1882352977991104,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:288",
+      "name": "palette/blue/1000",
+      "codeSyntax": {
+        "WEB": "var(--palette-blue-1000)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.019607843831181526,
+          "g": 0.0313725508749485,
+          "b": 0.054901961237192154,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:301",
+      "name": "palette/red/100",
+      "codeSyntax": {
+        "WEB": "var(--palette-red-100)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 1,
+          "g": 0.8999999761581421,
+          "b": 0.9272727370262146,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:302",
+      "name": "palette/red/200",
+      "codeSyntax": {
+        "WEB": "var(--palette-red-200)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 1,
+          "g": 0.699999988079071,
+          "b": 0.7801980376243591,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:303",
+      "name": "palette/red/300",
+      "codeSyntax": {
+        "WEB": "var(--palette-red-300)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 1,
+          "g": 0.3764705955982208,
+          "b": 0.545098066329956,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:304",
+      "name": "palette/red/400",
+      "codeSyntax": {
+        "WEB": "var(--palette-red-400)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 1,
+          "g": 0.15294118225574493,
+          "b": 0.3803921639919281,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:305",
+      "name": "palette/red/500",
+      "codeSyntax": {
+        "WEB": "var(--palette-red-500)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.9254902005195618,
+          "g": 0,
+          "b": 0.24705882370471954,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:306",
+      "name": "palette/red/600",
+      "codeSyntax": {
+        "WEB": "var(--palette-red-600)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.7960784435272217,
+          "g": 0.003921568859368563,
+          "b": 0.22745098173618317,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:307",
+      "name": "palette/red/700",
+      "codeSyntax": {
+        "WEB": "var(--palette-red-700)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.6666666865348816,
+          "g": 0.007843137718737125,
+          "b": 0.20000000298023224,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:308",
+      "name": "palette/red/800",
+      "codeSyntax": {
+        "WEB": "var(--palette-red-800)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.5372549295425415,
+          "g": 0.007843137718737125,
+          "b": 0.1725490242242813,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:309",
+      "name": "palette/red/900",
+      "codeSyntax": {
+        "WEB": "var(--palette-red-900)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.4117647111415863,
+          "g": 0.007843137718737125,
+          "b": 0.1411764770746231,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:310",
+      "name": "palette/red/1000",
+      "codeSyntax": {
+        "WEB": "var(--palette-red-1000)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.2862745225429535,
+          "g": 0.007843137718737125,
+          "b": 0.10196078568696976,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:312",
+      "name": "palette/green/100",
+      "codeSyntax": {
+        "WEB": "var(--palette-green-100)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.7803921699523926,
+          "g": 1,
+          "b": 0.8705882430076599,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:313",
+      "name": "palette/green/200",
+      "codeSyntax": {
+        "WEB": "var(--palette-green-200)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.5568627715110779,
+          "g": 1,
+          "b": 0.7372549176216125,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:314",
+      "name": "palette/green/300",
+      "codeSyntax": {
+        "WEB": "var(--palette-green-300)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.3294117748737335,
+          "g": 1,
+          "b": 0.6039215922355652,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:315",
+      "name": "palette/green/400",
+      "codeSyntax": {
+        "WEB": "var(--palette-green-400)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.10588235408067703,
+          "g": 1,
+          "b": 0.47058823704719543,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:316",
+      "name": "palette/green/500",
+      "codeSyntax": {
+        "WEB": "var(--palette-green-500)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0,
+          "g": 0.8784313797950745,
+          "b": 0.35686275362968445,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:317",
+      "name": "palette/green/600",
+      "codeSyntax": {
+        "WEB": "var(--palette-green-600)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.003921568859368563,
+          "g": 0.7490196228027344,
+          "b": 0.29411765933036804,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:318",
+      "name": "palette/green/700",
+      "codeSyntax": {
+        "WEB": "var(--palette-green-700)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.003921568859368563,
+          "g": 0.6235294342041016,
+          "b": 0.23529411852359772,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:319",
+      "name": "palette/green/800",
+      "codeSyntax": {
+        "WEB": "var(--palette-green-800)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.003921568859368563,
+          "g": 0.4941176474094391,
+          "b": 0.18039216101169586,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:320",
+      "name": "palette/green/900",
+      "codeSyntax": {
+        "WEB": "var(--palette-green-900)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.003921568859368563,
+          "g": 0.3686274588108063,
+          "b": 0.12941177189350128,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:248:321",
+      "name": "palette/green/1000",
+      "codeSyntax": {
+        "WEB": "var(--palette-green-1000)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.003921568859368563,
+          "g": 0.24313725531101227,
+          "b": 0.08235294371843338,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:249:481",
+      "name": "palette/gray/1100",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-1100)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.054901961237192154,
+          "g": 0.07058823853731155,
+          "b": 0.09803921729326248,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:249:489",
+      "name": "palette/gray/50",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-50)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 0.9764705896377563,
+          "g": 0.9843137264251709,
+          "b": 0.9960784316062927,
+          "a": 1
+        }
+      }
+    },
+    {
+      "id": "VariableID:249:490",
+      "name": "palette/gray/5",
+      "codeSyntax": {
+        "WEB": "var(--palette-gray-5)"
+      },
+      "valuesByMode": {
+        "248:12": {
+          "r": 1,
+          "g": 1,
+          "b": 1,
+          "a": 1
+        }
+      }
+    }
+  ]
+}

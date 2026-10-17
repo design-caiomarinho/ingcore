@@ -1,5 +1,5 @@
 import { assetUrl, pageUrl } from '../paths';
-import { SidebarButton, SidebarLink } from './SidebarButton';
+import { NavButton, NavLink } from './NavButton';
 
 const groups = [
   { title: 'Introdução', items: [{ label: 'Primeiros passos', current: true }] },
@@ -14,8 +14,8 @@ export function PortalNavigation({ currentItem = 'Primeiros passos' }: { current
   return <nav aria-label="Navegação principal">{groups.map(group => <div className="nav-group" key={group.title}>
       <h2>{group.title}</h2><ul>{group.items.map(item => <li key={item.label}>
         {routes[item.label]
-          ? <SidebarLink href={pageUrl(routes[item.label])} selected={item.label === currentItem}>{item.label}</SidebarLink>
-          : <SidebarButton disabled title="Em breve" aria-label={`${item.label} — em breve`}>{item.label}</SidebarButton>}
+          ? <NavLink href={pageUrl(routes[item.label])} selected={item.label === currentItem}>{item.label}</NavLink>
+          : <NavButton disabled title="Em breve" aria-label={`${item.label} — em breve`}>{item.label}</NavButton>}
       </li>)}</ul>
     </div>)}</nav>;
 }

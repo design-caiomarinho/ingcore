@@ -4189,7 +4189,7 @@
           "modeId": "37:0"
         }
       ],
-      "count": 65,
+      "count": 70,
       "tier": "typography",
       "variables": [
         {
@@ -5166,6 +5166,81 @@
             "ALL_SCOPES"
           ],
           "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:132:390",
+          "name": "body/sm/regular/family",
+          "type": "STRING",
+          "values": {
+            "37:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:37:996"
+            }
+          },
+          "codeSyntax": {},
+          "scopes": [
+            "FONT_FAMILY"
+          ]
+        },
+        {
+          "id": "VariableID:132:391",
+          "name": "body/sm/regular/size",
+          "type": "FLOAT",
+          "values": {
+            "37:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:37:1053"
+            }
+          },
+          "codeSyntax": {},
+          "scopes": [
+            "FONT_SIZE"
+          ]
+        },
+        {
+          "id": "VariableID:132:392",
+          "name": "body/sm/regular/weight",
+          "type": "FLOAT",
+          "values": {
+            "37:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:37:1009"
+            }
+          },
+          "codeSyntax": {},
+          "scopes": [
+            "FONT_WEIGHT"
+          ]
+        },
+        {
+          "id": "VariableID:132:393",
+          "name": "body/sm/regular/height",
+          "type": "STRING",
+          "values": {
+            "37:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:37:1086"
+            }
+          },
+          "codeSyntax": {},
+          "scopes": [
+            "ALL_SCOPES"
+          ]
+        },
+        {
+          "id": "VariableID:132:394",
+          "name": "body/sm/regular/letter-spacing",
+          "type": "STRING",
+          "values": {
+            "37:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:37:1105"
+            }
+          },
+          "codeSyntax": {},
+          "scopes": [
+            "ALL_SCOPES"
+          ]
         }
       ]
     }

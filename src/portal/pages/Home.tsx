@@ -1,8 +1,8 @@
-import { assetUrl } from '../paths';
+import { assetUrl, pageUrl } from '../paths';
 import { PortalSidebar } from '../components/PortalSidebar';
 import { PortalTabletHeader } from '../components/PortalTabletHeader';
 import { TextLink } from '../components/TextLink';
-import { Button } from '../components/Button';
+import { recentUpdates, updateTones, formatUpdateDate } from '../content/updates';
 import '../styles/home.scss';
 import '../styles/home-layout.scss';
 
@@ -12,13 +12,7 @@ const library = [
   { title: 'Diretrizes', description: 'Boas práticas e soluções reutilizáveis.' },
   { title: 'Recursos', description: 'Figma, código, versões e documentação.' },
 ];
-const updates = [
-  { date: '15 out 2026', iso: '2026-10-15', title: 'Button', status: 'Atualizado', tone: 'updated', description: 'Novos estados e ajustes de comportamento.' },
-  { date: '10 out 2026', iso: '2026-10-10', title: 'Tokens de cores', status: 'Novo', tone: 'new', description: 'Mapeamento semântico para o Dark Mode.' },
-  { date: '02 out 2026', iso: '2026-10-02', title: 'Input', status: 'Removido', tone: 'removed', description: 'Melhorias na documentação de acessibilidade.' },
-];
-
-/** Protótipo visual estático. Conteúdo editorial e histórico reproduzem o Figma. */
+/** Página inicial com atualizações do histórico editorial local. */
 export function Home() {
   return <div className="portal-theme portal-layout home-page">
     <PortalSidebar />
@@ -38,15 +32,21 @@ export function Home() {
       </section>
       </div>
       <section className="section-panel updates-section" aria-labelledby="atualizacoes">
-        <header className="section-header"><h2 id="atualizacoes">Atualizações recentes</h2></header>
-        <div className="updates-container"><ol className="timeline">{updates.map((update, index) => <li key={update.iso}>
-          <div className="timeline-marker" aria-hidden="true"><img src={index === 0 ? assetUrl('imgMarcador.svg') : assetUrl('imgMarcador1.svg')} alt="" /><span /></div>
-          <article className="update-item"><time dateTime={update.iso}>{update.date}</time>
-            <div><div className="update-header"><span className={`status-badge status-badge--${update.tone}`}>{update.status}</span><h3>{update.title}</h3></div><p>{update.description}</p></div>
-            <TextLink label={`Ver alteração: ${update.title}`}>Ver alteração</TextLink>
+        <header className="section-header"><h2 id="atualizacoes">Atualizações</h2></header>
+        <div className="updates-container"><ol className="timeline">{recentUpdates.map(update => <li key={update.id}>
+          <div className="timeline-marker" aria-hidden="true"><img src={assetUrl(`timeline-${updateTones[update.status]}.svg`)} width="12" height="12" alt="" /><span /></div>
+          <article className="update-item">
+            <div className="update-content">
+            <span className={`status-badge status-badge--${updateTones[update.status]}`}>{update.status}</span>
+            <div className="update-details"><div className="update-text"><h3>{update.title}</h3><p>{update.description}</p></div>
+              <time dateTime={update.date}>{formatUpdateDate(update.date)}</time>
+            </div>
+            {update.href ? <TextLink href={pageUrl(update.href)} label={`Ver alteração: ${update.title}`}>Ver alteração</TextLink>
+              : <TextLink label={`Ver alteração: ${update.title}`}>Ver alteração</TextLink>}
+            </div>
           </article>
         </li>)}</ol>
-          <Button variant="outlined" className="history-button" leftIcon={<img src={assetUrl('imgDocumentText.svg')} alt="" />}>Ver histórico</Button>
+          {/* O histórico será disponibilizado quando sua página estiver definida. */}
         </div>
       </section>
     </main>

@@ -16,6 +16,8 @@
     display: flex; align-items: center; gap: 24px; padding: 24px;
     border: 1px solid var(--sys-color-border-primary); border-radius: 8px;
     background: var(--sys-color-surface-default);
+    transform: translateY(0); transition: transform 300ms ease-in-out;
+    &[data-hidden] { transform: translateY(calc(-100% - 16px)); }
     h2 { @include type.text('heading-sm'); line-height: var(--ref-font-line-tight); padding-right: 24px; border-right: 1px solid var(--sys-color-border-primary); }
   }
   .section-buttons { display: flex; flex-wrap: wrap; gap: 8px; min-width: 0; }
@@ -36,6 +38,13 @@
   .code-example { padding: 24px; color: var(--sys-color-content-secondary); max-width: 100%; }
   .palette-families { display: flex; flex-direction: column; gap: 32px; }
   .palette-family { min-width: 0; h3 { margin-bottom: 16px; } }
+  .semantic-group { min-width: 0; width: 100%; }
+  .semantic-color { display: flex; align-items: center; gap: 12px; }
+  .semantic-swatch { display: block; flex: none; width: 24px; height: 24px; border: 1px solid var(--sys-color-border-primary); border-radius: 6px; }
+  .semantic-value {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+    > span { @include type.text('body-sm-regular'); color: var(--sys-color-content-tertiary); white-space: nowrap; }
+  }
   .swatches { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
   .color-swatch { min-width: 0; border: 1px solid var(--sys-color-border-primary); border-radius: 8px; overflow: hidden; }
   .swatch-preview { height: 56px; }
@@ -53,10 +62,18 @@
     .example-action { background: #8ba0e0; color: #111213; }
   }
 }
+@media (prefers-reduced-motion: reduce) {
+  .colors-page .sections-bar { transition: none; }
+}
 @media (max-width: 1199px) {
   .colors-page {
+    .semantic-table {
+      --table-min-width: 960px;
+      --table-edge-space: 24px;
+      width: calc(100% + 48px); max-width: none; margin-inline: -24px; border-radius: 0;
+    }
     .sections-bar { display: none; }
-    .section-panel { scroll-margin-top: 88px; }
+    .section-panel { scroll-margin-top: calc(var(--sections-top, 72px) + 80px); }
     .section-content .code-block { white-space: pre-wrap; overflow-wrap: anywhere; overflow-x: hidden; }
     .section-content .code-block code { white-space: inherit; }
     .swatches { grid-template-columns: repeat(3, minmax(0, 1fr)); }

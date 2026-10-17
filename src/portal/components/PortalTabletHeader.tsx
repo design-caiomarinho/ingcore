@@ -3,11 +3,72 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { Button } from './Button';
 import { PortalNavigation } from './PortalSidebar';
 
-export function PortalTabletHeader({ currentItem }: { currentItem?: string }) {
+export type NavbarState = { hidden: boolean; menuOpen: boolean };
+
+export function PortalTabletHeader({ currentItem, onStateChange }: { currentItem?: string; onStateChange?: (state: NavbarState) => void }) {
   const [open, setOpen] = useState(false);
   const [closing, setClosing] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const header = useRef<HTMLElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const closeMenu = () => setClosing(true);
+
+  useLayoutEffect(() => {
+    onStateChange?.({ hidden: hidden && !open, menuOpen: open && !closing });
+  }, [hidden, open, closing, onStateChange]);
+
+  useLayoutEffect(() => {
+    let previousY = window.scrollY;
+    let frame = 0;
+    let hideTimer: number | undefined;
+    const navbar = header.current;
+    const scheduleHide = () => {
+      window.clearTimeout(hideTimer);
+      if (open) return;
+      hideTimer = window.setTimeout(() => {
+        if (window.innerWidth < 1200 && !navbar?.querySelector(':focus-visible')) setHidden(true);
+      }, 1000);
+    };
+    const showNavbar = () => { setHidden(false); scheduleHide(); };
+    const updateVisibility = () => {
+      frame = 0;
+      if (open || window.innerWidth >= 1200) return;
+      // Limita o overscroll dos dispositivos móveis e ignora pequenos movimentos.
+      const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+      const y = Math.max(0, Math.min(window.scrollY, maxY));
+      if (y <= 72 || header.current?.querySelector(':focus-visible')) {
+        showNavbar();
+        previousY = y;
+        return;
+      }
+      const delta = y - previousY;
+      if (Math.abs(delta) < 8) return;
+      if (delta > 0) {
+        window.clearTimeout(hideTimer);
+        setHidden(true);
+      } else showNavbar();
+      previousY = y;
+    };
+    const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(updateVisibility); };
+    const onResize = () => { previousY = window.scrollY; showNavbar(); };
+    showNavbar();
+    navbar?.addEventListener('pointermove', scheduleHide);
+    navbar?.addEventListener('pointerdown', scheduleHide);
+    navbar?.addEventListener('focusin', showNavbar);
+    navbar?.addEventListener('focusout', scheduleHide);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(hideTimer);
+      navbar?.removeEventListener('pointermove', scheduleHide);
+      navbar?.removeEventListener('pointerdown', scheduleHide);
+      navbar?.removeEventListener('focusin', showNavbar);
+      navbar?.removeEventListener('focusout', scheduleHide);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [open]);
 
   useLayoutEffect(() => {
     if (!open || !dialog.current) return;
@@ -37,7 +98,7 @@ export function PortalTabletHeader({ currentItem }: { currentItem?: string }) {
     };
   }, [open]);
 
-  return <header className="navbar">
+  return <header ref={header} className="navbar" data-hidden={hidden && !open || undefined} onFocusCapture={() => setHidden(false)}>
     <div className="brand-logo"><img src={assetUrl('imgVector.svg')} alt="IngCore" /></div>
     <Button iconOnly icon={<img src={assetUrl('imgMenu.svg')} alt="" />} aria-label="Abrir menu de navegação"
       aria-expanded={open} aria-controls="portal-mobile-menu" aria-haspopup="dialog" onClick={() => { setClosing(false); setOpen(true); }} />

@@ -1,7 +1,7 @@
 import { useState, type CSSProperties } from 'react';
 import inventory from './portal.tokens.json';
 import changes from './changes.json';
-import { SidebarButtonLab } from '../components/SidebarButtonLab';
+import { NavButtonLab } from '../components/NavButtonLab';
 import { TextLinkLab } from '../components/TextLinkLab';
 import { ButtonLab } from '../components/ButtonLab';
 import { pageUrl } from '../paths';
@@ -31,9 +31,9 @@ export function TokenCatalog() {
       <h1>Tokens do portal</h1>
       <p><a href={pageUrl('/home')}>Abrir Home</a></p>
       <p className="token-notice"><strong>Base em construção.</strong> {inventory.report.counts.primaryColors + inventory.report.counts.secondary} tokens de cores e {inventory.report.counts.primaryTypography + inventory.report.counts.typography} de tipografia nas três coleções atuais do Figma. Valores e referências preservados.</p>
-      <p>Estes tokens pertencem ao portal. Os futuros tokens do Design System IngCore continuam separados.</p>
+      <p>Estes tokens pertencem ao portal. Os tokens documentados do Design System IngCore são mantidos separadamente.</p>
       <p><a href={inventory.source.url} target="_blank" rel="noreferrer">Consultar referência no Figma</a></p>
-      <SidebarButtonLab />
+      <NavButtonLab />
       <TextLinkLab />
       <ButtonLab />
       <div className="token-controls">
@@ -79,6 +79,7 @@ export function TokenCatalog() {
       })}
       {visible.length === 0 && <p>Nenhum token encontrado.</p>}
       <section aria-labelledby="sync-notes"><h2 id="sync-notes">Notas da atualização</h2>
+        <p>Variante body/sm/regular adicionada: Inter, 12px, peso 400, altura de linha de 150% e espaçamento de −1%. Seus cinco tokens semânticos referenciam os primitivos existentes e são usados nas descrições das atualizações.</p>
         <p>Tipografia revisada: heading/lg, md e sm com −2% de espaçamento; body com −1%; body/sm/medium com altura de linha de 150%. A referência primitiva font/space/tighter está disponível nas amostras e nos aliases semânticos.</p>
         <p>{changes.renamed.length} nomes atualizados e {changes.added.length} variáveis adicionadas em relação ao inventário anterior. Nenhuma variável anterior foi excluída.</p>
         <p>Os primitivos de cor agora seguem os caminhos <code>palette/*</code>, com o mesmo agrupamento do Figma.</p>

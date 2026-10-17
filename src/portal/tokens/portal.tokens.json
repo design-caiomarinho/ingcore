@@ -11,10 +11,10 @@
     "counts": {
       "primary": 151,
       "secondary": 90,
-      "typography": 65,
+      "typography": 70,
       "primaryColors": 119,
       "primaryTypography": 32,
-      "recipes": 13,
+      "recipes": 14,
       "dependencies": 0
     },
     "unresolvedAliases": [],
@@ -493,6 +493,36 @@
           "cssVar": "--sys-type-code-md-medium-letter-spacing",
           "value": "0em",
           "sourceValue": "0%"
+        }
+      }
+    },
+    {
+      "name": "body/sm/regular",
+      "properties": {
+        "fontFamily": {
+          "cssVar": "--sys-type-body-sm-regular-family",
+          "value": "\"Inter\"",
+          "sourceValue": "Inter"
+        },
+        "fontSize": {
+          "cssVar": "--sys-type-body-sm-regular-size",
+          "value": "12px",
+          "sourceValue": 12
+        },
+        "fontWeight": {
+          "cssVar": "--sys-type-body-sm-regular-weight",
+          "value": "400",
+          "sourceValue": 400
+        },
+        "lineHeight": {
+          "cssVar": "--sys-type-body-sm-regular-height",
+          "value": "1.5",
+          "sourceValue": "150%"
+        },
+        "letterSpacing": {
+          "cssVar": "--sys-type-body-sm-regular-letter-spacing",
+          "value": "-0.01em",
+          "sourceValue": "-1%"
         }
       }
     }
@@ -7823,6 +7853,121 @@
         "id": "VariableID:37:1104",
         "name": "font/space/normal",
         "cssVar": "--ref-font-space-normal",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:132:390",
+      "name": "body/sm/regular/family",
+      "collection": "sys-type",
+      "tier": "typography",
+      "type": "STRING",
+      "category": "typography",
+      "property": "fontFamily",
+      "group": "body/sm/regular",
+      "cssVar": "--sys-type-body-sm-regular-family",
+      "originalCodeSyntax": null,
+      "value": "var(--ref-font-family-base)",
+      "resolvedValue": "\"Inter\"",
+      "sourceValue": "Inter",
+      "hexPreview": null,
+      "alpha": null,
+      "alias": {
+        "id": "VariableID:37:996",
+        "name": "font/family/base",
+        "cssVar": "--ref-font-family-base",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:132:391",
+      "name": "body/sm/regular/size",
+      "collection": "sys-type",
+      "tier": "typography",
+      "type": "FLOAT",
+      "category": "typography",
+      "property": "fontSize",
+      "group": "body/sm/regular",
+      "cssVar": "--sys-type-body-sm-regular-size",
+      "originalCodeSyntax": null,
+      "value": "var(--ref-font-size-6)",
+      "resolvedValue": "12px",
+      "sourceValue": 12,
+      "hexPreview": null,
+      "alpha": null,
+      "alias": {
+        "id": "VariableID:37:1053",
+        "name": "font/size/6",
+        "cssVar": "--ref-font-size-6",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:132:392",
+      "name": "body/sm/regular/weight",
+      "collection": "sys-type",
+      "tier": "typography",
+      "type": "FLOAT",
+      "category": "typography",
+      "property": "fontWeight",
+      "group": "body/sm/regular",
+      "cssVar": "--sys-type-body-sm-regular-weight",
+      "originalCodeSyntax": null,
+      "value": "var(--ref-font-weight-regular)",
+      "resolvedValue": "400",
+      "sourceValue": 400,
+      "hexPreview": null,
+      "alpha": null,
+      "alias": {
+        "id": "VariableID:37:1009",
+        "name": "font/weight/regular",
+        "cssVar": "--ref-font-weight-regular",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:132:393",
+      "name": "body/sm/regular/height",
+      "collection": "sys-type",
+      "tier": "typography",
+      "type": "STRING",
+      "category": "typography",
+      "property": "lineHeight",
+      "group": "body/sm/regular",
+      "cssVar": "--sys-type-body-sm-regular-height",
+      "originalCodeSyntax": null,
+      "value": "var(--ref-font-line-normal)",
+      "resolvedValue": "1.5",
+      "sourceValue": "150%",
+      "hexPreview": null,
+      "alpha": null,
+      "alias": {
+        "id": "VariableID:37:1086",
+        "name": "font/line/normal",
+        "cssVar": "--ref-font-line-normal",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:132:394",
+      "name": "body/sm/regular/letter-spacing",
+      "collection": "sys-type",
+      "tier": "typography",
+      "type": "STRING",
+      "category": "typography",
+      "property": "letterSpacing",
+      "group": "body/sm/regular",
+      "cssVar": "--sys-type-body-sm-regular-letter-spacing",
+      "originalCodeSyntax": null,
+      "value": "var(--ref-font-space-tight)",
+      "resolvedValue": "-0.01em",
+      "sourceValue": "-1%",
+      "hexPreview": null,
+      "alpha": null,
+      "alias": {
+        "id": "VariableID:37:1105",
+        "name": "font/space/tight",
+        "cssVar": "--ref-font-space-tight",
         "external": false
       }
     }

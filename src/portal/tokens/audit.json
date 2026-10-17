@@ -3,10 +3,10 @@
   "counts": {
     "primary": 151,
     "secondary": 90,
-    "typography": 65,
+    "typography": 70,
     "primaryColors": 119,
     "primaryTypography": 32,
-    "recipes": 13,
+    "recipes": 14,
     "dependencies": 0
   },
   "unresolvedAliases": [],

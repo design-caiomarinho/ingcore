@@ -1,0 +1,17 @@
+.input-lab {
+  .input-specimens { display: grid; grid-template-columns: repeat(2, minmax(0, 248px)); gap: 24px 56px; margin-top: 24px; }
+  .input-preview h3 { margin: 0 0 12px; }
+  .input-preview[data-preview='hover'] .input-control,
+  .input-preview[data-preview='focus'] .input-control { border-color: var(--sys-color-border-brand); }
+  .input-preview[data-preview='focus'] .input-control::after { opacity: 1; }
+  .input-icon-pair { position: relative; display: block; width: 16px; height: 16px; }
+  .input-icon-pair img { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: opacity 300ms ease-in-out; }
+  .input-icon-pair .input-icon-active { opacity: 0; }
+  .input-control:is(:hover, :focus-within, :active) .input-icon-active { opacity: 1; }
+}
+@media (max-width: 650px) {
+  .input-lab .input-specimens { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .input-lab .input-icon-pair img { transition: none; }
+}

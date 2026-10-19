@@ -2,11 +2,11 @@
   "status": "incomplete-design",
   "counts": {
     "primary": 151,
-    "secondary": 90,
-    "typography": 70,
+    "secondary": 91,
+    "typography": 75,
     "primaryColors": 119,
     "primaryTypography": 32,
-    "recipes": 14,
+    "recipes": 15,
     "dependencies": 0
   },
   "unresolvedAliases": [],
@@ -59,7 +59,8 @@
       "syntax": "var(--content-brand)",
       "names": [
         "sys-color/content/brand",
-        "sys-color/border/brand"
+        "sys-color/border/brand",
+        "sys-color/border/critical"
       ]
     },
     {
@@ -73,7 +74,7 @@
       "syntax": "var(--content-on-disabled)",
       "names": [
         "sys-color/content/on-disabled",
-        "sys-color/border/on-disabled"
+        "sys-color/border/disabled"
       ]
     },
     {

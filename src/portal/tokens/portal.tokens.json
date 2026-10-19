@@ -3,18 +3,18 @@
     "fileKey": "r58dqyV6DaTkieXp1IbKUU",
     "url": "https://www.figma.com/design/r58dqyV6DaTkieXp1IbKUU/IngCore---Storybook",
     "capturedOn": "2026-10-16",
-    "note": "Todas as variáveis das três coleções locais existentes foram lidas: ref, sys-color e sys-type. O sistema continua incompleto e não recebeu novos valores presumidos."
+    "note": "Todas as variáveis das três coleções locais existentes foram lidas: ref, sys-color e sys-type. O sistema continua incompleto e não recebeu novos valores presumidos. Input: receita body/md/medium e border/critical consultados em 19/10/2026; demais tokens preservados. border/disabled atualizado para a nomenclatura e alias usados no input."
   },
   "status": "incomplete-design",
   "report": {
     "status": "incomplete-design",
     "counts": {
       "primary": 151,
-      "secondary": 90,
-      "typography": 70,
+      "secondary": 91,
+      "typography": 75,
       "primaryColors": 119,
       "primaryTypography": 32,
-      "recipes": 14,
+      "recipes": 15,
       "dependencies": 0
     },
     "unresolvedAliases": [],
@@ -67,7 +67,8 @@
         "syntax": "var(--content-brand)",
         "names": [
           "sys-color/content/brand",
-          "sys-color/border/brand"
+          "sys-color/border/brand",
+          "sys-color/border/critical"
         ]
       },
       {
@@ -81,7 +82,7 @@
         "syntax": "var(--content-on-disabled)",
         "names": [
           "sys-color/content/on-disabled",
-          "sys-color/border/on-disabled"
+          "sys-color/border/disabled"
         ]
       },
       {
@@ -521,6 +522,36 @@
         },
         "letterSpacing": {
           "cssVar": "--sys-type-body-sm-regular-letter-spacing",
+          "value": "-0.01em",
+          "sourceValue": "-1%"
+        }
+      }
+    },
+    {
+      "name": "body/md/medium",
+      "properties": {
+        "fontFamily": {
+          "cssVar": "--sys-type-body-md-medium-family",
+          "value": "\"Inter\"",
+          "sourceValue": "Inter"
+        },
+        "fontSize": {
+          "cssVar": "--sys-type-body-md-medium-size",
+          "value": "14px",
+          "sourceValue": 14
+        },
+        "fontWeight": {
+          "cssVar": "--sys-type-body-md-medium-weight",
+          "value": "500",
+          "sourceValue": 500
+        },
+        "lineHeight": {
+          "cssVar": "--sys-type-body-md-medium-height",
+          "value": "1.5",
+          "sourceValue": "150%"
+        },
+        "letterSpacing": {
+          "cssVar": "--sys-type-body-md-medium-letter-spacing",
           "value": "-0.01em",
           "sourceValue": "-1%"
         }
@@ -4655,29 +4686,29 @@
     },
     {
       "id": "VariableID:16:3605",
-      "name": "border/on-disabled",
+      "name": "border/disabled",
       "collection": "sys-color",
       "tier": "secondary",
       "type": "COLOR",
       "category": "color",
       "property": "color",
       "group": "border",
-      "cssVar": "--sys-color-border-on-disabled",
+      "cssVar": "--sys-color-border-disabled",
       "originalCodeSyntax": "var(--content-on-disabled)",
-      "value": "var(--ref-palette-gray-400)",
-      "resolvedValue": "color(srgb 0.619607866 0.650980413 0.70588237 / 1)",
+      "value": "var(--ref-palette-gray-100)",
+      "resolvedValue": "color(srgb 0.941176474 0.952941179 0.972549021 / 1)",
       "sourceValue": {
-        "r": 0.6196078658103943,
-        "g": 0.6509804129600525,
-        "b": 0.7058823704719543,
+        "r": 0.9411764740943909,
+        "g": 0.9529411792755127,
+        "b": 0.9725490212440491,
         "a": 1
       },
-      "hexPreview": "#9ea6b4",
+      "hexPreview": "#f0f3f8",
       "alpha": 1,
       "alias": {
-        "id": "VariableID:13:2829",
-        "name": "palette/gray/400",
-        "cssVar": "--ref-palette-gray-400",
+        "id": "VariableID:13:2832",
+        "name": "palette/gray/100",
+        "cssVar": "--ref-palette-gray-100",
         "external": false
       }
     },
@@ -6362,6 +6393,34 @@
       }
     },
     {
+      "id": "VariableID:172:4542",
+      "name": "border/critical",
+      "collection": "sys-color",
+      "tier": "secondary",
+      "type": "COLOR",
+      "category": "color",
+      "property": "color",
+      "group": "border",
+      "cssVar": "--sys-color-border-critical",
+      "originalCodeSyntax": "var(--content-brand)",
+      "value": "var(--ref-palette-red-500)",
+      "resolvedValue": "color(srgb 0.925490201 0 0.247058824 / 1)",
+      "sourceValue": {
+        "r": 0.9254902005195618,
+        "g": 0,
+        "b": 0.24705882370471954,
+        "a": 1
+      },
+      "hexPreview": "#ec003f",
+      "alpha": 1,
+      "alias": {
+        "id": "VariableID:13:2865",
+        "name": "palette/red/500",
+        "cssVar": "--ref-palette-red-500",
+        "external": false
+      }
+    },
+    {
       "id": "VariableID:39:270",
       "name": "heading/lg/family",
       "collection": "sys-type",
@@ -7958,6 +8017,121 @@
       "property": "letterSpacing",
       "group": "body/sm/regular",
       "cssVar": "--sys-type-body-sm-regular-letter-spacing",
+      "originalCodeSyntax": null,
+      "value": "var(--ref-font-space-tight)",
+      "resolvedValue": "-0.01em",
+      "sourceValue": "-1%",
+      "hexPreview": null,
+      "alpha": null,
+      "alias": {
+        "id": "VariableID:37:1105",
+        "name": "font/space/tight",
+        "cssVar": "--ref-font-space-tight",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:157:376",
+      "name": "body/md/medium/family",
+      "collection": "sys-type",
+      "tier": "typography",
+      "type": "STRING",
+      "category": "typography",
+      "property": "fontFamily",
+      "group": "body/md/medium",
+      "cssVar": "--sys-type-body-md-medium-family",
+      "originalCodeSyntax": null,
+      "value": "var(--ref-font-family-base)",
+      "resolvedValue": "\"Inter\"",
+      "sourceValue": "Inter",
+      "hexPreview": null,
+      "alpha": null,
+      "alias": {
+        "id": "VariableID:37:996",
+        "name": "font/family/base",
+        "cssVar": "--ref-font-family-base",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:157:377",
+      "name": "body/md/medium/size",
+      "collection": "sys-type",
+      "tier": "typography",
+      "type": "FLOAT",
+      "category": "typography",
+      "property": "fontSize",
+      "group": "body/md/medium",
+      "cssVar": "--sys-type-body-md-medium-size",
+      "originalCodeSyntax": null,
+      "value": "var(--ref-font-size-7)",
+      "resolvedValue": "14px",
+      "sourceValue": 14,
+      "hexPreview": null,
+      "alpha": null,
+      "alias": {
+        "id": "VariableID:37:1052",
+        "name": "font/size/7",
+        "cssVar": "--ref-font-size-7",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:157:378",
+      "name": "body/md/medium/weight",
+      "collection": "sys-type",
+      "tier": "typography",
+      "type": "FLOAT",
+      "category": "typography",
+      "property": "fontWeight",
+      "group": "body/md/medium",
+      "cssVar": "--sys-type-body-md-medium-weight",
+      "originalCodeSyntax": null,
+      "value": "var(--ref-font-weight-medium)",
+      "resolvedValue": "500",
+      "sourceValue": 500,
+      "hexPreview": null,
+      "alpha": null,
+      "alias": {
+        "id": "VariableID:37:1007",
+        "name": "font/weight/medium",
+        "cssVar": "--ref-font-weight-medium",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:157:379",
+      "name": "body/md/medium/height",
+      "collection": "sys-type",
+      "tier": "typography",
+      "type": "STRING",
+      "category": "typography",
+      "property": "lineHeight",
+      "group": "body/md/medium",
+      "cssVar": "--sys-type-body-md-medium-height",
+      "originalCodeSyntax": null,
+      "value": "var(--ref-font-line-normal)",
+      "resolvedValue": "1.5",
+      "sourceValue": "150%",
+      "hexPreview": null,
+      "alpha": null,
+      "alias": {
+        "id": "VariableID:37:1086",
+        "name": "font/line/normal",
+        "cssVar": "--ref-font-line-normal",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:157:380",
+      "name": "body/md/medium/letter-spacing",
+      "collection": "sys-type",
+      "tier": "typography",
+      "type": "STRING",
+      "category": "typography",
+      "property": "letterSpacing",
+      "group": "body/md/medium",
+      "cssVar": "--sys-type-body-md-medium-letter-spacing",
       "originalCodeSyntax": null,
       "value": "var(--ref-font-space-tight)",
       "resolvedValue": "-0.01em",

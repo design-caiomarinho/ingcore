@@ -10,6 +10,22 @@ type Update = {
 /** Histórico editorial: adicionar uma entrada quando uma novidade estiver disponível. */
 export const updates: Update[] = [
   {
+    id: 'cores-explorador-e-navegacao',
+    date: '2026-10-19',
+    title: 'Cores',
+    status: 'Atualizado',
+    description: 'Explore os tokens reais do Design System com busca, filtros e paginação. A navegação por seções ganhou um submenu flutuante compacto.',
+    href: '/cores',
+  },
+  {
+    id: 'componentes-input-e-tabs',
+    date: '2026-10-19',
+    title: 'Input e Tabs',
+    status: 'Novo',
+    description: 'Componentes adicionados ao catálogo e aplicados no explorador de cores, com estados, foco por teclado e animações padronizadas.',
+    href: '/configuracao',
+  },
+  {
     id: 'cores-paleta-de-referencia',
     date: '2026-10-16',
     title: 'Cores',

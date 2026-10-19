@@ -3,14 +3,13 @@ import { useLayoutEffect, useRef, useState, type MouseEvent, type ReactNode } fr
 import { PortalSidebar } from '../components/PortalSidebar';
 import { PortalTabletHeader, type NavbarState } from '../components/PortalTabletHeader';
 import { MobileSections, type PageSection } from '../components/MobileSections';
-import { SemanticColorsTable } from './SemanticColorsTable';
-import { semanticColorCount } from '../../design-system/tokens/semantic-colors';
+import { ColorExplorer } from './ColorExplorer';
 import { NavButton, NavLink } from '../components/NavButton';
 import { CodeTag, InlineCode } from '../components/CodeTag';
 import content from './colors.content.json';
-import { referenceColors, referenceColorVariables } from '../../design-system/tokens/colors';
 import '../styles/home.scss';
 import '../styles/colors.scss';
+import '../styles/color-explorer.scss';
 
 const text = (id: keyof typeof content.texts) => content.texts[id];
 function Paragraphs({ id }: { id: keyof typeof content.texts }) {
@@ -25,46 +24,56 @@ function ColorSection({ title, id, children }: { title: string; id: string; chil
 function CodeExample({ id }: { id: keyof typeof content.texts }) {
   return <pre className="code-example code-block"><code>{text(id)}</code></pre>;
 }
-const families = ['Blue', 'Gray', 'Amber', 'Red', 'Green'];
-const sectionIds = ['organizacao', 'paleta', 'semanticos', 'temas'] as const;
+const sectionIds = ['organizacao', 'explorar', 'temas'] as const;
 const sections: PageSection[] = [
   { label: 'Organização dos tokens', target: 'organizacao' },
-  { label: 'Paleta de referência', target: 'paleta' },
-  { label: 'Tokens semânticos', target: 'semanticos' },
+  { label: 'Explore as cores', target: 'explorar' },
   { label: 'Aplicação e temas', target: 'temas' },
 ];
-// A lista, os nomes e os valores vêm do DS; o arquivo da página fornece os textos.
-const swatches = referenceColors
-  .map(token => ({ ...token, label: token.cssVar }))
-  .sort((a, b) => Number(a.name.split('/').at(-1)) - Number(b.name.split('/').at(-1)));
 
 /** Conteúdo do recorte atual do Figma, com navegação por seções. */
 export function Colors() {
   const submenu = useRef<HTMLElement>(null);
+  const floatingSubmenu = useRef<HTMLElement>(null);
+  const floatingActive = useRef(false);
+  const floatingRevealUntil = useRef(0);
   const main = useRef<HTMLElement>(null);
   const [navbar, setNavbar] = useState<NavbarState>({hidden: false, menuOpen: false});
   const [sectionsHidden, setSectionsHidden] = useState(false);
+  const [sectionsFloating, setSectionsFloating] = useState(false);
   const [sectionNavigating, setSectionNavigating] = useState(false);
   const sectionDestination = useRef<number | null>(null);
   const [currentSection, setCurrentSection] = useState(() => window.location.hash.slice(1) || 'organizacao');
   useLayoutEffect(() => {
     const menu = submenu.current;
-    if (!menu) return;
+    const floatingMenu = floatingSubmenu.current;
+    if (!menu || !floatingMenu) return;
     let previousY = window.scrollY;
     let frame = 0;
+    let focusFrame = 0;
     let timer: number | undefined;
-    // O bloco anterior permanece no fluxo e revela a posição original do sticky,
-    // mesmo quando o próprio submenu já está preso no topo ou transformado.
-    const originIsVisible = () => {
-      const previous = menu.previousElementSibling;
-      const gap = Number.parseFloat(getComputedStyle(menu.parentElement!).rowGap) || 0;
-      return !previous || previous.getBoundingClientRect().bottom + gap + menu.offsetHeight > 0;
+    const setFloating = (value: boolean) => {
+      if (floatingActive.current === value) return;
+      const from = value ? menu : floatingMenu;
+      const to = value ? floatingMenu : menu;
+      const focused = from.querySelector<HTMLAnchorElement>('a:focus-visible');
+      floatingActive.current = value;
+      floatingRevealUntil.current = value ? performance.now() + 1500 : 0;
+      setSectionsFloating(value);
+      if (focused) {
+        const href = focused.getAttribute('href');
+        window.cancelAnimationFrame(focusFrame);
+        focusFrame = window.requestAnimationFrame(() => {
+          const link = [...to.querySelectorAll<HTMLAnchorElement>('a')].find(link => link.getAttribute('href') === href);
+          link?.focus({preventScroll: true});
+        });
+      }
     };
     const scheduleHide = () => {
       window.clearTimeout(timer);
-      if (window.innerWidth < 1200 || originIsVisible() || sectionDestination.current !== null) return;
+      if (!floatingActive.current || sectionDestination.current !== null) return;
       timer = window.setTimeout(() => {
-        if (!originIsVisible() && sectionDestination.current === null && !menu.querySelector(':focus-visible')) setSectionsHidden(true);
+        if (floatingActive.current && sectionDestination.current === null && !floatingMenu.querySelector(':focus-visible')) setSectionsHidden(true);
       }, 3000);
     };
     const show = () => { setSectionsHidden(false); scheduleHide(); };
@@ -72,9 +81,34 @@ export function Colors() {
       frame = 0;
       const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
       const y = Math.max(0, Math.min(window.scrollY, maxY));
-      if (window.innerWidth < 1200 || originIsVisible() || sectionDestination.current !== null || menu.querySelector(':focus-visible')) {
+      const originBottom = menu.getBoundingClientRect().bottom;
+      floatingMenu.toggleAttribute('data-origin-visible', originBottom >= 0);
+      // Recolhe antes de o submenu original voltar à tela.
+      if (window.innerWidth < 1200 || originBottom >= -192) {
+        setFloating(false);
+        window.clearTimeout(timer);
+        setSectionsHidden(false);
+        previousY = y;
+        return;
+      }
+      // A faixa de 64 px entre saída e entrada evita alternâncias na borda.
+      // Na navegação por âncora, mantém o menu disponível durante o deslocamento.
+      if (!floatingActive.current) {
+        if (originBottom <= -256 || sectionDestination.current !== null) {
+          setFloating(true);
+          show();
+        }
+        previousY = y;
+        return;
+      }
+      if (sectionDestination.current !== null || floatingMenu.querySelector(':focus-visible')) {
         previousY = y;
         show();
+        return;
+      }
+      // Apresenta o submenu por 1,5 s, mesmo que a primeira rolagem continue.
+      if (performance.now() < floatingRevealUntil.current) {
+        previousY = y;
         return;
       }
       const delta = y - previousY;
@@ -84,23 +118,25 @@ export function Colors() {
       previousY = y;
     };
     const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(update); };
-    const onResize = () => { previousY = window.scrollY; show(); };
-    show();
+    const onResize = () => { previousY = window.scrollY; update(); if (floatingActive.current) show(); };
+    update();
+    if (floatingActive.current) scheduleHide();
     window.addEventListener('scroll', onScroll, {passive: true});
     window.addEventListener('resize', onResize);
-    menu.addEventListener('pointermove', scheduleHide);
-    menu.addEventListener('pointerdown', scheduleHide);
-    menu.addEventListener('focusin', show);
-    menu.addEventListener('focusout', scheduleHide);
+    floatingMenu.addEventListener('pointermove', show);
+    floatingMenu.addEventListener('pointerdown', show);
+    floatingMenu.addEventListener('focusin', show);
+    floatingMenu.addEventListener('focusout', scheduleHide);
     return () => {
       window.cancelAnimationFrame(frame);
+      window.cancelAnimationFrame(focusFrame);
       window.clearTimeout(timer);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
-      menu.removeEventListener('pointermove', scheduleHide);
-      menu.removeEventListener('pointerdown', scheduleHide);
-      menu.removeEventListener('focusin', show);
-      menu.removeEventListener('focusout', scheduleHide);
+      floatingMenu.removeEventListener('pointermove', show);
+      floatingMenu.removeEventListener('pointerdown', show);
+      floatingMenu.removeEventListener('focusin', show);
+      floatingMenu.removeEventListener('focusout', scheduleHide);
     };
   }, [sectionNavigating]);
   useLayoutEffect(() => {
@@ -153,15 +189,20 @@ export function Colors() {
     const onScroll = () => {
       // Um cursor parado não deve manter a seção anterior visualmente ativa.
       menu.dataset.scrollSelection = 'true';
+      if (floatingSubmenu.current) floatingSubmenu.current.dataset.scrollSelection = 'true';
       scheduleUpdate();
     };
     const updateHeight = () => {
-      page.style.setProperty('--submenu-height', `${menu.getBoundingClientRect().height}px`);
+      const rect = menu.getBoundingClientRect();
+      page.style.setProperty('--submenu-height', `${Math.max(rect.height, floatingSubmenu.current?.offsetHeight ?? 0)}px`);
+      page.style.setProperty('--sections-center', `${rect.left + rect.width / 2}px`);
+      page.style.setProperty('--sections-width', `${rect.width}px`);
       scheduleUpdate();
     };
     updateHeight();
     const observer = new ResizeObserver(updateHeight);
     observer.observe(menu);
+    if (floatingSubmenu.current) observer.observe(floatingSubmenu.current);
     document.addEventListener('scroll', onScroll, { passive: true, capture: true });
     window.addEventListener('resize', scheduleUpdate);
     window.addEventListener('hashchange', scheduleUpdate);
@@ -180,7 +221,7 @@ export function Colors() {
     event.preventDefault();
     if (window.location.hash !== `#${id}`) window.history.pushState(null, '', `#${id}`);
     const top = window.scrollY + section.getBoundingClientRect().top;
-    const offset = window.innerWidth < 1200 ? (top > window.scrollY ? 80 : 152) : (submenu.current?.getBoundingClientRect().height ?? 82) + 32;
+    const offset = window.innerWidth < 1200 ? (top > window.scrollY ? 80 : 152) : Math.max(submenu.current?.offsetHeight ?? 82, floatingSubmenu.current?.offsetHeight ?? 0) + 32;
     const destination = Math.max(0, Math.min(top - offset, document.documentElement.scrollHeight - window.innerHeight));
     if (window.innerWidth >= 1200) {
       sectionDestination.current = destination;
@@ -192,6 +233,10 @@ export function Colors() {
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     });
   };
+  const renderSectionLinks = () => sections.map(({ label, target }) => target
+    ? <NavLink key={label} href={`#${target}`} selected={currentSection === target} aria-current="location"
+        onClick={event => navigateToSection(event, target)}>{label}</NavLink>
+    : <NavButton key={label} disabled title="Em breve">{label}</NavButton>);
   return <div className="portal-theme portal-layout colors-page" data-navbar-hidden={navbar.hidden || undefined} data-menu-open={navbar.menuOpen || undefined} data-sections-hidden={sectionsHidden || undefined}>
     <PortalSidebar currentItem="Cores" />
     <PortalTabletHeader currentItem="Cores" onStateChange={setNavbar} />
@@ -202,13 +247,17 @@ export function Colors() {
         <div><h1>{text('76:1592')}</h1><p className="overview-description">{text('76:1593')}</p></div>
       </header>
       <nav className="sections-bar" aria-label="Seções da página" ref={submenu}
-        data-hidden={sectionsHidden || undefined}
+        aria-hidden={sectionsFloating || undefined} inert={sectionsFloating}
         onPointerMove={() => { if (submenu.current) delete submenu.current.dataset.scrollSelection; }}>
         <h2>{text('78:2263')}</h2>
-        <div className="section-buttons">{sections.map(({ label, target }) => target
-          ? <NavLink key={label} href={`#${target}`} selected={currentSection === target} aria-current="location"
-              onClick={event => navigateToSection(event, target)}>{label}</NavLink>
-          : <NavButton key={label} disabled title="Em breve">{label}</NavButton>)}</div>
+        <div className="section-buttons">{renderSectionLinks()}</div>
+      </nav>
+      <nav className="sections-bar sections-floating" aria-label="Seções da página" ref={floatingSubmenu}
+        aria-hidden={!sectionsFloating || undefined} inert={!sectionsFloating}
+        data-floating={sectionsFloating || undefined} data-hidden={sectionsHidden || undefined}
+        onPointerMove={() => { if (floatingSubmenu.current) delete floatingSubmenu.current.dataset.scrollSelection; }}>
+        <h2>{text('78:2263')}</h2>
+        <div className="section-buttons">{renderSectionLinks()}</div>
       </nav>
       <ColorSection title={text('76:1621')} id="organizacao">
         <div className="content-group">
@@ -235,29 +284,7 @@ export function Colors() {
         </div>
         <div className="text-group"><h3>{text('92:309')}</h3><Paragraphs id="92:310" /></div>
       </ColorSection>
-      <ColorSection title={text('97:243')} id="paleta">
-        <div className="content-group">
-          <p className="justified"><InlineCode>{text('92:1403')}</InlineCode></p>
-          <div className="palette-families" style={referenceColorVariables} data-token-source="design-system">{families.map(family => <section className="palette-family" key={family} aria-labelledby={`palette-${family.toLowerCase()}`}>
-            <h3 id={`palette-${family.toLowerCase()}`}>{family}</h3>
-            <div className="swatches">{swatches.filter(s => s.name.split('/')[1] === family.toLowerCase()).map(s =>
-              <article className="color-swatch" key={s.name}>
-                <div className="swatch-preview" style={{ backgroundColor: `var(${s.cssVar})` }} data-token={s.cssVar} aria-label={s.hex} />
-                <div className="swatch-details"><p>{s.label}</p><p>{s.hex}</p></div>
-              </article>)}</div>
-          </section>)}</div>
-        </div>
-        <div className="text-group"><h3>{text('97:480')}</h3><p className="justified"><InlineCode>{text('97:481')}</InlineCode></p></div>
-      </ColorSection>
-      <ColorSection title="Tokens semânticos" id="semanticos">
-        <div className="content-group semantic-group">
-          <p className="justified"><InlineCode>{`A coleção sys-color possui ${semanticColorCount} tokens nos modos light e dark. Cada nome representa um papel na interface e aponta para uma referência da paleta. A tabela apresenta um recorte dos principais grupos, com o alias CSS e seu valor resolvido em cada tema.`}</InlineCode></p>
-          <SemanticColorsTable />
-        </div>
-        <div className="text-group"><h3>Outros papéis de cor</h3>
-          <p>Os grupos de superfícies, conteúdo, bordas e ações também incluem referências para success, warning e critical. O grupo support reúne cores de apoio e referências sociais. O grupo overlay reúne sobreposições neutral, brand e critical.</p>
-        </div>
-      </ColorSection>
+      <ColorSection title="Explore os tokens de cores" id="explorar"><ColorExplorer /></ColorSection>
       <ColorSection title={text('97:689')} id="temas">
         <div className="content-group">
           <div className="text-group"><h3>{text('97:691')}</h3><p><InlineCode>{text('97:692')}</InlineCode></p></div>

@@ -4,6 +4,8 @@ import changes from './changes.json';
 import { NavButtonLab } from '../components/NavButtonLab';
 import { TextLinkLab } from '../components/TextLinkLab';
 import { ButtonLab } from '../components/ButtonLab';
+import { InputFieldLab } from '../components/InputFieldLab';
+import { TabCellLab } from '../components/TabCellLab';
 import { pageUrl } from '../paths';
 
 type Token = (typeof inventory.tokens)[number];
@@ -36,6 +38,8 @@ export function TokenCatalog() {
       <NavButtonLab />
       <TextLinkLab />
       <ButtonLab />
+      <InputFieldLab />
+      <TabCellLab />
       <div className="token-controls">
         <label>Categoria<select value={category} onChange={event => setCategory(event.target.value)}>
           <option value="typography">Tipografia</option><option value="color">Cores</option><option value="all">Todos os tokens</option>

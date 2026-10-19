@@ -16,12 +16,17 @@ Esta pasta contém definições de design usadas no conteúdo documentado. Não 
 
 Na leitura de 16/10/2026, duas legendas do layout da tabela no arquivo do portal divergem do DS: `surface/default` em light aponta para `palette/gray/5` (#FFFFFF), e `content/brand` em light aponta para `palette/blue/500` (#395ABF). A implementação segue as variáveis do arquivo do Design System; os arquivos do Figma não foram alterados.
 
-## Tabela de documentação
+## Explorador de cores
 
-A página de Cores usa `src/portal/components/Table.tsx`, com estilos locais em `Table.module.scss`, e uma composição de conteúdo em `src/portal/pages/SemanticColorsTable.tsx`. A estrutura usa HTML de tabela, cabeçalhos de coluna e linha e uma região focável para rolagem horizontal por teclado. A largura mínima é configurável por `--table-min-width`; a página aplica 960px no tablet e mobile, com três colunas de pelo menos 320px. A área rolável alcança as bordas internas da seção, enquanto `--table-edge-space: 24px` preserva o respiro à esquerda no início e à direita no final. O padding pertence ao conteúdo rolável, permitindo que as colunas atravessem essa área durante o scroll. Só a tabela rola horizontalmente.
+A página reúne a consulta em “Explore os tokens de cores”. `tokens/explorer-colors.figma.json` contém a leitura oficial de 19/10/2026: 171 cores de `sys-color`, seus modos light/dark, e 143 cores primitivas de `ref`. A leitura de `ref` listou 142 cores; a dependência `palette/gray/350`, usada por `content/tertiary` em dark, foi consultada diretamente por ID e incluída no inventário, preservando o alias oficial.
 
-Essa estrutura está preparada para uma futura formalização no catálogo. Nenhuma entrada de catálogo, filtro ou ordenação foi adicionada nesta etapa.
+`tokens/explorer-colors.ts` resolve aliases por coleção/modo, detecta referências ausentes e ciclos, preserva alpha e prepara o hexadecimal e o preenchimento da mesma cor. Somente as amostras recebem valores do DS; aparência e controles continuam usando os tokens da interface. Os snapshots anteriores são históricos e não alimentam este explorador.
 
+A composição `src/portal/pages/ColorExplorer.tsx` e seus estilos `color-explorer.scss` pertencem somente à página Cores. As abas, grupos, busca por nome/referência/hexadecimal, paginação estão ativos. Sem busca, consulta-se o grupo selecionado. A busca consulta toda a camada ativa. Trocar aba/grupo reinicia a paginação; cada página exibe até dez itens; a tabela preserva a posição vertical da página e reinicia a rolagem horizontal. Os primitivos têm um único valor oficial, por isso são apresentados em duas colunas (token/valor), sem inventar um segundo tema.
+
+A tabela tem cabeçalhos nativos e região focável para scroll horizontal. No tablet e mobile, as três colunas semânticas mantêm pelo menos 960px (640px para duas colunas primitivas), alcançando as bordas internas da seção com 24px à esquerda no início e à direita no fim. A descrição do grupo aparece em todas as larguras. Canvas é o grupo inicial. Os nomes dos grupos preservam o idioma inglês dos tokens oficiais. Os testes de integridade e busca podem ser executados com `node --test scripts/explorer-colors.test.mjs` em Node 24.
+
+A tabela não foi registrada no catálogo. Caso seja utilizada em outra página, sua estrutura será formalizada como componente compartilhado.
 ## Separação das fontes
 
 - `src/portal/tokens`: aparência da interface, navegação, catálogo de configuração do portal e estrutura das páginas.

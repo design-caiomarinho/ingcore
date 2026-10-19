@@ -24,7 +24,7 @@ async function scan(directory) {
   }
 }
 await scan(resolve(root, 'src/portal'));
-for (const asset of ['imgVector', 'imgArrowRight', 'imgArrowRightDisabled', 'imgMarcador', 'imgMarcador1', 'imgMenu', 'imgRecord', 'imgRecordDisabled', 'imgDocumentText', 'imgClose', 'sections-chevron', 'timeline-updated', 'timeline-new', 'timeline-removed']) {
+for (const asset of ['imgVector', 'imgArrowRight', 'imgArrowRightDisabled', 'imgMarcador', 'imgMarcador1', 'imgMenu', 'imgRecord', 'imgRecordDisabled', 'imgDocumentText', 'imgClose', 'sections-chevron', 'timeline-updated', 'timeline-new', 'timeline-removed', 'color-search', 'color-page-previous', 'color-page-next', 'input-component', 'input-component-active', 'input-info']) {
   if ((await stat(resolve(root, `public/assets/${asset}.svg`))).size === 0) errors.push(`Asset vazio: ${asset}`);
 }
 if (errors.length) throw new Error(errors.join('\n'));

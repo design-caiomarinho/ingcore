@@ -1,0 +1,36 @@
+@use './typography' as type;
+
+.portal-theme .tab-cell {
+  @include type.text('label-md');
+  position: relative; display: inline-flex; flex: none; align-items: center; justify-content: center;
+  box-sizing: border-box; padding: 0 0 16px; margin: 0; border: 0; border-radius: 0;
+  appearance: none; background: transparent; white-space: nowrap; text-decoration: none;
+  color: var(--sys-color-content-tertiary); cursor: pointer;
+  transition: color 300ms ease-in-out;
+  &::before {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
+    background: var(--sys-color-border-primary); transition: background-color 300ms ease-in-out;
+  }
+  &::after {
+    content: ''; position: absolute; inset: -4px; pointer-events: none;
+    border: 1px solid var(--sys-color-border-brand); border-radius: 4px; opacity: 0;
+    transition: opacity 300ms ease-in-out;
+  }
+  &[aria-selected='true']:not(:disabled) { color: var(--sys-color-content-primary); }
+  &[aria-selected='true']:not(:disabled)::before { background: var(--sys-color-border-brand); }
+  &:focus, &:focus-visible { outline: none; }
+  &:focus-visible::after { opacity: 1; }
+  &:disabled { color: var(--sys-color-content-on-disabled); cursor: not-allowed; }
+  &:disabled::before { background: var(--sys-color-border-disabled); }
+}
+@media (hover: hover) {
+  .tab-cell:hover:not(:disabled) { color: var(--sys-color-content-primary); }
+}
+html[data-input-mode='pointer'] .tab-cell:focus-visible::after { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  .tab-cell, .tab-cell::before, .tab-cell::after { transition: none; }
+}
+@media (forced-colors: active) {
+  .tab-cell:focus-visible::after { border-color: Highlight; }
+  .tab-cell[aria-selected='true']:not(:disabled)::before { background: Highlight; }
+}

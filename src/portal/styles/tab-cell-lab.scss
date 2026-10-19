@@ -1,0 +1,8 @@
+.tab-cell-lab {
+  .tab-cell-specimens { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-block: 24px; }
+  .tab-cell-row { display: flex; gap: 40px; padding: 4px; }
+  .tab-cell-preview[data-preview='hover'] .tab-cell { color: var(--sys-color-content-primary); }
+  .tab-cell-preview[data-preview='focus'] .tab-cell::after { opacity: 1; }
+  .tab-cell-demo { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px; }
+  .tab-cell-demo-panel { padding-top: 16px; }
+}

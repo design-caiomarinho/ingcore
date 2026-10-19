@@ -5,7 +5,7 @@
     "fileKey": "r58dqyV6DaTkieXp1IbKUU",
     "url": "https://www.figma.com/design/r58dqyV6DaTkieXp1IbKUU/IngCore---Storybook",
     "capturedOn": "2026-10-16",
-    "note": "Todas as variáveis das três coleções locais existentes foram lidas: ref, sys-color e sys-type. O sistema continua incompleto e não recebeu novos valores presumidos."
+    "note": "Todas as variáveis das três coleções locais existentes foram lidas: ref, sys-color e sys-type. O sistema continua incompleto e não recebeu novos valores presumidos. Input: receita body/md/medium e border/critical consultados em 19/10/2026; demais tokens preservados. border/disabled atualizado para a nomenclatura e alias usados no input."
   },
   "collections": [
     {
@@ -2440,7 +2440,7 @@
           "modeId": "13:1"
         }
       ],
-      "count": 90,
+      "count": 91,
       "tier": "secondary",
       "variables": [
         {
@@ -2962,12 +2962,12 @@
         },
         {
           "id": "VariableID:16:3605",
-          "name": "border/on-disabled",
+          "name": "border/disabled",
           "type": "COLOR",
           "values": {
             "13:1": {
               "type": "VARIABLE_ALIAS",
-              "id": "VariableID:13:2829"
+              "id": "VariableID:13:2832"
             }
           },
           "scopes": [
@@ -4176,6 +4176,23 @@
           "codeSyntax": {
             "WEB": "var(--support-pink-900)"
           }
+        },
+        {
+          "id": "VariableID:172:4542",
+          "name": "border/critical",
+          "type": "COLOR",
+          "values": {
+            "13:1": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:13:2865"
+            }
+          },
+          "scopes": [
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--content-brand)"
+          }
         }
       ]
     },
@@ -4189,7 +4206,7 @@
           "modeId": "37:0"
         }
       ],
-      "count": 70,
+      "count": 75,
       "tier": "typography",
       "variables": [
         {
@@ -5241,6 +5258,81 @@
           "scopes": [
             "ALL_SCOPES"
           ]
+        },
+        {
+          "id": "VariableID:157:376",
+          "name": "body/md/medium/family",
+          "type": "STRING",
+          "values": {
+            "37:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:37:996"
+            }
+          },
+          "scopes": [
+            "FONT_FAMILY"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:157:377",
+          "name": "body/md/medium/size",
+          "type": "FLOAT",
+          "values": {
+            "37:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:37:1052"
+            }
+          },
+          "scopes": [
+            "FONT_SIZE"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:157:378",
+          "name": "body/md/medium/weight",
+          "type": "FLOAT",
+          "values": {
+            "37:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:37:1007"
+            }
+          },
+          "scopes": [
+            "FONT_WEIGHT"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:157:379",
+          "name": "body/md/medium/height",
+          "type": "STRING",
+          "values": {
+            "37:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:37:1086"
+            }
+          },
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
+        },
+        {
+          "id": "VariableID:157:380",
+          "name": "body/md/medium/letter-spacing",
+          "type": "STRING",
+          "values": {
+            "37:0": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:37:1105"
+            }
+          },
+          "scopes": [
+            "ALL_SCOPES"
+          ],
+          "codeSyntax": {}
         }
       ]
     }

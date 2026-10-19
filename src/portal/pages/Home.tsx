@@ -2,7 +2,7 @@ import { assetUrl, pageUrl } from '../paths';
 import { PortalSidebar } from '../components/PortalSidebar';
 import { PortalTabletHeader } from '../components/PortalTabletHeader';
 import { TextLink } from '../components/TextLink';
-import { recentUpdates, updateTones, formatUpdateDate } from '../content/updates';
+import { recentUpdates, updateTones, formatUpdateDate, formatUpdateDescription } from '../content/updates';
 import '../styles/home.scss';
 import '../styles/home-layout.scss';
 
@@ -38,7 +38,7 @@ export function Home() {
           <article className="update-item">
             <div className="update-content">
             <span className={`status-badge status-badge--${updateTones[update.status]}`}>{update.status}</span>
-            <div className="update-details"><div className="update-text"><h3>{update.title}</h3><p>{update.description}</p></div>
+            <div className="update-details"><div className="update-text"><h3>{update.title}</h3><p>{formatUpdateDescription(update.description)}</p></div>
               <time dateTime={update.date}>{formatUpdateDate(update.date)}</time>
             </div>
             {update.href ? <TextLink href={pageUrl(update.href)} label={`Ver alteração: ${update.title}`}>Ver alteração</TextLink>

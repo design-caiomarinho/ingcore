@@ -14,7 +14,7 @@ export const updates: Update[] = [
     date: '2026-10-19',
     title: 'Cores',
     status: 'Atualizado',
-    description: 'Consulta aos tokens primitivos e semânticos do Design System com busca, filtros por grupo, paginação e referências nos temas light e dark.',
+    description: 'Tokens primitivos e semânticos com busca, filtros e comparação entre light e dark.',
     href: '/cores',
   },
   {
@@ -27,6 +27,14 @@ export const updates: Update[] = [
   },
 ];
 
+// Limite editorial e de exibição para manter as novidades breves.
+export const UPDATE_DESCRIPTION_LIMIT = 100;
+export function formatUpdateDescription(description: string) {
+  const characters = Array.from(description);
+  if (characters.length <= UPDATE_DESCRIPTION_LIMIT) return description;
+  const excerpt = characters.slice(0, UPDATE_DESCRIPTION_LIMIT - 1).join('');
+  return excerpt.replace(/\s+\S*$/u, '').trimEnd() + '…';
+}
 export const updateTones = { Novo: 'new', Atualizado: 'updated', Removido: 'removed' } as const;
 
 const formatter = new Intl.DateTimeFormat('pt-BR', {

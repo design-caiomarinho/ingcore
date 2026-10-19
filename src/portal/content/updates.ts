@@ -7,23 +7,15 @@ type Update = {
   href?: string; // Caminho de uma página existente; não incluir o prefixo /ingcore/.
 };
 
-/** Histórico editorial: adicionar uma entrada quando uma novidade estiver disponível. */
+/** Histórico editorial das páginas e conteúdos do Design System. Componentes e ajustes internos do portal não entram neste histórico. */
 export const updates: Update[] = [
   {
     id: 'cores-explorador-e-navegacao',
     date: '2026-10-19',
     title: 'Cores',
     status: 'Atualizado',
-    description: 'Explore os tokens reais do Design System com busca, filtros e paginação. A navegação por seções ganhou um submenu flutuante compacto.',
+    description: 'Consulta aos tokens primitivos e semânticos do Design System com busca, filtros por grupo, paginação e referências nos temas light e dark.',
     href: '/cores',
-  },
-  {
-    id: 'componentes-input-e-tabs',
-    date: '2026-10-19',
-    title: 'Input e Tabs',
-    status: 'Novo',
-    description: 'Componentes adicionados ao catálogo e aplicados no explorador de cores, com estados, foco por teclado e animações padronizadas.',
-    href: '/configuracao',
   },
   {
     id: 'cores-paleta-de-referencia',

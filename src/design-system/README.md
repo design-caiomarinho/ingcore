@@ -41,3 +41,12 @@ O catálogo atual continua sendo o ambiente de configuração dos componentes e 
 A estrutura dos cards, os títulos e a navegação pertencem ao portal. O conteúdo demonstrado consulta diretamente o inventário do DS, inclusive para gerar a lista de amostras. Os valores do arquivo de layout do portal não são fonte de tokens do DS.
 
 Componentes demonstrados devem ser implementados em `src/design-system/components`, com seus próprios estados e estilos locais em CSS Modules. Os componentes da navegação continuam em `src/portal/components`. Aplicar os tokens do DS apenas no container da demonstração, sem seletores globais de elementos ou classes que atinjam a interface do portal.
+## Tipografia documentada
+
+A tela `/tipografia` usa `tokens/typography.figma.json`, extraído em 19/10/2026 do arquivo IngCore — Design System (`rDna8D13lVQpYDLx4Yjbzf`). O recorte inclui os 75 tokens da coleção `sys-type`, os 28 primitivos tipográficos locais e a família importada usada por Label Medium. O modo existente é `=< 1366`; ele não estabelece os layouts tablet/mobile do portal, que seguem os frames de documentação.
+
+`tokens/typography.ts` resolve os aliases e monta 15 conjuntos de Display, Heading, Body, Label e Caption. As propriedades documentadas usam os valores das variáveis; Caption tem entrelinha de 100% na variável, embora o estilo de texto do Figma informe 120%. As amostras não usam as receitas tipográficas do portal. A família importada e suas referências são preservadas sem inventar nomes CSS públicos para variáveis que ainda não têm codeSyntax.
+
+A aba Primitivos lista as referências de font/family, font/size, font/weight, font/height e font/letter-spacing, preservando os valores do DS e mostrando a propriedade CSS equivalente. A tabela e a paginação são compartilhadas com Cores e registradas no catálogo do portal. Cada amostra semântica abre e fecha sua declaração CSS e as cinco referências primitivas. Os detalhes são derivados da mesma receita usada na amostra; abertura e fechamento têm transição de 300ms ease-in-out e respeitam movimento reduzido.
+
+A tela adapta a composição nos breakpoints do portal: tablet abaixo de 1200px e mobile abaixo de 768px. Os tamanhos documentados dos tokens são preservados; cards e hierarquia se empilham no celular, os exemplos CSS quebram linha e a tabela de primitivos mantém scroll horizontal. A seta dos detalhes gira com a mesma transição de 300ms ease-in-out e respeita movimento reduzido.

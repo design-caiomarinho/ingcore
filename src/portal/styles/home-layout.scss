@@ -28,12 +28,12 @@
   }
   .update-item { flex: 1; gap: 16px; }
   .timeline > li:not(:last-child) .update-item { padding-bottom: 40px; }
-  .update-item h3 { @include type.text('body-lg-semibold'); text-wrap: balance; }
+  .update-item h3 { @include type.text('body-lg-semibold'); }
   .update-item p { @include type.text('body-sm-regular'); }
   .update-content { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
   .update-details { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
   .update-item time { @include type.text('body-sm-regular'); }
-  .status-badge { text-wrap: balance; }
+  .status-badge { }
   .history-button {
     display: inline-flex; flex: none; width: 100%;
   }

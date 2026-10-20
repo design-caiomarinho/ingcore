@@ -28,11 +28,11 @@
     }
   }
   .colors-page { --sections-top: 72px; }
-  .colors-page[data-navbar-hidden] {
+  :is(.colors-page, .typography-page)[data-navbar-hidden] {
     --sections-top: 0px;
     .mobile-sections { transform: translateY(-72px); }
   }
-  .colors-page[data-menu-open] .mobile-sections { transform: translateY(calc(100dvh - 72px)); }
+  :is(.colors-page, .typography-page)[data-menu-open] .mobile-sections { transform: translateY(calc(100dvh - 72px)); }
 }
 @media (prefers-reduced-motion: reduce) {
   .mobile-sections, .mobile-sections .sections-dropdown,

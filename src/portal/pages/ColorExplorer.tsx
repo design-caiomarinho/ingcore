@@ -3,6 +3,8 @@ import { assetUrl } from '../paths';
 import { Button } from '../components/Button';
 import { InputField } from '../components/InputField';
 import { TabCell } from '../components/TabCell';
+import { DataTable } from '../components/DataTable';
+import { TablePagination } from '../components/TablePagination';
 import { InlineCode } from '../components/CodeTag';
 import { findColors, primitiveGroups, semanticGroups, type ColorLayer, type ColorValue } from '../../design-system/tokens/explorer-colors';
 
@@ -29,8 +31,6 @@ export function ColorExplorer() {
   const currentPage = Math.min(page, pageCount);
   const start = (currentPage - 1) * pageSize;
   const rows = matches.slice(start, start + pageSize);
-  const windowStart = Math.max(1, Math.min(currentPage - 2, pageCount - 4));
-  const pages = Array.from({ length: Math.min(5, pageCount) }, (_, index) => windowStart + index);
   const searching = query.trim().length > 0;
 
   useEffect(() => { scrollRef.current?.scrollTo({ left: 0 }); }, [layer, group, query, page, pageSize]);
@@ -81,32 +81,13 @@ export function ColorExplorer() {
         <h3>{searching ? 'Resultados da busca' : currentGroup.label}</h3>
         <p><InlineCode>{searching ? `Cores encontradas em toda a coleção ${layer === 'semantic' ? 'sys-color' : 'ref'} para “${query.trim()}”.` : currentGroup.description}</InlineCode></p>
       </div></div>
-      <div className="color-table-frame">
-        <div ref={scrollRef} className="color-table-scroll" role="region" aria-label={layer === 'semantic' ? 'Tokens de cores: light e dark' : 'Tokens primitivos de cores'} tabIndex={0}>
-          <div className="color-table-track" data-layer={layer}><table className="color-table">
-            <caption>{layer === 'semantic' ? 'Tokens de cores: comparação entre light e dark' : 'Valores da coleção ref do Design System'}</caption>
-            <thead><tr><th scope="col">TOKENS</th><th scope="col">{layer === 'semantic' ? 'LIGHT MODE' : 'VALOR'}</th>{layer === 'semantic' && <th scope="col">DARK MODE</th>}</tr></thead>
-            <tbody>{rows.map(row => <tr key={row.id}>
-              <th scope="row"><code>{row.name}</code></th>
-              <td><ColorSample value={row.light} /></td>
-              {layer === 'semantic' && <td><ColorSample value={row.dark} /></td>}
-            </tr>)}
-            {rows.length === 0 && <tr><td colSpan={layer === 'semantic' ? 3 : 2}>Nenhuma cor encontrada. Tente outro nome, referência ou hexadecimal.</td></tr>}
-            </tbody>
-          </table></div>
-        </div>
-        <div className="color-pagination">
-          <div className="color-pagination-summary">
-            <p className="color-page-size">Linhas por página:</p>
-            <p role="status" aria-live="polite" aria-atomic="true">Mostrando {matches.length ? start + 1 : 0}-{Math.min(start + pageSize, matches.length)} de {matches.length} itens</p>
-          </div>
-          <nav className="color-page-buttons" aria-label="Páginas de cores">
-            <Button size="small" iconOnly disabled={currentPage === 1} onClick={() => selectPage(currentPage - 1)} icon={<img src={assetUrl('color-page-previous.svg')} width="16" height="16" alt="" />} aria-label="Página anterior" />
-            {pages.map(value => <Button key={value} size="small" selected={value === currentPage} onClick={() => selectPage(value)} aria-label={`Página ${value}`} aria-current={value === currentPage ? 'page' : undefined}>{value}</Button>)}
-            <Button size="small" iconOnly disabled={currentPage === pageCount} onClick={() => selectPage(currentPage + 1)} icon={<img src={assetUrl('color-page-next.svg')} width="16" height="16" alt="" />} aria-label="Próxima página" />
-          </nav>
-        </div>
-      </div>
+      <DataTable scrollRef={scrollRef} minWidth={layer === 'semantic' ? 960 : 640}
+        caption={layer === 'semantic' ? 'Tokens de cores: comparação entre light e dark' : 'Valores da coleção ref do Design System'}
+        columns={[{id: 'token', label: 'TOKENS'}, {id: 'light', label: layer === 'semantic' ? 'LIGHT MODE' : 'VALOR'}, ...(layer === 'semantic' ? [{id: 'dark', label: 'DARK MODE'}] : [])]}
+        rows={rows.map(row => ({id: row.id, cells: [<code>{row.name}</code>, <ColorSample value={row.light} />, ...(layer === 'semantic' ? [<ColorSample value={row.dark} />] : [])]}))}
+        emptyMessage="Nenhuma cor encontrada. Tente outro nome, referência ou hexadecimal.">
+        <TablePagination total={matches.length} page={currentPage} pageSize={pageSize} onPageChange={selectPage} label="Páginas de cores" />
+      </DataTable>
     </div>
   </div>;
 }

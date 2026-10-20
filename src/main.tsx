@@ -3,11 +3,12 @@ import { createRoot } from 'react-dom/client';
 import { TokenCatalog } from './portal/tokens/TokenCatalog';
 import { Home } from './portal/pages/Home';
 import { Colors } from './portal/pages/Colors';
+import { Typography } from './portal/pages/Typography';
 import './portal/styles/index.scss';
 import { appPath } from './portal/paths';
 
 const routePath = () => appPath(window.location.pathname);
-const routes = new Set(['/', '/home', '/cores', '/configuracao']);
+const routes = new Set(['/', '/home', '/cores', '/tipografia', '/configuracao']);
 function App() {
   const [path, setPath] = useState(routePath);
   useLayoutEffect(() => {
@@ -55,13 +56,13 @@ function App() {
     };
   }, []);
   useLayoutEffect(() => {
-    document.title = path === '/home' ? 'IngCore — Primeiros passos' : path === '/cores' ? 'IngCore — Cores' : 'IngCore — Tokens do portal';
+    document.title = path === '/home' ? 'IngCore — Primeiros passos' : path === '/tipografia' ? 'IngCore — Tipografia' : path === '/cores' ? 'IngCore — Cores' : 'IngCore — Tokens do portal';
     const anchor = window.location.hash.slice(1);
     const target = anchor ? document.getElementById(anchor) : null;
     if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
     else window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [path]);
-  return path === '/home' ? <Home /> : path === '/cores' ? <Colors /> : <TokenCatalog />;
+  return path === '/home' ? <Home /> : path === '/tipografia' ? <Typography /> : path === '/cores' ? <Colors /> : <TokenCatalog />;
 }
 
 // Aguarda as faces locais antes de exibir os textos, evitando a troca do fallback.

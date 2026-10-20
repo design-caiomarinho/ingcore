@@ -9,7 +9,7 @@ const groups = [
   { title: 'Padrões', items: [{ label: 'Formulários' }] },
   { title: 'Recursos', items: [{ label: 'Biblioteca Figma' }] },
 ];
-const routes: Record<string, string> = { 'Primeiros passos': '/home', Cores: '/cores' };
+const routes: Record<string, string> = { 'Primeiros passos': '/home', Cores: '/cores', Tipografia: '/tipografia' };
 
 export function PortalNavigation({ currentItem = 'Primeiros passos' }: { currentItem?: string }) {
   return <nav aria-label="Navegação principal">{groups.map(group => <div className="nav-group" key={group.title}>

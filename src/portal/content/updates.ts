@@ -10,6 +10,14 @@ type Update = {
 /** Histórico editorial das páginas e conteúdos do Design System. Componentes e ajustes internos do portal não entram neste histórico. */
 export const updates: Update[] = [
   {
+    id: 'tipografia-explorador',
+    date: '2026-10-20',
+    title: 'Tipografia',
+    status: 'Novo',
+    description: 'Famílias, hierarquia e tokens tipográficos do DS com valores CSS e referências.',
+    href: '/tipografia',
+  },
+  {
     id: 'cores-explorador-e-navegacao',
     date: '2026-10-19',
     title: 'Cores',

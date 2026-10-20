@@ -101,6 +101,8 @@ $layout-gap: 16px;
 }
 .sidebar .nav-group h2 { opacity: 0.8; }
 .page-content { grid-column: 2; min-width: 0; display: flex; flex-direction: column; gap: $layout-gap; padding: $layout-gap; }
+// Padrão editorial compartilhado pelas páginas, inclusive as futuras.
+.page-content :where(h1, h2, h3, p) { text-align: left; }
 .overview-section, .section-panel { background: var(--sys-color-surface-default); border: 1px solid var(--sys-color-border-primary); border-radius: 8px; }
 .overview-section {
   padding: 24px; display: grid; gap: 24px;
@@ -122,8 +124,8 @@ $layout-gap: 16px;
   > div { display: contents; }
   > .text-link { margin-top: 24px; justify-self: start; }
   // Os 8 px de margem somam-se ao gap de 8 px: título → descrição = 16 px.
-  h3 { @include type.text('heading-sm'); text-wrap: balance; margin-bottom: 8px; }
-  p { @include type.text('body-md-regular'); text-wrap: balance; color: var(--sys-color-content-secondary); }
+  h3 { @include type.text('heading-sm'); margin-bottom: 8px; }
+  p { @include type.text('body-md-regular'); color: var(--sys-color-content-secondary); }
 }
 .updates-container { padding: 24px; }
 .timeline { padding: 24px !important; border: 1px solid var(--sys-color-border-primary); border-radius: 12px;

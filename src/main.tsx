@@ -56,7 +56,7 @@ function App() {
     };
   }, []);
   useLayoutEffect(() => {
-    document.title = path === '/home' ? 'IngCore — Primeiros passos' : path === '/tipografia' ? 'IngCore — Tipografia' : path === '/cores' ? 'IngCore — Cores' : 'IngCore — Tokens do portal';
+    document.title = path === '/home' ? 'IngCore - Design System' : path === '/tipografia' ? 'Tipografia - IngCore' : path === '/cores' ? 'Cores - IngCore' : 'Configuração - IngCore';
     const anchor = window.location.hash.slice(1);
     const target = anchor ? document.getElementById(anchor) : null;
     if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });

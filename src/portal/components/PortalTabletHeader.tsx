@@ -20,6 +20,7 @@ export function PortalTabletHeader({ currentItem, onStateChange }: { currentItem
 
   useLayoutEffect(() => {
     let previousY = window.scrollY;
+    let previousWidth = window.innerWidth;
     let frame = 0;
     let hideTimer: number | undefined;
     const navbar = header.current;
@@ -53,7 +54,14 @@ export function PortalTabletHeader({ currentItem, onStateChange }: { currentItem
       previousY = y;
     };
     const onScroll = () => { if (!frame) frame = window.requestAnimationFrame(updateVisibility); };
-    const onResize = () => { previousY = window.scrollY; showNavbar(); };
+    const onResize = () => {
+      // A barra do navegador móvel altera a altura durante o scroll.
+      // Só uma mudança de largura deve reiniciar a posição da navegação.
+      if (window.innerWidth === previousWidth) return;
+      previousWidth = window.innerWidth;
+      previousY = window.scrollY;
+      showNavbar();
+    };
     showNavbar();
     navbar?.addEventListener('pointermove', scheduleHide);
     navbar?.addEventListener('pointerdown', scheduleHide);

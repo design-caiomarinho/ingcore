@@ -189,16 +189,16 @@ export function DocumentationPage({title, description, currentItem, className, s
     observer.observe(menu);
     if (floatingSubmenu.current) observer.observe(floatingSubmenu.current);
     document.addEventListener('scroll', onScroll, { passive: true, capture: true });
-    window.addEventListener('resize', scheduleUpdate);
+    window.addEventListener('resize', updateHeight);
     window.addEventListener('hashchange', scheduleUpdate);
     return () => {
       observer.disconnect();
       window.cancelAnimationFrame(frame);
       document.removeEventListener('scroll', onScroll, true);
-      window.removeEventListener('resize', scheduleUpdate);
+      window.removeEventListener('resize', updateHeight);
       window.removeEventListener('hashchange', scheduleUpdate);
     };
-  }, [navbar.hidden, navbar.menuOpen, sectionsHidden]);
+  }, [navbar.hidden, navbar.menuOpen, sections]);
   const navigateToSection = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     const section = document.getElementById(id);

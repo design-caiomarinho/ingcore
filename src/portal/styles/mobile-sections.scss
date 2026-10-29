@@ -27,12 +27,12 @@
       .sections-options .nav-button { opacity: 1; transform: translateY(0); }
     }
   }
-  .colors-page { --sections-top: 72px; }
-  :is(.colors-page, .typography-page)[data-navbar-hidden] {
+  .portal-layout { --sections-top: 72px; }
+  .portal-layout[data-navbar-hidden] {
     --sections-top: 0px;
     .mobile-sections { transform: translateY(-72px); }
   }
-  :is(.colors-page, .typography-page)[data-menu-open] .mobile-sections { transform: translateY(calc(100dvh - 72px)); }
+  .portal-layout[data-menu-open] .mobile-sections { transform: translateY(calc(100dvh - 72px)); }
 }
 @media (prefers-reduced-motion: reduce) {
   .mobile-sections, .mobile-sections .sections-dropdown,

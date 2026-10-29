@@ -50,3 +50,9 @@ A tela `/tipografia` usa `tokens/typography.figma.json`, extraído em 19/10/2026
 A aba Primitivos lista as referências de font/family, font/size, font/weight, font/height e font/letter-spacing, preservando os valores do DS e mostrando a propriedade CSS equivalente. A tabela e a paginação são compartilhadas com Cores e registradas no catálogo do portal. Cada amostra semântica abre e fecha sua declaração CSS e as cinco referências primitivas. Os detalhes são derivados da mesma receita usada na amostra; abertura e fechamento têm transição de 300ms ease-in-out e respeitam movimento reduzido.
 
 A tela adapta a composição nos breakpoints do portal: tablet abaixo de 1200px e mobile abaixo de 768px. Os tamanhos documentados dos tokens são preservados; cards e hierarquia se empilham no celular, os exemplos CSS quebram linha e a tabela de primitivos mantém scroll horizontal. A seta dos detalhes gira com a mesma transição de 300ms ease-in-out e respeita movimento reduzido.
+
+## Espaçamento
+
+A página `/espacamento` consulta `tokens/spacing.figma.json`, extraído do IngCore Design System em 29/10/2026. O recorte preserva os 22 primitivos da coleção `ref` (0–80 px, em passos de 4 px, e `auto`) e os nove aliases de `sys-spacing`. O módulo `spacing.ts` resolve esses aliases para alimentar a tabela, as barras de comparação e a simulação de padding/gap a partir da mesma fonte. `auto` permanece um valor textual e não é oferecido como medida de padding/gap. Os tokens documentados não são adicionados aos tokens da interface do portal.
+
+A composição segue os frames desktop `208:834`, tablet `208:1797` e mobile `208:2153` do arquivo de documentação. Abas, botões e navegação reutilizam os componentes existentes; novas composições permanecem locais à página.

@@ -45,7 +45,7 @@
   .type-references > div { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; }
   .type-references > div:not(:last-child) { border-bottom: 1px solid var(--sys-color-border-primary); padding-bottom: 16px; }
   .type-references dt { @include type.text('body-md-medium'); color: var(--sys-color-content-secondary); }
-  .type-references dd { @include type.text('body-md-semibold'); color: var(--sys-color-content-tertiary); margin: 0; }
+  .type-references dd { @include type.text('body-md-regular'); color: var(--sys-color-content-tertiary); margin: 0; }
   .type-hierarchy-content { display: flex; flex-direction: column; gap: 16px; }
   .type-hierarchy { display: flex; flex-direction: column; gap: 24px; border: 1px solid var(--sys-color-border-primary); border-radius: 8px; padding: 24px; }
   .type-hierarchy > div { display: grid; grid-template-columns: minmax(0,1fr) max-content; align-items: start; gap: 24px; }

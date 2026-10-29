@@ -4,12 +4,12 @@
   @include type.text('label-md');
   position: relative; display: inline-flex; flex: none; align-items: center; justify-content: center;
   box-sizing: border-box; padding: 0 0 16px; margin: 0; border: 0; border-radius: 0;
-  appearance: none; background: transparent; white-space: nowrap; text-decoration: none;
+  appearance: none; box-shadow: none; background: transparent; white-space: nowrap; text-decoration: none;
   color: var(--sys-color-content-tertiary); cursor: pointer;
   transition: color 300ms ease-in-out;
   &::before {
     content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 1px;
-    background: var(--sys-color-border-primary); transition: background-color 300ms ease-in-out;
+    background: transparent; transition: background-color 300ms ease-in-out;
   }
   &::after {
     content: ''; position: absolute; inset: -4px; pointer-events: none;

@@ -10,6 +10,14 @@ type Update = {
 /** Histórico editorial das páginas e conteúdos do Design System. Componentes e ajustes internos do portal não entram neste histórico. */
 export const updates: Update[] = [
   {
+    id: 'espacamento-explorador',
+    date: '2026-10-29',
+    title: 'Espaçamento',
+    status: 'Novo',
+    description: 'Escala, tokens e simulação de padding e gap disponíveis para consulta.',
+    href: '/espacamento',
+  },
+  {
     id: 'tipografia-explorador',
     date: '2026-10-20',
     title: 'Tipografia',

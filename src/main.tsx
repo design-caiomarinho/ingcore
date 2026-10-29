@@ -4,11 +4,12 @@ import { TokenCatalog } from './portal/tokens/TokenCatalog';
 import { Home } from './portal/pages/Home';
 import { Colors } from './portal/pages/Colors';
 import { Typography } from './portal/pages/Typography';
+import { Spacing } from './portal/pages/Spacing';
 import './portal/styles/index.scss';
 import { appPath } from './portal/paths';
 
 const routePath = () => appPath(window.location.pathname);
-const routes = new Set(['/', '/home', '/cores', '/tipografia', '/configuracao']);
+const routes = new Set(['/', '/home', '/cores', '/tipografia', '/espacamento', '/configuracao']);
 function App() {
   const [path, setPath] = useState(routePath);
   useLayoutEffect(() => {
@@ -56,13 +57,13 @@ function App() {
     };
   }, []);
   useLayoutEffect(() => {
-    document.title = path === '/home' ? 'IngCore - Design System' : path === '/tipografia' ? 'Tipografia - IngCore' : path === '/cores' ? 'Cores - IngCore' : 'Configuração - IngCore';
+    document.title = path === '/espacamento' ? 'Espaçamento - IngCore' : path === '/home' ? 'IngCore - Design System' : path === '/tipografia' ? 'Tipografia - IngCore' : path === '/cores' ? 'Cores - IngCore' : 'Configuração - IngCore';
     const anchor = window.location.hash.slice(1);
     const target = anchor ? document.getElementById(anchor) : null;
     if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
     else window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [path]);
-  return path === '/home' ? <Home /> : path === '/tipografia' ? <Typography /> : path === '/cores' ? <Colors /> : <TokenCatalog />;
+  return path === '/espacamento' ? <Spacing /> : path === '/home' ? <Home /> : path === '/tipografia' ? <Typography /> : path === '/cores' ? <Colors /> : <TokenCatalog />;
 }
 
 // Aguarda as faces locais antes de exibir os textos, evitando a troca do fallback.

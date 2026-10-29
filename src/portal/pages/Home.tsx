@@ -1,3 +1,4 @@
+import { useScrollFade } from '../hooks/useScrollFade';
 import { assetUrl, pageUrl } from '../paths';
 import { PortalSidebar } from '../components/PortalSidebar';
 import { PortalTabletHeader } from '../components/PortalTabletHeader';
@@ -14,6 +15,7 @@ const library = [
 ];
 /** Página inicial com atualizações do histórico editorial local. */
 export function Home() {
+  const updatesFade = useScrollFade<HTMLOListElement>();
   return <div className="portal-theme portal-layout home-page">
     <PortalSidebar />
     <PortalTabletHeader />
@@ -33,7 +35,7 @@ export function Home() {
       </div>
       <section className="section-panel updates-section" aria-labelledby="atualizacoes">
         <header className="section-header"><h2 id="atualizacoes">Atualizações</h2></header>
-        <div className="updates-container"><ol className="timeline">{recentUpdates.map(update => <li key={update.id}>
+        <div className="updates-container"><div className="updates-scroll" ref={updatesFade.scrollRef} onScroll={updatesFade.onScroll} style={updatesFade.style}><ol className="timeline" ref={updatesFade.contentRef}>{recentUpdates.map(update => <li key={update.id}>
           <div className="timeline-marker" aria-hidden="true"><img src={assetUrl(`timeline-${updateTones[update.status]}.svg`)} width="12" height="12" alt="" /><span /></div>
           <article className="update-item">
             <div className="update-content">
@@ -45,7 +47,7 @@ export function Home() {
               : <TextLink label={`Ver alteração: ${update.title}`}>Ver alteração</TextLink>}
             </div>
           </article>
-        </li>)}</ol>
+        </li>)}</ol></div>
           {/* O histórico será disponibilizado quando sua página estiver definida. */}
         </div>
       </section>

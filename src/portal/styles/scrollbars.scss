@@ -1,0 +1,13 @@
+// Dimensões e cores definidas para as barras de rolagem do ambiente inteiro.
+*::-webkit-scrollbar { width: 4px; height: 4px; background: #FFFFFF; }
+*::-webkit-scrollbar-track { background: #F1F3F3; }
+*::-webkit-scrollbar-corner { background: #FFFFFF; }
+*::-webkit-scrollbar-thumb { background: #D0D6D8; border-radius: 8px; }
+@supports not selector(::-webkit-scrollbar) {
+  * { scrollbar-color: #D0D6D8 #F1F3F3; scrollbar-width: thin; }
+}
+// A rolagem da página precisa de mais contraste sobre o canvas cinza.
+html::-webkit-scrollbar-thumb { background: #9EA6B4; }
+@supports not selector(::-webkit-scrollbar) {
+  html { scrollbar-color: #9EA6B4 #F1F3F3; }
+}

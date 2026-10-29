@@ -40,3 +40,15 @@
     .table-pagination-summary { align-items: center; text-align: center; }
   }
 }
+// Reserva 8px acima e abaixo da faixa visível de 4px sem reduzir o conteúdo.
+.portal-theme .table-scroll {
+  &::-webkit-scrollbar:horizontal { height: 20px; background: #FFFFFF; }
+  &::-webkit-scrollbar-track:horizontal {
+    margin-inline: 16px; border: 0; border-radius: 100px;
+    background: linear-gradient(to bottom, transparent 8px, #F1F3F3 8px, #F1F3F3 12px, transparent 12px);
+  }
+  &::-webkit-scrollbar-thumb:horizontal {
+    border: 0; border-radius: 100px;
+    background: linear-gradient(to bottom, transparent 8px, #D0D6D8 8px, #D0D6D8 12px, transparent 12px);
+  }
+}

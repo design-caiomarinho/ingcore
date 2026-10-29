@@ -12,15 +12,20 @@
   .explore-card h3 { line-height: var(--ref-font-line-tight); }
   .updates-section {
     display: flex; flex-direction: column; min-height: 0;
-    height: calc(100dvh - 32px); min-height: 480px;
+    height: calc(100dvh - 16px); min-height: 480px;
     position: sticky; top: 16px;
   }
   .updates-section > .section-header { flex: none; }
-  .updates-container { display: flex; flex: 1; min-height: 0; flex-direction: column; gap: 24px; }
-  .updates-container:has(> .timeline > li:only-child) { padding-bottom: 40px; }
+  .updates-container { display: flex; flex: 1; min-height: 0; flex-direction: column; gap: 24px; padding-block: 0; }
+
+  .updates-scroll {
+    flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: none;
+    mask-image: linear-gradient(to bottom, transparent 0, #000 var(--scroll-fade-top, 0px), #000 calc(100% - var(--scroll-fade-size, 0px)), transparent 100%);
+    &::-webkit-scrollbar { display: none; width: 0; height: 0; }
+  }
   .timeline {
     flex: 1; min-height: 0; padding: 0 !important; border: 0; border-radius: 0;
-    overflow-y: auto; overscroll-behavior-y: contain;
+
   }
   .timeline-marker { width: 16px; padding-top: 4px; }
   .timeline > li:last-child .timeline-marker span {
@@ -28,6 +33,8 @@
   }
   .update-item { flex: 1; gap: 16px; }
   .timeline > li:not(:last-child) .update-item { padding-bottom: 40px; }
+  .timeline > li:first-child { padding-top: 24px; }
+  .timeline > li:last-child { padding-bottom: 24px; }
   .update-item h3 { @include type.text('body-lg-semibold'); }
   .update-item p { @include type.text('body-sm-regular'); }
   .update-content { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
@@ -40,7 +47,7 @@
 }
 @media (max-width: 1199px) {
   .home-page {
-    .updates-section { height: calc(100dvh - 104px); top: 88px; }
+    .updates-section { height: calc(100dvh - 88px); top: 88px; }
     .updates-container { gap: 24px; }
   }
 }
@@ -49,6 +56,8 @@
     .page-content { grid-template-columns: minmax(0, 1fr); }
     .cards-container { grid-template-columns: minmax(0, 1fr); }
     .updates-section { position: static; height: auto; min-height: 0; }
+    .updates-scroll { flex: none; overflow: visible; mask-image: none; }
     .timeline { flex: none; overflow: visible; }
   }
 }
+@media (min-width: 768px) { .home-page .home-content > .section-panel:last-child { margin-bottom: 0; border-radius: 8px 8px 0 0; } }

@@ -1,15 +1,14 @@
 @use './typography' as type;
 .colors-page {
-  .color-explorer { display: flex; flex-direction: column; gap: 48px; width: 100%; min-width: 0; }
+  .color-explorer { display: flex; flex-direction: column; gap: 32px; width: 100%; min-width: 0; }
   .color-controls { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
   .color-tabs { display: flex; gap: 16px; box-shadow: inset 0 -1px 0 var(--sys-color-border-primary); }
   .color-groups { display: flex; flex-wrap: wrap; gap: 8px; }
-  .color-results { display: flex; flex-direction: column; gap: 32px; min-width: 0; }
+  .color-results { margin-top: 16px; display: flex; flex-direction: column; gap: 32px; min-width: 0; }
   .color-results-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
 }
 @media (max-width: 767px) {
   .colors-page {
-    .color-results { gap: 24px; }
     .color-results-heading { align-items: flex-start; flex-direction: column; }
     .color-search input { text-overflow: ellipsis; }
   }

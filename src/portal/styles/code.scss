@@ -8,9 +8,9 @@
   .code-block code { font: inherit; letter-spacing: inherit; }
   .code-tag {
     @include type.text('code-md-medium');
-    display: inline; padding: 0 4px;
-    border: 1px solid var(--sys-color-border-tertiary); border-radius: 8px;
-    background: var(--sys-color-surface-empashis); color: var(--sys-color-content-secondary);
+    display: inline; padding: 0 8px;
+    border: 1px solid var(--sys-color-border-brand-secondary); border-radius: 8px;
+    background: var(--sys-color-surface-brand-subtle-default); color: var(--sys-color-content-brand);
     white-space: normal; overflow-wrap: anywhere;
     -webkit-box-decoration-break: clone; box-decoration-break: clone;
   }

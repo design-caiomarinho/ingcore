@@ -2,15 +2,15 @@
   "source": {
     "fileKey": "r58dqyV6DaTkieXp1IbKUU",
     "url": "https://www.figma.com/design/r58dqyV6DaTkieXp1IbKUU/IngCore---Storybook",
-    "capturedOn": "2026-10-16",
-    "note": "Todas as variáveis das três coleções locais existentes foram lidas: ref, sys-color e sys-type. O sistema continua incompleto e não recebeu novos valores presumidos. Input: receita body/md/medium e border/critical consultados em 19/10/2026; demais tokens preservados. border/disabled atualizado para a nomenclatura e alias usados no input."
+    "capturedOn": "2026-10-29",
+    "note": "Coleções ref, sys-color e sys-type relidas integralmente em 29/10/2026. Valores, nomes, agrupamentos e aliases preservados. Base incompleta; nenhum token presumido. Tokens do Design System documentado permanecem separados."
   },
   "status": "incomplete-design",
   "report": {
     "status": "incomplete-design",
     "counts": {
       "primary": 151,
-      "secondary": 91,
+      "secondary": 92,
       "typography": 75,
       "primaryColors": 119,
       "primaryTypography": 32,
@@ -67,8 +67,9 @@
         "syntax": "var(--content-brand)",
         "names": [
           "sys-color/content/brand",
-          "sys-color/border/brand",
-          "sys-color/border/critical"
+          "sys-color/border/brand/primary",
+          "sys-color/border/critical",
+          "sys-color/border/brand/secondary"
         ]
       },
       {
@@ -639,15 +640,15 @@
       "group": "palette/gray",
       "cssVar": "--ref-palette-gray-100",
       "originalCodeSyntax": "var(--palette-gray-100)",
-      "value": "color(srgb 0.941176474 0.952941179 0.972549021 / 1)",
-      "resolvedValue": "color(srgb 0.941176474 0.952941179 0.972549021 / 1)",
+      "value": "color(srgb 0.959090889 0.967272758 0.980909169 / 1)",
+      "resolvedValue": "color(srgb 0.959090889 0.967272758 0.980909169 / 1)",
       "sourceValue": {
-        "r": 0.9411764740943909,
-        "g": 0.9529411792755127,
-        "b": 0.9725490212440491,
+        "r": 0.9590908885002136,
+        "g": 0.9672727584838867,
+        "b": 0.9809091687202454,
         "a": 1
       },
-      "hexPreview": "#f0f3f8",
+      "hexPreview": "#f5f7fa",
       "alpha": 1,
       "alias": null
     },
@@ -662,15 +663,15 @@
       "group": "palette/gray",
       "cssVar": "--ref-palette-gray-200",
       "originalCodeSyntax": "var(--palette-gray-200)",
-      "value": "color(srgb 0.819607854 0.835294127 0.866666675 / 1)",
-      "resolvedValue": "color(srgb 0.819607854 0.835294127 0.866666675 / 1)",
+      "value": "color(srgb 0.919500053 0.926500082 0.940499961 / 1)",
+      "resolvedValue": "color(srgb 0.919500053 0.926500082 0.940499961 / 1)",
       "sourceValue": {
-        "r": 0.8196078538894653,
-        "g": 0.8352941274642944,
-        "b": 0.8666666746139526,
+        "r": 0.9195000529289246,
+        "g": 0.9265000820159912,
+        "b": 0.9404999613761902,
         "a": 1
       },
-      "hexPreview": "#d1d5dd",
+      "hexPreview": "#eaecf0",
       "alpha": 1,
       "alias": null
     },
@@ -3884,14 +3885,14 @@
       "cssVar": "--sys-color-canvas-default",
       "originalCodeSyntax": "var(--canvas-default)",
       "value": "var(--ref-palette-gray-100)",
-      "resolvedValue": "color(srgb 0.941176474 0.952941179 0.972549021 / 1)",
+      "resolvedValue": "color(srgb 0.959090889 0.967272758 0.980909169 / 1)",
       "sourceValue": {
-        "r": 0.9411764740943909,
-        "g": 0.9529411792755127,
-        "b": 0.9725490212440491,
+        "r": 0.9590908885002136,
+        "g": 0.9672727584838867,
+        "b": 0.9809091687202454,
         "a": 1
       },
-      "hexPreview": "#f0f3f8",
+      "hexPreview": "#f5f7fa",
       "alpha": 1,
       "alias": {
         "id": "VariableID:13:2832",
@@ -3940,14 +3941,14 @@
       "cssVar": "--sys-color-surface-strong",
       "originalCodeSyntax": "var(--surface-strong)",
       "value": "var(--ref-palette-gray-100)",
-      "resolvedValue": "color(srgb 0.941176474 0.952941179 0.972549021 / 1)",
+      "resolvedValue": "color(srgb 0.959090889 0.967272758 0.980909169 / 1)",
       "sourceValue": {
-        "r": 0.9411764740943909,
-        "g": 0.9529411792755127,
-        "b": 0.9725490212440491,
+        "r": 0.9590908885002136,
+        "g": 0.9672727584838867,
+        "b": 0.9809091687202454,
         "a": 1
       },
-      "hexPreview": "#f0f3f8",
+      "hexPreview": "#f5f7fa",
       "alpha": 1,
       "alias": {
         "id": "VariableID:13:2832",
@@ -3968,14 +3969,14 @@
       "cssVar": "--sys-color-surface-empashis",
       "originalCodeSyntax": "var(--surface-empashis)",
       "value": "var(--ref-palette-gray-200)",
-      "resolvedValue": "color(srgb 0.819607854 0.835294127 0.866666675 / 1)",
+      "resolvedValue": "color(srgb 0.919500053 0.926500082 0.940499961 / 1)",
       "sourceValue": {
-        "r": 0.8196078538894653,
-        "g": 0.8352941274642944,
-        "b": 0.8666666746139526,
+        "r": 0.9195000529289246,
+        "g": 0.9265000820159912,
+        "b": 0.9404999613761902,
         "a": 1
       },
-      "hexPreview": "#d1d5dd",
+      "hexPreview": "#eaecf0",
       "alpha": 1,
       "alias": {
         "id": "VariableID:13:2830",
@@ -4444,14 +4445,14 @@
       "cssVar": "--sys-color-border-primary",
       "originalCodeSyntax": "var(--content-primary)",
       "value": "var(--ref-palette-gray-200)",
-      "resolvedValue": "color(srgb 0.819607854 0.835294127 0.866666675 / 1)",
+      "resolvedValue": "color(srgb 0.919500053 0.926500082 0.940499961 / 1)",
       "sourceValue": {
-        "r": 0.8196078538894653,
-        "g": 0.8352941274642944,
-        "b": 0.8666666746139526,
+        "r": 0.9195000529289246,
+        "g": 0.9265000820159912,
+        "b": 0.9404999613761902,
         "a": 1
       },
-      "hexPreview": "#d1d5dd",
+      "hexPreview": "#eaecf0",
       "alpha": 1,
       "alias": {
         "id": "VariableID:13:2830",
@@ -4556,14 +4557,14 @@
       "cssVar": "--sys-color-action-disabled",
       "originalCodeSyntax": "var(--action-secondary-hover)",
       "value": "var(--ref-palette-gray-100)",
-      "resolvedValue": "color(srgb 0.941176474 0.952941179 0.972549021 / 1)",
+      "resolvedValue": "color(srgb 0.959090889 0.967272758 0.980909169 / 1)",
       "sourceValue": {
-        "r": 0.9411764740943909,
-        "g": 0.9529411792755127,
-        "b": 0.9725490212440491,
+        "r": 0.9590908885002136,
+        "g": 0.9672727584838867,
+        "b": 0.9809091687202454,
         "a": 1
       },
-      "hexPreview": "#f0f3f8",
+      "hexPreview": "#f5f7fa",
       "alpha": 1,
       "alias": {
         "id": "VariableID:13:2832",
@@ -4630,14 +4631,14 @@
     },
     {
       "id": "VariableID:16:3602",
-      "name": "border/brand",
+      "name": "border/brand/primary",
       "collection": "sys-color",
       "tier": "secondary",
       "type": "COLOR",
       "category": "color",
       "property": "color",
-      "group": "border",
-      "cssVar": "--sys-color-border-brand",
+      "group": "border/brand",
+      "cssVar": "--sys-color-border-brand-primary",
       "originalCodeSyntax": "var(--content-brand)",
       "value": "var(--ref-palette-blue-500)",
       "resolvedValue": "color(srgb 0.223529413 0.352941185 0.749019623 / 1)",
@@ -4667,20 +4668,20 @@
       "group": "border",
       "cssVar": "--sys-color-border-inverse",
       "originalCodeSyntax": "var(--content-inverse)",
-      "value": "var(--ref-palette-gray-900)",
-      "resolvedValue": "color(srgb 0.13333334 0.156862751 0.200000003 / 1)",
+      "value": "var(--ref-palette-gray-800)",
+      "resolvedValue": "color(srgb 0.176470593 0.20784314 0.254901975 / 1)",
       "sourceValue": {
-        "r": 0.13333334028720856,
-        "g": 0.1568627506494522,
-        "b": 0.20000000298023224,
+        "r": 0.1764705926179886,
+        "g": 0.2078431397676468,
+        "b": 0.2549019753932953,
         "a": 1
       },
-      "hexPreview": "#222833",
+      "hexPreview": "#2d3541",
       "alpha": 1,
       "alias": {
-        "id": "VariableID:13:2825",
-        "name": "palette/gray/900",
-        "cssVar": "--ref-palette-gray-900",
+        "id": "VariableID:13:2824",
+        "name": "palette/gray/800",
+        "cssVar": "--ref-palette-gray-800",
         "external": false
       }
     },
@@ -4696,14 +4697,14 @@
       "cssVar": "--sys-color-border-disabled",
       "originalCodeSyntax": "var(--content-on-disabled)",
       "value": "var(--ref-palette-gray-100)",
-      "resolvedValue": "color(srgb 0.941176474 0.952941179 0.972549021 / 1)",
+      "resolvedValue": "color(srgb 0.959090889 0.967272758 0.980909169 / 1)",
       "sourceValue": {
-        "r": 0.9411764740943909,
-        "g": 0.9529411792755127,
-        "b": 0.9725490212440491,
+        "r": 0.9590908885002136,
+        "g": 0.9672727584838867,
+        "b": 0.9809091687202454,
         "a": 1
       },
-      "hexPreview": "#f0f3f8",
+      "hexPreview": "#f5f7fa",
       "alpha": 1,
       "alias": {
         "id": "VariableID:13:2832",
@@ -6417,6 +6418,34 @@
         "id": "VariableID:13:2865",
         "name": "palette/red/500",
         "cssVar": "--ref-palette-red-500",
+        "external": false
+      }
+    },
+    {
+      "id": "VariableID:218:1798",
+      "name": "border/brand/secondary",
+      "collection": "sys-color",
+      "tier": "secondary",
+      "type": "COLOR",
+      "category": "color",
+      "property": "color",
+      "group": "border/brand",
+      "cssVar": "--sys-color-border-brand-secondary",
+      "originalCodeSyntax": "var(--content-brand)",
+      "value": "var(--ref-palette-blue-200)",
+      "resolvedValue": "color(srgb 0.808000028 0.845333338 0.952000022 / 1)",
+      "sourceValue": {
+        "r": 0.8080000281333923,
+        "g": 0.8453333377838135,
+        "b": 0.9520000219345093,
+        "a": 1
+      },
+      "hexPreview": "#ced8f3",
+      "alpha": 1,
+      "alias": {
+        "id": "VariableID:13:2732",
+        "name": "palette/blue/200",
+        "cssVar": "--ref-palette-blue-200",
         "external": false
       }
     },

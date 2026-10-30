@@ -48,7 +48,7 @@ $layout-gap: 16px;
   transition: transform 300ms ease-in-out;
   &[data-hidden] { transform: translateY(-100%); }
 }
-.brand-logo:focus-visible { outline: 1px solid var(--sys-color-border-brand); outline-offset: 4px; border-radius: 4px; }
+.brand-logo:focus-visible { outline: 1px solid var(--sys-color-border-brand-primary); outline-offset: 4px; border-radius: 4px; }
 .mobile-menu {
   position: fixed; inset: 0; margin: 0; width: 100%; max-width: none;
   height: 100vh; height: 100dvh; max-height: none;

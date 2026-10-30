@@ -2,7 +2,7 @@
   "status": "incomplete-design",
   "counts": {
     "primary": 151,
-    "secondary": 91,
+    "secondary": 92,
     "typography": 75,
     "primaryColors": 119,
     "primaryTypography": 32,
@@ -59,8 +59,9 @@
       "syntax": "var(--content-brand)",
       "names": [
         "sys-color/content/brand",
-        "sys-color/border/brand",
-        "sys-color/border/critical"
+        "sys-color/border/brand/primary",
+        "sys-color/border/critical",
+        "sys-color/border/brand/secondary"
       ]
     },
     {

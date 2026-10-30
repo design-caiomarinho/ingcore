@@ -17,7 +17,7 @@
   &--medium { height: 40px; padding: 12px; }
   &--small { height: 32px; padding: 8px; }
   &[data-icon-only] { aspect-ratio: 1; }
-  &--outlined { border: 1px solid var(--sys-color-border-brand); }
+  &--outlined { border: 1px solid var(--sys-color-border-brand-primary); }
   &--outlined.button--medium[data-icon-only] { width: 42px; aspect-ratio: auto; }
   &--outlined.button--small[data-icon-only] { width: 34px; aspect-ratio: auto; }
   // Transição de Small no Figma, estendida a todos os Ghost por orientação do portal.
@@ -25,7 +25,7 @@
   &:hover:not(:disabled) { background: var(--sys-color-action-ghost-hover); }
   &[data-selected]:not(:disabled) { background: var(--sys-color-action-ghost-enabled); }
   &:focus { outline: none; }
-  &:focus-visible { outline: 1px solid var(--sys-color-border-brand); outline-offset: 4px; }
+  &:focus-visible { outline: 1px solid var(--sys-color-border-brand-primary); outline-offset: 4px; }
   &:disabled {
     cursor: not-allowed;
     color: var(--sys-color-content-on-disabled);

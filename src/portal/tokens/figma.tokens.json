@@ -4,8 +4,8 @@
   "source": {
     "fileKey": "r58dqyV6DaTkieXp1IbKUU",
     "url": "https://www.figma.com/design/r58dqyV6DaTkieXp1IbKUU/IngCore---Storybook",
-    "capturedOn": "2026-10-16",
-    "note": "Todas as variáveis das três coleções locais existentes foram lidas: ref, sys-color e sys-type. O sistema continua incompleto e não recebeu novos valores presumidos. Input: receita body/md/medium e border/critical consultados em 19/10/2026; demais tokens preservados. border/disabled atualizado para a nomenclatura e alias usados no input."
+    "capturedOn": "2026-10-29",
+    "note": "Coleções ref, sys-color e sys-type relidas integralmente em 29/10/2026. Valores, nomes, agrupamentos e aliases preservados. Base incompleta; nenhum token presumido. Tokens do Design System documentado permanecem separados."
   },
   "collections": [
     {
@@ -18,8 +18,6 @@
           "modeId": "13:0"
         }
       ],
-      "count": 151,
-      "tier": "primary",
       "variables": [
         {
           "id": "VariableID:13:2766",
@@ -78,9 +76,9 @@
           "type": "COLOR",
           "values": {
             "13:0": {
-              "r": 0.9411764740943909,
-              "g": 0.9529411792755127,
-              "b": 0.9725490212440491,
+              "r": 0.9590908885002136,
+              "g": 0.9672727584838867,
+              "b": 0.9809091687202454,
               "a": 1
             }
           },
@@ -95,9 +93,9 @@
           "type": "COLOR",
           "values": {
             "13:0": {
-              "r": 0.8196078538894653,
-              "g": 0.8352941274642944,
-              "b": 0.8666666746139526,
+              "r": 0.9195000529289246,
+              "g": 0.9265000820159912,
+              "b": 0.9404999613761902,
               "a": 1
             }
           },
@@ -2428,7 +2426,9 @@
           ],
           "codeSyntax": {}
         }
-      ]
+      ],
+      "count": 151,
+      "tier": "primary"
     },
     {
       "id": "VariableCollectionId:13:2870",
@@ -2440,8 +2440,6 @@
           "modeId": "13:1"
         }
       ],
-      "count": 91,
-      "tier": "secondary",
       "variables": [
         {
           "id": "VariableID:13:2877",
@@ -2928,7 +2926,7 @@
         },
         {
           "id": "VariableID:16:3602",
-          "name": "border/brand",
+          "name": "border/brand/primary",
           "type": "COLOR",
           "values": {
             "13:1": {
@@ -2950,7 +2948,7 @@
           "values": {
             "13:1": {
               "type": "VARIABLE_ALIAS",
-              "id": "VariableID:13:2825"
+              "id": "VariableID:13:2824"
             }
           },
           "scopes": [
@@ -4193,8 +4191,27 @@
           "codeSyntax": {
             "WEB": "var(--content-brand)"
           }
+        },
+        {
+          "id": "VariableID:218:1798",
+          "name": "border/brand/secondary",
+          "type": "COLOR",
+          "values": {
+            "13:1": {
+              "type": "VARIABLE_ALIAS",
+              "id": "VariableID:13:2732"
+            }
+          },
+          "scopes": [
+            "STROKE_COLOR"
+          ],
+          "codeSyntax": {
+            "WEB": "var(--content-brand)"
+          }
         }
-      ]
+      ],
+      "count": 92,
+      "tier": "secondary"
     },
     {
       "id": "VariableCollectionId:37:1106",
@@ -4206,8 +4223,6 @@
           "modeId": "37:0"
         }
       ],
-      "count": 75,
-      "tier": "typography",
       "variables": [
         {
           "id": "VariableID:39:270",
@@ -5194,10 +5209,10 @@
               "id": "VariableID:37:996"
             }
           },
-          "codeSyntax": {},
           "scopes": [
             "FONT_FAMILY"
-          ]
+          ],
+          "codeSyntax": {}
         },
         {
           "id": "VariableID:132:391",
@@ -5209,10 +5224,10 @@
               "id": "VariableID:37:1053"
             }
           },
-          "codeSyntax": {},
           "scopes": [
             "FONT_SIZE"
-          ]
+          ],
+          "codeSyntax": {}
         },
         {
           "id": "VariableID:132:392",
@@ -5224,10 +5239,10 @@
               "id": "VariableID:37:1009"
             }
           },
-          "codeSyntax": {},
           "scopes": [
             "FONT_WEIGHT"
-          ]
+          ],
+          "codeSyntax": {}
         },
         {
           "id": "VariableID:132:393",
@@ -5239,10 +5254,10 @@
               "id": "VariableID:37:1086"
             }
           },
-          "codeSyntax": {},
           "scopes": [
             "ALL_SCOPES"
-          ]
+          ],
+          "codeSyntax": {}
         },
         {
           "id": "VariableID:132:394",
@@ -5254,10 +5269,10 @@
               "id": "VariableID:37:1105"
             }
           },
-          "codeSyntax": {},
           "scopes": [
             "ALL_SCOPES"
-          ]
+          ],
+          "codeSyntax": {}
         },
         {
           "id": "VariableID:157:376",
@@ -5334,7 +5349,9 @@
           ],
           "codeSyntax": {}
         }
-      ]
+      ],
+      "count": 75,
+      "tier": "typography"
     }
   ],
   "dependencies": []

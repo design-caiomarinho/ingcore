@@ -27,8 +27,8 @@
   --sys-color-action-disabled: var(--ref-palette-gray-100);
   --sys-color-border-secondary: var(--ref-palette-gray-300);
   --sys-color-border-tertiary: var(--ref-palette-gray-400);
-  --sys-color-border-brand: var(--ref-palette-blue-500);
-  --sys-color-border-inverse: var(--ref-palette-gray-900);
+  --sys-color-border-brand-primary: var(--ref-palette-blue-500);
+  --sys-color-border-inverse: var(--ref-palette-gray-800);
   --sys-color-border-disabled: var(--ref-palette-gray-100);
   --sys-color-extented-gray-100: var(--ref-palette-variations-gray-100);
   --sys-color-extented-gray-300: var(--ref-palette-variations-gray-300);
@@ -91,4 +91,5 @@
   --sys-color-extented-pink-700: var(--ref-palette-variations-pink-700);
   --sys-color-extented-pink-900: var(--ref-palette-variations-pink-900);
   --sys-color-border-critical: var(--ref-palette-red-500);
+  --sys-color-border-brand-secondary: var(--ref-palette-blue-200);
 }

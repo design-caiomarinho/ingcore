@@ -14,7 +14,7 @@
   &:hover:not(:disabled) { color: var(--sys-color-content-brand); background-color: var(--sys-color-action-ghost-hover); }
   &[data-selected='true']:not(:disabled) { color: var(--sys-color-content-brand); background-color: var(--sys-color-action-ghost-enabled); }
   // O retângulo do Figma representa o indicador nativo de foco de teclado.
-  &:focus-visible { outline: 1px solid var(--sys-color-border-brand); outline-offset: 4px; }
+  &:focus-visible { outline: 1px solid var(--sys-color-border-brand-primary); outline-offset: 4px; }
   &:disabled { color: var(--sys-color-content-on-disabled); background-color: var(--sys-color-action-ghost-default); cursor: not-allowed; }
   .sidebar-lock { display: block; flex: none; }
 }

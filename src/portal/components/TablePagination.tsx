@@ -15,9 +15,9 @@ export function TablePagination({total, page, pageSize = 10, onPageChange, label
       <p role="status" aria-live="polite" aria-atomic="true">Mostrando {total ? start + 1 : 0}-{Math.min(start + pageSize, total)} de {total} itens</p>
     </div>
     <nav className="table-page-buttons" aria-label={label}>
-      <Button size="small" iconOnly disabled={current === 1} onClick={() => onPageChange(current - 1)} icon={<img src={assetUrl('color-page-previous.svg')} width="16" height="16" alt="" />} aria-label="Página anterior" />
+      <Button size="small" iconOnly disabled={current === 1} onClick={() => onPageChange(current - 1)} icon={<img src={assetUrl('colors-page-previous.svg')} alt="" />} aria-label="Página anterior" />
       {pages.map(value => <Button key={value} size="small" selected={value === current} onClick={() => onPageChange(value)} aria-label={`Página ${value}`} aria-current={value === current ? 'page' : undefined}>{value}</Button>)}
-      <Button size="small" iconOnly disabled={current === pageCount} onClick={() => onPageChange(current + 1)} icon={<img src={assetUrl('color-page-next.svg')} width="16" height="16" alt="" />} aria-label="Próxima página" />
+      <Button size="small" iconOnly disabled={current === pageCount} onClick={() => onPageChange(current + 1)} icon={<img src={assetUrl('colors-page-next.svg')} alt="" />} aria-label="Próxima página" />
     </nav>
   </div>;
 }

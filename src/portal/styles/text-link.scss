@@ -10,7 +10,7 @@
   // O Figma usa um traço sob o conjunto texto + ícone, sem transição.
   &::after { content: ''; position: absolute; height: 0; inset-inline: 0; bottom: -1px; border-bottom: 1px solid currentColor; visibility: hidden; }
   &:hover:not(:disabled):not([aria-disabled='true'])::after { visibility: visible; }
-  &:focus-visible { outline: 1px solid var(--sys-color-border-brand); outline-offset: 4px; }
+  &:focus-visible { outline: 1px solid var(--sys-color-border-brand-primary); outline-offset: 4px; }
   &:disabled, &[aria-disabled='true'] { color: var(--sys-color-content-on-disabled); cursor: not-allowed; }
 }
 @media (forced-colors: active) { .text-link:focus-visible { outline-color: Highlight; } }

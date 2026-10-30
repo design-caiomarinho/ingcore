@@ -85,11 +85,10 @@ export function TokenCatalog() {
       })}
       {visible.length === 0 && <p>Nenhum token encontrado.</p>}
       <section aria-labelledby="sync-notes"><h2 id="sync-notes">Notas da atualização</h2>
-        <p>Variante body/sm/regular adicionada: Inter, 12px, peso 400, altura de linha de 150% e espaçamento de −1%. Seus cinco tokens semânticos referenciam os primitivos existentes e são usados nas descrições das atualizações.</p>
-        <p>Tipografia revisada: heading/lg, md e sm com −2% de espaçamento; body com −1%; body/sm/medium com altura de linha de 150%. A referência primitiva font/space/tighter está disponível nas amostras e nos aliases semânticos.</p>
-        <p>{changes.renamed.length} nomes atualizados e {changes.added.length} variáveis adicionadas em relação ao inventário anterior. Nenhuma variável anterior foi excluída.</p>
-        <p>Os primitivos de cor agora seguem os caminhos <code>palette/*</code>, com o mesmo agrupamento do Figma.</p>
-        <p>As ações ghost agora apontam para os primitivos locais. Não há dependências externas nesta leitura.</p>
+        <p>Primitivos revisados em 29/10/2026: <code>palette/gray/100</code> e <code>palette/gray/200</code>. Os semânticos mantêm seus aliases e recebem os novos valores automaticamente.</p>
+        <p>Bordas de marca: <code>border/brand</code> passou a <code>border/brand/primary</code>, e <code>border/brand/secondary</code> referencia <code>palette/blue/200</code>. <code>border/inverse</code> agora referencia <code>palette/gray/800</code>.</p>
+        <p>{changes.renamed.length} nome atualizado e {changes.added.length} variável adicionada em relação ao inventário anterior. Nenhuma variável anterior foi excluída. Os tokens tipográficos permanecem iguais.</p>
+        <p>Estas alterações são exclusivas dos tokens da interface do portal. O Design System documentado mantém seu inventário independente.</p>
         <p>Conversões para o navegador: tamanhos em px; pesos sem unidade; alturas percentuais em razão sem unidade; AUTO como normal; espaçamento percentual em em. Ex.: 4% → 0.04em. Os valores originais continuam no inventário.</p>
         <p>{inventory.report.incompleteRecipes.length === 0 ? `Os ${inventory.recipes.length} conjuntos tipográficos têm as cinco propriedades definidas.` : `Conjuntos incompletos: ${inventory.report.incompleteRecipes.join(', ')}.`}</p>
         <details><summary>Nomes CSS repetidos no Figma · {inventory.report.duplicateCodeSyntax.length}</summary><ul>{inventory.report.duplicateCodeSyntax.map(issue => <li key={issue.syntax}><code>{issue.syntax}</code>: {issue.names.join(', ')}</li>)}</ul></details>

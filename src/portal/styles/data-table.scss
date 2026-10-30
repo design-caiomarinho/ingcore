@@ -2,7 +2,7 @@
 .portal-theme {
   .table-frame { width: 100%; min-width: 0; }
   .table-scroll { width: 100%; min-width: 0; overflow-x: auto; }
-  .table-scroll:focus-visible { outline: 1px solid var(--sys-color-border-brand); outline-offset: -1px; }
+  .table-scroll:focus-visible { outline: 1px solid var(--sys-color-border-brand-primary); outline-offset: -1px; }
   .table-track { min-width: var(--table-min-width, 960px); }
   .data-table {
     width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 0;
@@ -23,6 +23,7 @@
     display: flex; align-items: center; gap: 8px; @include type.text('body-md-semibold');
   }
   .table-page-buttons { display: flex; gap: 4px; .button { width: 32px; padding: 8px; } }
+  .table-page-buttons .button-icon img { width: auto; height: auto; }
   .table-page-buttons .button:disabled img { opacity: 0.4; }
 }
 

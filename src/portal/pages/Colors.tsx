@@ -39,7 +39,7 @@ export function Colors() {
             ['78:2335', '78:2336', '83:2348'],
           ].map(([heading, body, caption]) => <div className="token-column" key={heading}>
             <article className="token-card"><h3>{text(heading as keyof typeof content.texts)}</h3><Paragraphs id={body as keyof typeof content.texts} /></article>
-            <p className="token-caption"><InlineCode>{text(caption as keyof typeof content.texts)}</InlineCode></p>
+            <p className="token-caption"><strong>Função:</strong> <InlineCode>{text(caption as keyof typeof content.texts).replace(/^Função:\s*/, '')}</InlineCode></p>
           </div>)}</div>
         </div>
         <div className="content-group">
@@ -48,7 +48,7 @@ export function Colors() {
             <div className="token-flow">{[
               ['92:254', '92:256'], ['92:259', '92:261'], ['92:264', '92:266'],
             ].map(([label, value], index) => <div className="flow-step" key={label}>
-              {index > 0 && <img className="flow-arrow" src={assetUrl('token-flow-arrow.svg')} width="18" height="15" alt="" />}
+              {index > 0 && <picture className="flow-arrow"><source media="(max-width: 767px)" srcSet={assetUrl('colors-flow-down.svg')} /><img src={assetUrl('colors-flow-right.svg')} alt="" /></picture>}
               <div><p className="flow-label">{text(label as keyof typeof content.texts)}</p><CodeTag>{text(value as keyof typeof content.texts)}</CodeTag></div>
             </div>)}</div>
             <CodeExample id="85:2452" />

@@ -69,7 +69,7 @@ function SpacingApplication() {
 }
 function TokenFlow({items}: {items: string[]}) {
   return <div className="spacing-token-flow">{items.map((item, index) => <span className="spacing-flow-item" key={index}>
-    {index > 0 && <img src={assetUrl('spacing-flow-arrow.svg')} alt="aponta para" />}<CodeTag>{item}</CodeTag>
+    {index > 0 && <span className="spacing-flow-icon"><img src={assetUrl('colors-flow-right.svg')} alt="aponta para" /></span>}<CodeTag>{item}</CodeTag>
   </span>)}</div>;
 }
 export function Spacing() {

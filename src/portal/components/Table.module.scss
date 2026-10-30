@@ -3,7 +3,7 @@
 .scroll {
   width: 100%; max-width: 100%; min-width: 0; overflow-x: auto;
   border-radius: 8px;
-  &:focus-visible { outline: 1px solid var(--sys-color-border-brand); outline-offset: -1px; }
+  &:focus-visible { outline: 1px solid var(--sys-color-border-brand-primary); outline-offset: -1px; }
 }
 .track {
   box-sizing: border-box;

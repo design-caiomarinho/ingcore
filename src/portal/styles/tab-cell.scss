@@ -13,11 +13,11 @@
   }
   &::after {
     content: ''; position: absolute; inset: -4px; pointer-events: none;
-    border: 1px solid var(--sys-color-border-brand); border-radius: 4px; opacity: 0;
+    border: 1px solid var(--sys-color-border-brand-primary); border-radius: 4px; opacity: 0;
     transition: opacity 300ms ease-in-out;
   }
   &[aria-selected='true']:not(:disabled) { color: var(--sys-color-content-primary); }
-  &[aria-selected='true']:not(:disabled)::before { background: var(--sys-color-border-brand); }
+  &[aria-selected='true']:not(:disabled)::before { background: var(--sys-color-border-brand-primary); }
   &:focus, &:focus-visible { outline: none; }
   &:focus-visible::after { opacity: 1; }
   &:disabled { color: var(--sys-color-content-on-disabled); cursor: not-allowed; }

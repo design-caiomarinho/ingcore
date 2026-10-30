@@ -10,7 +10,7 @@
     transition: border-color 300ms ease-in-out, background-color 300ms ease-in-out;
     &::after {
       content: ''; position: absolute; inset: -5px; pointer-events: none;
-      border: 1px solid var(--sys-color-border-brand); border-radius: 12px; opacity: 0;
+      border: 1px solid var(--sys-color-border-brand-primary); border-radius: 12px; opacity: 0;
       transition: opacity 300ms ease-in-out;
     }
   }
@@ -24,7 +24,7 @@
     &::-webkit-search-cancel-button, &::-webkit-search-decoration { -webkit-appearance: none; }
   }
   &:not([data-disabled]):not([data-invalid]) .input-control:focus-within,
-  &:not([data-disabled]):not([data-invalid]) .input-control:active { border-color: var(--sys-color-border-brand); }
+  &:not([data-disabled]):not([data-invalid]) .input-control:active { border-color: var(--sys-color-border-brand-primary); }
   &[data-invalid] .input-control { border-color: var(--sys-color-border-critical); }
   &[data-disabled] {
     .input-control { background: var(--sys-color-action-disabled); border-color: var(--sys-color-border-disabled); cursor: not-allowed; }
@@ -39,7 +39,7 @@
   .input-hint p { @include type.text('body-sm-regular'); margin: 0; color: var(--sys-color-content-tertiary); overflow-wrap: anywhere; }
 }
 @media (hover: hover) {
-  .input-field:not([data-disabled]):not([data-invalid]) .input-control:hover { border-color: var(--sys-color-border-brand); }
+  .input-field:not([data-disabled]):not([data-invalid]) .input-control:hover { border-color: var(--sys-color-border-brand-primary); }
 }
 html[data-input-mode='keyboard'] .input-field:not([data-disabled]) .input-control:focus-within::after { opacity: 1; }
 html:not([data-input-mode]) .input-field:not([data-disabled]) .input-control:has(input:focus-visible)::after { opacity: 1; }

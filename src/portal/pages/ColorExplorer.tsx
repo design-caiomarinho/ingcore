@@ -74,7 +74,7 @@ export function ColorExplorer() {
       <InputField className="color-search" label="Buscar cores" type="search" value={query}
         onChange={event => { setQuery(event.target.value); setPage(1); }}
         placeholder="Ex: content-primary, blue-500 ou #395ABF"
-        rightIcon={<img src={assetUrl('color-search.svg')} width="16" height="16" alt="" />} />
+        rightIcon={<img src={assetUrl('colors-search.svg')} alt="" />} />
     </div>
     <div className="color-results" id="color-panel" role="tabpanel" aria-labelledby={`color-tab-${layer}`}>
       <div className="color-results-heading"><div className="text-group">

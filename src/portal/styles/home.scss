@@ -85,6 +85,25 @@ $layout-gap: 16px;
   .mobile-menu[open] .nav-group :is(h2, li),
   .mobile-menu[open][data-closing] .nav-group :is(h2, li) { animation-duration: 1ms; }
 }
+.menu-morph {
+  position: relative; display: block; width: 16px; height: 16px;
+  span { position: absolute; left: 2px; top: 7.5px; width: 12px; height: 1px; border-radius: 1px; background: var(--sys-color-content-brand); }
+  span:first-child { animation: menu-morph-first 300ms ease-in-out both; }
+  span:nth-child(2) { animation: menu-morph-middle 300ms ease-in-out both; }
+  span:last-child { animation: menu-morph-last 300ms ease-in-out both; }
+}
+.mobile-menu[data-closing] .menu-morph {
+  span:first-child { animation: menu-morph-first-close 300ms ease-in-out both; }
+  span:nth-child(2) { animation: menu-morph-middle-close 300ms ease-in-out both; }
+  span:last-child { animation: menu-morph-last-close 300ms ease-in-out both; }
+}
+@keyframes menu-morph-first-close { from { transform: rotate(45deg) scaleX(.667); } to { transform: translateY(-3.333px); } }
+@keyframes menu-morph-middle-close { from { opacity: 0; } to { opacity: 1; } }
+@keyframes menu-morph-last-close { from { transform: rotate(-45deg) scaleX(.667); } to { transform: translateY(3.333px); } }
+@keyframes menu-morph-first { from { transform: translateY(-3.333px); } to { transform: rotate(45deg) scaleX(.667); } }
+@keyframes menu-morph-middle { from { opacity: 1; } to { opacity: 0; } }
+@keyframes menu-morph-last { from { transform: translateY(3.333px); } to { transform: rotate(-45deg) scaleX(.667); } }
+@media (prefers-reduced-motion: reduce) { .mobile-menu .menu-morph span, .mobile-menu[data-closing] .menu-morph span { animation-duration: 1ms; } }
 .menu-header {
   display: flex; flex: none; align-items: center; justify-content: space-between; width: 100%;
   height: var(--navbar-height); padding: 16px 24px;

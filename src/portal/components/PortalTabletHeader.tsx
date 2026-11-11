@@ -135,7 +135,7 @@ export function PortalTabletHeader({ currentItem, onStateChange }: { currentItem
       onCancel={event => { event.preventDefault(); closeMenu(); }}>
       <div className="menu-header">
         <BrandLogo onClick={() => { setOpen(false); setClosing(false); }} />
-        <Button iconOnly icon={<img src={assetUrl('imgClose.svg')} alt="" />} aria-label="Fechar menu de navegação" onClick={closeMenu} autoFocus />
+        <Button iconOnly icon={<span className="menu-morph"><span /><span /><span /></span>} aria-label="Fechar menu de navegação" onClick={closeMenu} autoFocus />
       </div>
       <div className="menu-container"><div className="menu-scroll"><PortalNavigation currentItem={currentItem} /></div></div>
     </dialog>

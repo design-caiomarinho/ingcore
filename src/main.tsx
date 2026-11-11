@@ -5,24 +5,33 @@ import { Home } from './portal/pages/Home';
 import { Colors } from './portal/pages/Colors';
 import { Typography } from './portal/pages/Typography';
 import { Spacing } from './portal/pages/Spacing';
+import { Icons } from './portal/pages/Icons';
 import './portal/styles/index.scss';
 import { appPath } from './portal/paths';
 
 const routePath = () => appPath(window.location.pathname);
-const routes = new Set(['/', '/home', '/cores', '/tipografia', '/espacamento', '/configuracao']);
+const routes = new Set(['/', '/home', '/cores', '/tipografia', '/espacamento', '/icones', '/configuracao']);
 function App() {
   const [path, setPath] = useState(routePath);
   useLayoutEffect(() => {
     const root = document.documentElement;
     root.dataset.inputMode = 'pointer';
-    const onPointer = () => { root.dataset.inputMode = 'pointer'; };
+    const onPointer = (event: PointerEvent) => {
+      root.dataset.inputMode = 'pointer';
+      root.dataset.pointerType = event.pointerType;
+    };
+    const onPointerMove = (event: PointerEvent) => {
+      if (event.pointerType === 'mouse') root.dataset.pointerType = 'mouse';
+    };
     const onKey = (event: KeyboardEvent) => {
       if (['Tab', 'Enter', ' ', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) root.dataset.inputMode = 'keyboard';
     };
     document.addEventListener('pointerdown', onPointer, true);
+    document.addEventListener('pointermove', onPointerMove, {passive: true});
     document.addEventListener('keydown', onKey, true);
     return () => {
       document.removeEventListener('pointerdown', onPointer, true);
+      document.removeEventListener('pointermove', onPointerMove);
       document.removeEventListener('keydown', onKey, true);
     };
   }, []);
@@ -57,13 +66,13 @@ function App() {
     };
   }, []);
   useLayoutEffect(() => {
-    document.title = path === '/espacamento' ? 'Espaçamento - IngCore' : path === '/home' ? 'IngCore - Design System' : path === '/tipografia' ? 'Tipografia - IngCore' : path === '/cores' ? 'Cores - IngCore' : 'Configuração - IngCore';
+    document.title = path === '/icones' ? 'Ícones - IngCore' : path === '/espacamento' ? 'Espaçamento - IngCore' : path === '/home' ? 'IngCore - Design System' : path === '/tipografia' ? 'Tipografia - IngCore' : path === '/cores' ? 'Cores - IngCore' : 'Configuração - IngCore';
     const anchor = window.location.hash.slice(1);
     const target = anchor ? document.getElementById(anchor) : null;
     if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
     else window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [path]);
-  return path === '/espacamento' ? <Spacing /> : path === '/home' ? <Home /> : path === '/tipografia' ? <Typography /> : path === '/cores' ? <Colors /> : <TokenCatalog />;
+  return path === '/icones' ? <Icons /> : path === '/espacamento' ? <Spacing /> : path === '/home' ? <Home /> : path === '/tipografia' ? <Typography /> : path === '/cores' ? <Colors /> : <TokenCatalog />;
 }
 
 // Aguarda as faces locais antes de exibir os textos, evitando a troca do fallback.

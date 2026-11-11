@@ -22,7 +22,6 @@
   &--outlined.button--small[data-icon-only] { width: 34px; aspect-ratio: auto; }
   // Transição de Small no Figma, estendida a todos os Ghost por orientação do portal.
   transition: background-color 300ms ease-in-out;
-  &:hover:not(:disabled) { background: var(--sys-color-action-ghost-hover); }
   &[data-selected]:not(:disabled) { background: var(--sys-color-action-ghost-enabled); }
   &:focus { outline: none; }
   &:focus-visible { outline: 1px solid var(--sys-color-border-brand-primary); outline-offset: 4px; }
@@ -30,6 +29,12 @@
     cursor: not-allowed;
     color: var(--sys-color-content-on-disabled);
     background: transparent;
+  }
+}
+// O hover acompanha o mouse, sem ficar retido após toque ou caneta.
+@media (any-hover: hover) and (any-pointer: fine) {
+  html:not([data-pointer-type='touch']):not([data-pointer-type='pen']) .button:hover:not(:disabled) {
+    background: var(--sys-color-action-ghost-hover);
   }
 }
 .button-icon {

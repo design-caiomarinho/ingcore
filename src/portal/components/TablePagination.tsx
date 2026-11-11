@@ -2,8 +2,8 @@ import { Button } from './Button';
 import { assetUrl } from '../paths';
 import '../styles/data-table.scss';
 
-export function TablePagination({total, page, pageSize = 10, onPageChange, label = 'Páginas da tabela'}: {
-  total: number; page: number; pageSize?: number; onPageChange: (page: number) => void; label?: string;
+export function TablePagination({total, page, pageSize = 10, onPageChange, label = 'Páginas da tabela', summaryLabel = 'Linhas por página:'}: {
+  total: number; page: number; pageSize?: number; onPageChange: (page: number) => void; label?: string; summaryLabel?: string;
 }) {
   const pageCount = Math.max(1, Math.ceil(total / pageSize));
   const current = Math.max(1, Math.min(page, pageCount));
@@ -11,7 +11,7 @@ export function TablePagination({total, page, pageSize = 10, onPageChange, label
   const pages = Array.from({length: Math.min(5, pageCount)}, (_, index) => windowStart + index);
   const start = (current - 1) * pageSize;
   return <div className="table-pagination">
-    <div className="table-pagination-summary"><p className="table-page-size">Linhas por página:</p>
+    <div className="table-pagination-summary"><p className="table-page-size">{summaryLabel}</p>
       <p role="status" aria-live="polite" aria-atomic="true">Mostrando {total ? start + 1 : 0}-{Math.min(start + pageSize, total)} de {total} itens</p>
     </div>
     <nav className="table-page-buttons" aria-label={label}>

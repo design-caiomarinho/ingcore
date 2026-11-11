@@ -35,7 +35,7 @@ function SpacingTabs({id, label, labels, selected, onSelect}: {id: string; label
 function SpacingExplorer() {
   const [layer, setLayer] = useState(0);
   const tokens = layer === 0 ? spacingSemantic : spacingPrimitives;
-  return <div className="spacing-explorer">
+  return <div className="spacing-explorer" data-layer={layer === 0 ? 'semantic' : 'primitive'}>
     <p>Alterne entre os aliases de <CodeTag>sys-spacing</CodeTag> e a escala completa de <CodeTag>ref</CodeTag>. A tabela mostra os nomes originais, os valores resolvidos e suas referências. A barra permite comparar as medidas na mesma escala visual.</p>
     <div className="spacing-controls">
       <SpacingTabs id="spacing-layer" label="Camadas de espaçamento" labels={['Semânticos', 'Primitivos']} selected={layer} onSelect={setLayer} />
@@ -69,7 +69,7 @@ function SpacingApplication() {
 }
 function TokenFlow({items}: {items: string[]}) {
   return <div className="spacing-token-flow">{items.map((item, index) => <span className="spacing-flow-item" key={index}>
-    {index > 0 && <span className="spacing-flow-icon"><img src={assetUrl('colors-flow-right.svg')} alt="aponta para" /></span>}<CodeTag>{item}</CodeTag>
+    {index > 0 && <picture className="spacing-flow-icon"><source media="(max-width: 767px)" srcSet={assetUrl('colors-flow-down.svg')} /><img src={assetUrl('colors-flow-right.svg')} alt="aponta para" /></picture>}<CodeTag>{item}</CodeTag>
   </span>)}</div>;
 }
 export function Spacing() {

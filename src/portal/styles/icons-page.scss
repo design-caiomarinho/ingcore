@@ -1,0 +1,56 @@
+@use './typography' as type;
+
+.icons-page {
+  .overview-description { max-width: 650px; }
+  .section-panel { overflow: hidden; scroll-margin-top: calc(var(--submenu-height, 82px) + 32px); }
+  .section-content { display: flex; flex-direction: column; gap: 32px; padding: 24px; }
+  .section-content > p { max-width: 900px; color: var(--sys-color-content-secondary); }
+  .section-content h3, .icons-callout h2 { @include type.text('heading-sm'); }
+  .icons-callout { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px; border-radius: 8px; background: var(--sys-color-content-brand); color: var(--sys-color-content-inverse); }
+  .icons-callout p { @include type.text('body-md-regular'); }
+  .icons-doc-link { color: var(--sys-color-content-inverse); margin-top: 8px; }
+  .icons-doc-link img { filter: brightness(0) invert(1); }
+  .icons-explorer { display: flex; flex-direction: column; gap: 24px; }
+  .icons-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+  .icon-card { @include type.text('label-md'); min-width: 0; min-height: 100px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px 8px; border: 1px solid var(--sys-color-border-primary); border-radius: 8px; background: var(--sys-color-surface-default); color: var(--sys-color-content-secondary); cursor: pointer; transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out, color 300ms ease-in-out; }
+  .icon-card[aria-pressed='true'] { background: var(--sys-color-action-ghost-hover); border-color: var(--sys-color-border-brand-primary); color: var(--sys-color-content-brand); }
+  @media (hover: hover) { .icon-card:hover:not([aria-pressed='true']) { border-color: var(--sys-color-border-brand-primary); } }
+  .icon-card:focus-visible { outline: 1px solid var(--sys-color-border-brand-primary); outline-offset: 4px; }
+  .icon-image { display: inline-flex; width: 24px; height: 24px; align-items: center; justify-content: center; flex: none; }
+  .icon-image img { display: block; max-width: none; filter: invert(32%) sepia(60%) saturate(1458%) hue-rotate(201deg) brightness(92%) contrast(89%); }
+  .icon-detail { position: relative; display: flex; align-items: center; gap: 24px; border: 1px solid var(--sys-color-border-primary); border-radius: 8px; padding: 16px 24px 16px 16px; }
+  .icon-detail-preview { width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; flex: none; background: var(--sys-color-surface-brand-subtle-default); border: 1px solid var(--sys-color-border-brand-primary); border-radius: 8px; }
+  .icon-detail-preview .icon-image { transform: scale(1.6667); }
+  .icon-detail-info { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: 4px; }
+  .icon-detail-info h3 { margin-bottom: 4px; }
+  .icon-detail-info p { @include type.text('body-md-regular'); color: var(--sys-color-content-secondary); }
+  .icon-detail-info p:last-child { @include type.text('body-sm-regular'); color: var(--sys-color-content-tertiary); }
+  .icon-detail-actions { display: flex; align-items: center; gap: 8px; }
+  .icon-detail-actions a { text-decoration: none; }
+  .icons-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .icons-caption { @include type.text('body-sm-regular'); }
+  .icons-guidelines { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .icons-guidelines article { display: flex; flex-direction: column; gap: 16px; padding: 24px; border: 1px solid var(--sys-color-border-primary); border-radius: 12px; }
+  .icons-guidelines p { color: var(--sys-color-content-secondary); }
+  #acessibilidade > .section-content { padding-bottom: 48px; }
+}
+@media (prefers-reduced-motion: reduce) { .icons-page .icon-card { transition: none; } }
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .icons-page .icons-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+@media (max-width: 1199px) {
+  .icons-page .section-panel { scroll-margin-top: calc(var(--sections-top, 72px) + 80px); }
+}
+@media (max-width: 767px) {
+  .icons-page {
+    .icons-grid, .icons-guidelines { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .icon-card span:last-child { max-width: 100%; overflow-wrap: anywhere; text-align: center; }
+    .icon-detail { flex-direction: column; align-items: stretch; gap: 24px; padding: 16px; }
+    .icon-detail-preview { align-self: flex-start; width: 58px; height: 58px; }
+    .icon-detail-preview .icon-image { transform: none; }
+    .icon-detail-info { flex: none; overflow-wrap: anywhere; }
+    .icon-detail-actions a { flex: 1; min-width: 0; }
+    .icons-guidelines { grid-template-columns: minmax(0, 1fr); }
+  }
+}

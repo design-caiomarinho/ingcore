@@ -36,3 +36,23 @@
     .type-explorer > p { max-width: 900px; text-wrap: balance; }
   }
 }
+
+// Grupos de opções seguem o mesmo grid da página de arredondamento no celular.
+@media (max-width: 767px) {
+  .portal-theme .page-content :is(.type-groups, .spacing-options, .color-groups) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .portal-theme .page-content :is(.type-groups, .spacing-options, .color-groups) .button {
+    width: 100%;
+    min-width: 0;
+  }
+  .portal-theme .page-content .color-groups .button {
+    height: auto;
+    min-height: 40px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+}

@@ -5,12 +5,12 @@ import { NavButton, NavLink } from './NavButton';
 
 const groups = [
   { title: 'Introdução', items: [{ label: 'Primeiros passos', current: true }] },
-  { title: 'Fundamentos', items: [{ label: 'Cores' }, { label: 'Tipografia' }, { label: 'Espaçamentos' }, { label: 'Ícones' }] },
+  { title: 'Fundamentos', items: [{ label: 'Cores' }, { label: 'Tipografia' }, { label: 'Espaçamentos' }, { label: 'Ícones' }, { label: 'Arredondamento' }] },
   { title: 'Componentes', items: [{ label: 'Button' }, { label: 'Input' }, { label: 'Select' }] },
   { title: 'Padrões', items: [{ label: 'Formulários' }] },
   { title: 'Recursos', items: [{ label: 'Biblioteca Figma' }] },
 ];
-const routes: Record<string, string> = { 'Primeiros passos': '/home', Cores: '/cores', Tipografia: '/tipografia', Espaçamentos: '/espacamento', Ícones: '/icones' };
+const routes: Record<string, string> = { 'Primeiros passos': '/home', Cores: '/cores', Tipografia: '/tipografia', Espaçamentos: '/espacamento', Ícones: '/icones', Arredondamento: '/arredondamento' };
 
 export function PortalNavigation({ currentItem = 'Primeiros passos' }: { currentItem?: string }) {
   return <nav aria-label="Navegação principal">{groups.map(group => <div className="nav-group" key={group.title}>

@@ -16,8 +16,8 @@ function Section({id, title, children}: {id: string; title: string; children: Re
 }
 function RadiusExplorer() {
   const [layer, setLayer] = useState(0);
-  const [semantic, setSemantic] = useState('sm');
-  const [primitive, setPrimitive] = useState('radius-2');
+  const [semantic, setSemantic] = useState('none');
+  const [primitive, setPrimitive] = useState('radius-0');
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
   const tokens = layer === 0 ? radiusSemantic : radiusPrimitives;
   const selected = tokens.find(token => token.name === (layer === 0 ? semantic : primitive)) ?? tokens[0];

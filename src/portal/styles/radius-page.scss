@@ -18,19 +18,22 @@
   .radius-selection { @include type.text('body-sm-regular'); }
   .radius-preview { padding: 8px; border: 1px solid var(--sys-color-border-primary); border-radius: 8px; }
   .radius-canvas { height: 350px; display: flex; justify-content: center; align-items: center; overflow: hidden; background: var(--sys-color-surface-strong); border-radius: 8px; }
-  .radius-surface { position: relative; width: 476px; height: 244px; display: flex; justify-content: center; align-items: center; padding: 12px; background: var(--sys-color-surface-brand-subtle-default); border: 1px dashed var(--sys-color-border-brand-primary); transition: border-radius 300ms ease-in-out; }
-  .radius-surface > span { @include type.text('body-lg-regular'); align-self: flex-start; position: absolute; left: 16px; top: 16px; color: var(--sys-color-content-brand); }
-  .radius-shape { @include type.text('body-lg-regular'); position: relative; display: flex; justify-content: center; align-items: center; width: 150px; height: 150px; border: 1px dashed var(--sys-color-border-brand-primary); background: var(--sys-color-surface-default); color: var(--sys-color-content-secondary); transition: border-radius 300ms ease-in-out; }
-  .radius-corners { position: absolute; inset: -1px; pointer-events: none; border: 4px solid var(--sys-color-border-brand-primary); border-radius: inherit; mask: linear-gradient(#000 0 0) left top/40px 40px no-repeat, linear-gradient(#000 0 0) right top/40px 40px no-repeat, linear-gradient(#000 0 0) left bottom/40px 40px no-repeat, linear-gradient(#000 0 0) right bottom/40px 40px no-repeat; }
-  .radius-shape .radius-corners { mask-size: 24px 24px; }
+  .radius-surface { position: relative; width: 476px; height: 244px; display: flex; justify-content: center; align-items: center; padding: 12px; border-radius: min(var(--corner-radius), 122px); background: var(--sys-color-surface-brand-subtle-default); border: 1px dashed var(--sys-color-border-brand-primary); transition: border-radius 300ms ease-in-out; }
+  .radius-surface > span { @include type.text('body-lg-regular'); align-self: flex-start; position: absolute; left: 16px; top: 16px; color: var(--sys-color-content-brand); transition: left 300ms ease-in-out; }
+  .radius-shape { @include type.text('body-lg-regular'); position: relative; display: flex; justify-content: center; align-items: center; width: 150px; height: 150px; border-radius: min(var(--corner-radius), 75px); border: 1px dashed var(--sys-color-border-brand-primary); background: var(--sys-color-surface-default); color: var(--sys-color-content-secondary); transition: border-radius 300ms ease-in-out; }
+  .radius-corners { position: absolute; inset: -2.5px; pointer-events: none; border: 4px solid var(--sys-color-border-brand-primary); border-radius: calc(min(var(--corner-radius), 122px) + 1.5px); transition: border-radius 300ms ease-in-out, mask-size 300ms ease-in-out; mask: linear-gradient(#000 0 0) left top/40px 40px no-repeat, linear-gradient(#000 0 0) right top/40px 40px no-repeat, linear-gradient(#000 0 0) left bottom/40px 40px no-repeat, linear-gradient(#000 0 0) right bottom/40px 40px no-repeat; }
+  .radius-shape .radius-corners { border-radius: calc(min(var(--corner-radius), 75px) + 1.5px); mask-size: 24px 24px; }
   .radius-examples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
   .radius-examples .radius-card { gap: 16px; }
   .radius-example { position: relative; width: 50px; height: 50px; margin-bottom: 8px; background: var(--sys-color-surface-brand-subtle-default); border: 1px dashed var(--sys-color-border-brand-primary); }
-  .radius-example i { position: absolute; inset: -1px; border: 4px solid var(--sys-color-border-brand-primary); border-radius: inherit; mask: linear-gradient(#000 0 0) right top/24px 24px no-repeat; }
+  .radius-example { --example-radius: 0px; }
+  .radius-card:nth-child(2) .radius-example { --example-radius: 8px; }
+  .radius-card:nth-child(3) .radius-example { --example-radius: 999px; }
+  .radius-example i { position: absolute; inset: -2.5px; border: 4px solid var(--sys-color-border-brand-primary); border-radius: calc(var(--example-radius) + 1.5px); mask: linear-gradient(#000 0 0) right top/24px 24px no-repeat; }
   #aplicacao > .section-content { padding-bottom: 48px; }
   .section-buttons { gap: 4px; }
 }
-@media (prefers-reduced-motion: reduce) { .radius-page .radius-surface, .radius-page .radius-shape { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .radius-page .radius-surface, .radius-page .radius-shape, .radius-page .radius-corners, .radius-page .radius-surface > span { transition: none; } }
 
 .radius-page .radius-surface[data-max] > span { left: 72px; }
 .radius-page .radius-surface[data-max] > .radius-corners { mask-size: 100px 100px; }
@@ -44,7 +47,8 @@
     .radius-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .radius-options .button { min-width: 0; width: 100%; }
     .radius-surface { width: min(280px, calc(100% - 32px)); height: 244px; }
-    .radius-shape { width: 100px; height: 100px; }
+    .radius-shape { width: 100px; height: 100px; border-radius: min(var(--corner-radius), 50px); }
+    .radius-shape .radius-corners { border-radius: calc(min(var(--corner-radius), 50px) + 1.5px); }
     .radius-surface[data-max] .radius-shape .radius-corners { mask-size: 40px 40px; }
   }
 }

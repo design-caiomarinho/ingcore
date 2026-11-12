@@ -1,4 +1,4 @@
-import { useRef, useState, type ReactNode } from 'react';
+import { useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { DocumentationPage } from '../components/DocumentationPage';
 import { TabCell } from '../components/TabCell';
 import { Button } from '../components/Button';
@@ -29,7 +29,7 @@ function RadiusExplorer() {
       <div role="tabpanel" id={`radius-panel-${layer}`} aria-labelledby={`radius-tab-${layer}`} className="radius-panel">
         <div className="radius-options" role="group" aria-label="Tokens de arredondamento">{tokens.map(token => <Button key={token.name} variant="outlined" selected={token.name === selected.name} onClick={() => layer === 0 ? setSemantic(token.name) : setPrimitive(token.name)}>{layer === 0 ? token.name.charAt(0).toUpperCase() + token.name.slice(1) : token.name}</Button>)}</div>
         <p className="radius-selection" aria-live="polite">{selected.name} {layer === 0 && <>→ {selected.reference}</>} → {selected.value} px · <CodeTag>border-radius: {selected.value}px;</CodeTag></p>
-        <div className="radius-preview"><div className="radius-canvas"><div className="radius-surface" data-max={selected.value === 999 || undefined} style={{borderRadius: selected.value}}><span>Superfície</span><i className="radius-corners" aria-hidden="true" /><div className="radius-shape" style={{borderRadius: selected.value}}>Forma<i className="radius-corners" aria-hidden="true" /></div></div></div></div>
+        <div className="radius-preview"><div className="radius-canvas"><div className="radius-surface" data-max={selected.value === 999 || undefined} style={{'--corner-radius': `${selected.value}px`} as CSSProperties}><span>Superfície</span><i className="radius-corners" aria-hidden="true" /><div className="radius-shape">Forma<i className="radius-corners" aria-hidden="true" /></div></div></div></div>
       </div>
     </div>
   </div>;

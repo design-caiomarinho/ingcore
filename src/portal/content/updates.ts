@@ -10,6 +10,14 @@ type Update = {
 /** Histórico editorial das páginas e conteúdos do Design System. Componentes e ajustes internos do portal não entram neste histórico. */
 export const updates: Update[] = [
   {
+    id: 'elevacao-sombras-explorador',
+    date: '2026-11-24',
+    title: 'Elevação e sombras',
+    status: 'Novo',
+    description: 'Tokens de elevação e prévia interativa para comparar as sombras do Design System.',
+    href: '/elevacao',
+  },
+  {
     id: 'bordas-explorador',
     date: '2026-11-24',
     title: 'Bordas',

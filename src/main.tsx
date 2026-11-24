@@ -6,13 +6,14 @@ import { Colors } from './portal/pages/Colors';
 import { Typography } from './portal/pages/Typography';
 import { Spacing } from './portal/pages/Spacing';
 import { Icons } from './portal/pages/Icons';
+import { Elevation } from './portal/pages/Elevation';
 import { Border } from './portal/pages/Border';
 import { Radius } from './portal/pages/Radius';
 import './portal/styles/index.scss';
 import { appPath } from './portal/paths';
 
 const routePath = () => appPath(window.location.pathname);
-const routes = new Set(['/', '/home', '/cores', '/tipografia', '/espacamento', '/icones', '/arredondamento', '/bordas', '/configuracao']);
+const routes = new Set(['/', '/home', '/cores', '/tipografia', '/espacamento', '/icones', '/arredondamento', '/bordas', '/elevacao', '/configuracao']);
 function App() {
   const [path, setPath] = useState(routePath);
   useLayoutEffect(() => {
@@ -68,13 +69,13 @@ function App() {
     };
   }, []);
   useLayoutEffect(() => {
-    document.title = path === '/bordas' ? 'Bordas - IngCore' : path === '/arredondamento' ? 'Arredondamento - IngCore' : path === '/icones' ? 'Ícones - IngCore' : path === '/espacamento' ? 'Espaçamento - IngCore' : path === '/home' ? 'IngCore - Design System' : path === '/tipografia' ? 'Tipografia - IngCore' : path === '/cores' ? 'Cores - IngCore' : 'Configuração - IngCore';
+    document.title = path === '/elevacao' ? 'Elevação e sombras - IngCore' : path === '/bordas' ? 'Bordas - IngCore' : path === '/arredondamento' ? 'Arredondamento - IngCore' : path === '/icones' ? 'Ícones - IngCore' : path === '/espacamento' ? 'Espaçamento - IngCore' : path === '/home' ? 'IngCore - Design System' : path === '/tipografia' ? 'Tipografia - IngCore' : path === '/cores' ? 'Cores - IngCore' : 'Configuração - IngCore';
     const anchor = window.location.hash.slice(1);
     const target = anchor ? document.getElementById(anchor) : null;
     if (target) target.scrollIntoView({ behavior: 'auto', block: 'start' });
     else window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, [path]);
-  return path === '/bordas' ? <Border /> : path === '/arredondamento' ? <Radius /> : path === '/icones' ? <Icons /> : path === '/espacamento' ? <Spacing /> : path === '/home' ? <Home /> : path === '/tipografia' ? <Typography /> : path === '/cores' ? <Colors /> : <TokenCatalog />;
+  return path === '/elevacao' ? <Elevation /> : path === '/bordas' ? <Border /> : path === '/arredondamento' ? <Radius /> : path === '/icones' ? <Icons /> : path === '/espacamento' ? <Spacing /> : path === '/home' ? <Home /> : path === '/tipografia' ? <Typography /> : path === '/cores' ? <Colors /> : <TokenCatalog />;
 }
 
 // Aguarda as faces locais antes de exibir os textos, evitando a troca do fallback.

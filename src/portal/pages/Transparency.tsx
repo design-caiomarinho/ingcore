@@ -47,7 +47,7 @@ function TransparencyExplorer() {
       {layer === 0 ? <div role="tabpanel" id="transparency-panel-0" aria-labelledby="transparency-tab-0" className="transparency-panel">
         <div className="transparency-options" role="group" aria-label="Grupos de transparência">{transparencyGroups.map(item => <Button key={item} variant="outlined" selected={item === group} onClick={() => {setGroup(item); setName(''); setDragValue(null); dragging.current = false;}}>{item}</Button>)}</div>
         <div className="transparency-intensity">
-          <div className="intensity-heading"><label htmlFor={intensityId}>Intensidade</label><output htmlFor={intensityId}>{selectedLabel} · {selected.amount.toLocaleString('pt-BR')}%</output></div>
+          <div className="intensity-heading"><label htmlFor={intensityId}>Intensidade</label><output htmlFor={intensityId}>{selectedLabel}</output></div>
           <input id={intensityId} type="range" min={0} max={tokens.length - 1} step="any" value={sliderPosition}
             style={{'--slider-fill': `calc(${progress}% + ${8 - progress * 0.16}px)`} as CSSProperties}
             aria-valuetext={selectedLabel + ', ' + selected.amount.toLocaleString('pt-BR') + '%'}

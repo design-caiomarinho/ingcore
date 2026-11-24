@@ -1,0 +1,92 @@
+@use './typography' as type;
+.transparency-page {
+  .overview-description { max-width: 650px; }
+  .section-panel { overflow: hidden; scroll-margin-top: calc(var(--submenu-height, 82px) + 32px); }
+  .section-content, .transparency-explorer { display: flex; flex-direction: column; gap: 32px; }
+  .section-content { padding: 24px; }
+  .section-content p { color: var(--sys-color-content-secondary); }
+  .section-content h3 { @include type.text('heading-sm'); color: var(--sys-color-content-primary); }
+  .section-content > p, .transparency-explorer > p, .transparency-text > p { max-width: 900px; }
+  .transparency-organization { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .transparency-card { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; min-width: 0; padding: 24px; border: 1px solid var(--sys-color-border-primary); border-radius: 12px; }
+  .transparency-text { display: flex; flex-direction: column; gap: 16px; }
+  .transparency-controls, .transparency-panel { display: flex; flex-direction: column; gap: 24px; }
+  .transparency-tabs { display: flex; gap: 16px; box-shadow: inset 0 -1px 0 var(--sys-color-border-primary); }
+  .transparency-options { display: flex; flex-wrap: wrap; gap: 8px; }
+  .transparency-options .button { min-width: 80px; }
+  .transparency-preview { padding: 8px; border: 1px solid var(--sys-color-border-primary); border-radius: 8px; }
+  .transparency-canvas { height: 350px; padding: 40px; display: flex; align-items: center; justify-content: center; background: var(--sys-color-surface-strong); border-radius: 8px; }
+  .transparency-composition { position: relative; width: 280px; max-width: 100%; height: 160px; }
+  .transparency-backdrop { position: absolute; left: -24px; top: -24px; width: 55%; height: 100%; background: var(--sys-color-surface-empashis); border-radius: 8px; }
+  .transparency-surface { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; border-radius: 8px; transition: opacity 300ms ease-in-out; }
+  .transparency-surface::before { content: ''; position: absolute; inset: 0; background: var(--preview-color); border-radius: inherit; transition: background-color 300ms ease-in-out; }
+  .transparency-surface > span { position: relative; }
+  .transparency-surface > span { @include type.text('body-lg-regular'); color: var(--sys-color-content-primary); }
+  .transparency-note { margin-top: 24px; }
+  .transparency-examples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .transparency-example-canvas { display: flex; align-items: center; justify-content: center; width: 100%; height: 144px; margin-bottom: 8px; border-radius: 8px; background: var(--sys-color-surface-strong); }
+  .transparency-example { width: 120px; max-width: calc(100% - 48px); height: 64px; border-radius: 8px; background: var(--sys-color-surface-default); }
+  #aplicacao > .section-content { padding-bottom: 48px; }
+  .section-buttons { gap: 4px; }
+}
+@media (max-width: 1199px) {
+  .transparency-page {
+    .overview-description { max-width: none; }
+    .section-panel { scroll-margin-top: calc(var(--sections-top, 72px) + 80px); }
+    .code-block { white-space: pre-wrap; overflow-wrap: anywhere; }
+  }
+}
+@media (max-width: 767px) {
+  .transparency-page {
+    .transparency-organization, .transparency-examples { grid-template-columns: minmax(0, 1fr); }
+    .transparency-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .transparency-options .button { min-width: 0; width: 100%; }
+    .transparency-canvas { padding: 32px; }
+
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .transparency-page .transparency-surface, .transparency-page .transparency-surface::before { transition: none; }
+}
+
+.transparency-page .transparency-card .code-block { max-width: 100%; white-space: pre-wrap; overflow-wrap: anywhere; }
+.transparency-page .transparency-options .button { min-width: 0; }
+
+.transparency-page {
+  .transparency-intensity { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+  .intensity-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; color: var(--sys-color-content-primary); }
+  .intensity-heading label { @include type.text('label-md'); }
+  .intensity-heading output { @include type.text('body-md-regular'); color: var(--sys-color-content-secondary); }
+  .transparency-intensity input { appearance: none; width: 100%; height: 28px; padding: 0; margin: 0; background: transparent; cursor: pointer; }
+  .transparency-intensity input::-webkit-slider-runnable-track { height: 4px; border-radius: 4px; background: linear-gradient(to right, var(--sys-color-content-brand) 0 var(--slider-fill), var(--sys-color-border-primary) var(--slider-fill) 100%); }
+  .transparency-intensity input::-moz-range-track { height: 4px; border-radius: 4px; background: linear-gradient(to right, var(--sys-color-content-brand) 0 var(--slider-fill), var(--sys-color-border-primary) var(--slider-fill) 100%); }
+  .transparency-intensity input::-webkit-slider-thumb { appearance: none; width: 16px; height: 16px; margin-top: -6px; border: 0; border-radius: 50%; background: var(--sys-color-content-brand); }
+  .transparency-intensity input::-moz-range-thumb { width: 16px; height: 16px; border: 0; border-radius: 50%; background: var(--sys-color-content-brand); }
+  .transparency-intensity input:focus-visible { outline: 1px solid var(--sys-color-border-brand-primary); outline-offset: 4px; border-radius: 4px; }
+  .intensity-scale { display: flex; justify-content: space-between; padding-inline: 8px; color: var(--sys-color-content-tertiary); @include type.text('body-sm-regular'); }
+  .intensity-scale > span { display: flex; align-items: center; flex-direction: column; gap: 6px; width: 0; white-space: nowrap; }
+  .intensity-scale i { height: 4px; width: 1px; background: var(--sys-color-border-primary); }
+}
+
+.transparency-page .transparency-caption {
+  @include type.text('body-sm-regular');
+  max-width: 900px;
+  color: var(--sys-color-content-secondary);
+}
+// O contorno permanece visível mesmo quando a camada interna tem opacity: 0.
+.transparency-page .transparency-outline {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  color: var(--sys-color-border-brand-primary);
+  overflow: visible;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+.transparency-page .transparency-composition[data-zero] .transparency-outline { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .transparency-page .transparency-outline { transition: none; }
+}
+.transparency-page .transparency-surface[data-inverse] > span { color: var(--sys-color-content-inverse); }

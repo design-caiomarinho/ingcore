@@ -10,6 +10,14 @@ type Update = {
 /** Histórico editorial das páginas e conteúdos do Design System. Componentes e ajustes internos do portal não entram neste histórico. */
 export const updates: Update[] = [
   {
+    id: 'transparencia-opacidade-explorador',
+    date: '2026-11-24',
+    title: 'Transparência e opacidade',
+    status: 'Novo',
+    description: 'Overlays, cores alpha e controle interativo de opacidade para consultar e comparar os tokens.',
+    href: '/transparencia',
+  },
+  {
     id: 'elevacao-sombras-explorador',
     date: '2026-11-24',
     title: 'Elevação e sombras',

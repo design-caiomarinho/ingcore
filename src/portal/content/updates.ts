@@ -10,6 +10,14 @@ type Update = {
 /** Histórico editorial das páginas e conteúdos do Design System. Componentes e ajustes internos do portal não entram neste histórico. */
 export const updates: Update[] = [
   {
+    id: 'bordas-explorador',
+    date: '2026-11-24',
+    title: 'Bordas',
+    status: 'Novo',
+    description: 'Tokens de espessura, prévia interativa e referências CSS disponíveis para consulta.',
+    href: '/bordas',
+  },
+  {
     id: 'arredondamento-explorador',
     date: '2026-11-11',
     title: 'Arredondamento',

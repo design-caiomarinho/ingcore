@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { assetUrl } from '../paths';
 import { Button } from '../components/Button';
 import { InputField } from '../components/InputField';
+import { TabList } from '../components/TabList';
 import { TabCell } from '../components/TabCell';
 import { DataTable } from '../components/DataTable';
 import { TablePagination } from '../components/TablePagination';
@@ -51,7 +52,7 @@ export function ColorExplorer() {
   return <div className="color-explorer">
     <p><InlineCode>Consulte as duas camadas de cores do IngCore em um único lugar. Os primitivos da coleção ref definem os valores da paleta; os semânticos de sys-color indicam onde essas cores se aplicam. Escolha um grupo para consultar seus tokens ou pesquise em todo o catálogo pelo nome CSS, referência ou valor hexadecimal.</InlineCode></p>
     <div className="color-controls">
-      <div className="color-tabs" role="tablist" aria-label="Camadas de cores">
+      <TabList className="color-tabs" aria-label="Camadas de cores">
         {(['semantic', 'primitive'] as const).map((value, index) => <TabCell key={value} ref={element => { tabRefs.current[index] = element; }}
           id={`color-tab-${value}`}
           selected={layer === value} aria-controls="color-panel" tabIndex={layer === value ? 0 : -1}
@@ -63,7 +64,7 @@ export function ColorExplorer() {
             selectLayer(next === 0 ? 'semantic' : 'primitive');
             tabRefs.current[next]?.focus();
           }}>{value === 'semantic' ? 'Semânticos' : 'Primitivos'}</TabCell>)}
-      </div>
+      </TabList>
       <div className="color-groups" role="group" aria-label="Grupos de cores">
         {groups.map(item => <Button key={item.id} variant="outlined" selected={!searching && group === item.id}
           onClick={() => {

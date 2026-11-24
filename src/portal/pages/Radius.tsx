@@ -1,5 +1,6 @@
 import { useRef, useState, type CSSProperties, type ReactNode } from 'react';
 import { DocumentationPage } from '../components/DocumentationPage';
+import { TabList } from '../components/TabList';
 import { TabCell } from '../components/TabCell';
 import { Button } from '../components/Button';
 import { CodeTag } from '../components/CodeTag';
@@ -25,7 +26,7 @@ function RadiusExplorer() {
   return <div className="radius-explorer">
     <p>Alterne entre os aliases semânticos e a escala primitiva. Selecione um token para comparar o mesmo valor em uma superfície retangular e em uma forma quadrada.</p>
     <div className="radius-controls">
-      <div className="radius-tabs" role="tablist" aria-label="Camadas de arredondamento">{['Semânticos', 'Primitivos'].map((label, index) => <TabCell key={label} ref={el => {refs.current[index] = el;}} selected={index === layer} id={`radius-tab-${index}`} aria-controls={`radius-panel-${index}`} tabIndex={index === layer ? 0 : -1} onClick={() => setLayer(index)} onKeyDown={event => {if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {event.preventDefault(); selectLayer(event.key === 'Home' ? 0 : event.key === 'End' ? 1 : 1 - index);}}}>{label}</TabCell>)}</div>
+      <TabList className="radius-tabs" aria-label="Camadas de arredondamento">{['Semânticos', 'Primitivos'].map((label, index) => <TabCell key={label} ref={el => {refs.current[index] = el;}} selected={index === layer} id={`radius-tab-${index}`} aria-controls={`radius-panel-${index}`} tabIndex={index === layer ? 0 : -1} onClick={() => setLayer(index)} onKeyDown={event => {if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {event.preventDefault(); selectLayer(event.key === 'Home' ? 0 : event.key === 'End' ? 1 : 1 - index);}}}>{label}</TabCell>)}</TabList>
       <div role="tabpanel" id={`radius-panel-${layer}`} aria-labelledby={`radius-tab-${layer}`} className="radius-panel">
         <div className="radius-options" role="group" aria-label="Tokens de arredondamento">{tokens.map(token => <Button key={token.name} variant="outlined" selected={token.name === selected.name} onClick={() => layer === 0 ? setSemantic(token.name) : setPrimitive(token.name)}>{layer === 0 ? token.name.charAt(0).toUpperCase() + token.name.slice(1) : token.name}</Button>)}</div>
         <p className="radius-selection" aria-live="polite">{selected.name} {layer === 0 && <>→ {selected.reference}</>} → {selected.value} px · <CodeTag>border-radius: {selected.value}px;</CodeTag></p>

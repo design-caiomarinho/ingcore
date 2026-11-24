@@ -5,6 +5,7 @@ import { Button } from '../components/Button';
 import { DataTable } from '../components/DataTable';
 import { TablePagination } from '../components/TablePagination';
 import { InputField } from '../components/InputField';
+import { TabList } from '../components/TabList';
 import { TabCell } from '../components/TabCell';
 import { TextLink } from '../components/TextLink';
 import { InlineCode } from '../components/CodeTag';
@@ -62,7 +63,7 @@ function TypographyExplorer() {
   return <div className="type-explorer">
     <p>Na aba Semânticos, consulte os conjuntos por papel e compare suas amostras. Na aba Primitivos, veja os valores que compõem esses conjuntos. Cada amostra apresenta suas medidas; os detalhes reúnem a declaração CSS equivalente e as referências da origem.</p>
     <div className="type-controls">
-      <div className="type-tabs" role="tablist" aria-label="Camadas de tipografia">
+      <TabList className="type-tabs" aria-label="Camadas de tipografia">
         {(['semantic', 'primitive'] as const).map((value, index) => <TabCell key={value}
           ref={element => { tabRefs.current[index] = element; }} id={`type-tab-${value}`}
           selected={layer === value} aria-controls={`type-panel-${value}`} tabIndex={layer === value ? 0 : -1}
@@ -73,7 +74,7 @@ function TypographyExplorer() {
             setLayer(next === 0 ? 'semantic' : 'primitive');
             tabRefs.current[next]?.focus();
           }}>{value === 'semantic' ? 'Semânticos' : 'Primitivos'}</TabCell>)}
-      </div>
+      </TabList>
       {layer === 'semantic' && <><div className="type-groups" role="group" aria-label="Papéis tipográficos">
         {typographyGroups.map(item => <Button key={item} variant="outlined" selected={item === group} onClick={() => setGroup(item)}>{item}</Button>)}
       </div>
@@ -83,7 +84,7 @@ function TypographyExplorer() {
       {typographyRecipes.filter(item => item.group === group).map(item => <TypographySample key={item.id} item={item} sample={sample} />)}
     </div> : <div className="type-primitives" role="tabpanel" id="type-panel-primitive" aria-labelledby="type-tab-primitive">
       <DataTable caption="Primitivos tipográficos do IngCore Design System" minWidth={960} scrollRef={tableScroll}
-        columns={[{id: 'reference', label: 'REFERÊNCIA · REF'}, {id: 'value', label: 'VALOR'}, {id: 'css', label: 'PROPRIEDADE CSS'}]}
+        columns={[{id: 'reference', label: 'REFERÊNCIAS'}, {id: 'value', label: 'VALOR'}, {id: 'css', label: 'PROPRIEDADE CSS'}]}
         rows={typographyPrimitives.slice((page - 1) * pageSize, page * pageSize).map(item => ({id: item.id, cells: [
           <code>{item.reference}</code>, String(item.value), <code>{item.css}</code>,
         ]}))}>

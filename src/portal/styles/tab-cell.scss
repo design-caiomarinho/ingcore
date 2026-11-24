@@ -34,3 +34,21 @@ html[data-input-mode='pointer'] .tab-cell:focus-visible::after { opacity: 0; }
   .tab-cell:focus-visible::after { border-color: Highlight; }
   .tab-cell[aria-selected='true']:not(:disabled)::before { background: Highlight; }
 }
+
+// Uma linha compartilhada evita o corte entre os indicadores de cada célula.
+.portal-theme .tab-list {
+  position: relative;
+  > .tab-cell[aria-selected]::before { background: transparent; }
+  > .tab-indicator {
+    position: absolute; left: 0; bottom: 0; height: 1px; pointer-events: none;
+    background: var(--sys-color-border-brand-primary);
+    transition: transform 300ms ease-in-out, width 300ms ease-in-out;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portal-theme .tab-list > .tab-indicator { transition: none; }
+}
+@media (forced-colors: active) {
+  .portal-theme .tab-list > .tab-cell[aria-selected]::before { background: transparent; }
+  .portal-theme .tab-list > .tab-indicator { background: Highlight; }
+}

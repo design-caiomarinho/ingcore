@@ -1,6 +1,7 @@
 import { useRef, useState, type ReactNode } from 'react';
 import { DocumentationPage } from '../components/DocumentationPage';
 import { DataTable } from '../components/DataTable';
+import { TabList } from '../components/TabList';
 import { TabCell } from '../components/TabCell';
 import { Button } from '../components/Button';
 import { CodeTag } from '../components/CodeTag';
@@ -22,7 +23,7 @@ function SpacingSection({id, title, children}: {id: string; title: string; child
 }
 function SpacingTabs({id, label, labels, selected, onSelect}: {id: string; label: string; labels: [string, string]; selected: number; onSelect: (index: number) => void}) {
   const refs = useRef<(HTMLButtonElement | null)[]>([]);
-  return <div className="spacing-tabs" role="tablist" aria-label={label}>{labels.map((text, index) => <TabCell key={text}
+  return <TabList className="spacing-tabs" aria-label={label}>{labels.map((text, index) => <TabCell key={text}
     ref={element => { refs.current[index] = element; }} selected={selected === index} id={`${id}-tab-${index}`}
     aria-controls={`${id}-panel-${index}`} tabIndex={selected === index ? 0 : -1} onClick={() => onSelect(index)}
     onKeyDown={event => {
@@ -30,7 +31,7 @@ function SpacingTabs({id, label, labels, selected, onSelect}: {id: string; label
       event.preventDefault();
       const next = event.key === 'Home' ? 0 : event.key === 'End' ? 1 : 1 - index;
       onSelect(next); refs.current[next]?.focus();
-    }}>{text}</TabCell>)}</div>;
+    }}>{text}</TabCell>)}</TabList>;
 }
 function SpacingExplorer() {
   const [layer, setLayer] = useState(0);

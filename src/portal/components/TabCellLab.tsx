@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { TabList } from './TabList';
 import { TabCell } from './TabCell';
 import '../styles/tab-cell-lab.scss';
 
@@ -20,7 +21,7 @@ export function TabCellLab() {
       </div>)}
     </div>
     <h3>Validar interação</h3>
-    <div className="tab-cell-demo" role="tablist" aria-label="Exemplo de tabs">
+    <TabList className="tab-cell-demo" aria-label="Exemplo de tabs">
       {['Semânticos', 'Primitivos', 'Em breve'].map((label, index) => <TabCell key={label} id={`tab-cell-demo-${index}`}
         ref={element => { cells.current[index] = element; }} selected={selected === index} disabled={index === 2}
         tabIndex={selected === index ? 0 : -1} aria-controls="tab-cell-demo-panel" onClick={() => setSelected(index)}
@@ -31,7 +32,7 @@ export function TabCellLab() {
           setSelected(next);
           cells.current[next]?.focus();
         }}>{label}</TabCell>)}
-    </div>
+    </TabList>
     <div className="tab-cell-demo-panel" id="tab-cell-demo-panel" role="tabpanel" aria-labelledby={`tab-cell-demo-${selected}`}>
       <p>Conteúdo da aba {selected === 0 ? 'Semânticos' : 'Primitivos'}.</p>
     </div>
